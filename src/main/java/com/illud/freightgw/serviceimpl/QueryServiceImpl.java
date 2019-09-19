@@ -2,6 +2,10 @@ package com.illud.freightgw.serviceimpl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
+import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.data.elasticsearch.core.query.StringQuery;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,6 +14,8 @@ import com.github.vanroy.springdata.jest.JestElasticsearchTemplate;
 import com.illud.freightgw.client.freight.model.Company;
 import com.illud.freightgw.client.freight.model.Customer;
 import com.illud.freightgw.client.freight.model.Driver;
+import com.illud.freightgw.client.freight.model.Vehicle;
+
 import static org.elasticsearch.index.query.QueryBuilders.termQuery;
 import com.illud.freightgw.service.QueryService;
 
@@ -49,6 +55,13 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 		log.debug("<<<<<< getOne driver>>>>",iDPCode);
 		StringQuery sq =new StringQuery(termQuery("iDPCode",iDPCode).toString());
 		return esTemplate.queryForObject(sq, Driver.class);
+	}
+	
+	@Override
+	public Page<Vehicle> findAllVehiclesByCompanyIdpCode(String iDPCode,Pageable page) {
+		log.debug("<<<<<< getOne driver>>>>",iDPCode);
+		SearchQuery searchQuery= new NativeSearchQueryBuilder().withQuery(termQuery("company.iDPCode", iDPCode)).build();
+		return esTemplate.queryForPage(searchQuery, Vehicle.class);
 	}
 	
 

@@ -3,8 +3,6 @@ package com.illud.freightgw.client.freight.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.illud.freightgw.client.freight.model.Company;
-import com.illud.freightgw.client.freight.model.Driver;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
@@ -12,20 +10,20 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * Vehicle
+ * VehicleDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-19T15:07:50.741+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-19T15:26:20.711+05:30[Asia/Calcutta]")
 
-public class Vehicle   {
-  @JsonProperty("company")
-  private Company company = null;
+public class VehicleDTO   {
+  @JsonProperty("companyId")
+  private Long companyId = null;
 
   @JsonProperty("currentLocationGeopoint")
   private String currentLocationGeopoint = null;
 
-  @JsonProperty("driver")
-  private Driver driver = null;
+  @JsonProperty("driverId")
+  private Long driverId = null;
 
   @JsonProperty("id")
   private Long id = null;
@@ -39,28 +37,27 @@ public class Vehicle   {
   @JsonProperty("vehicleLookupId")
   private Long vehicleLookupId = null;
 
-  public Vehicle company(Company company) {
-    this.company = company;
+  public VehicleDTO companyId(Long companyId) {
+    this.companyId = companyId;
     return this;
   }
 
   /**
-   * Get company
-   * @return company
+   * Get companyId
+   * @return companyId
   **/
   @ApiModelProperty(value = "")
 
-  @Valid
 
-  public Company getCompany() {
-    return company;
+  public Long getCompanyId() {
+    return companyId;
   }
 
-  public void setCompany(Company company) {
-    this.company = company;
+  public void setCompanyId(Long companyId) {
+    this.companyId = companyId;
   }
 
-  public Vehicle currentLocationGeopoint(String currentLocationGeopoint) {
+  public VehicleDTO currentLocationGeopoint(String currentLocationGeopoint) {
     this.currentLocationGeopoint = currentLocationGeopoint;
     return this;
   }
@@ -80,28 +77,27 @@ public class Vehicle   {
     this.currentLocationGeopoint = currentLocationGeopoint;
   }
 
-  public Vehicle driver(Driver driver) {
-    this.driver = driver;
+  public VehicleDTO driverId(Long driverId) {
+    this.driverId = driverId;
     return this;
   }
 
   /**
-   * Get driver
-   * @return driver
+   * Get driverId
+   * @return driverId
   **/
   @ApiModelProperty(value = "")
 
-  @Valid
 
-  public Driver getDriver() {
-    return driver;
+  public Long getDriverId() {
+    return driverId;
   }
 
-  public void setDriver(Driver driver) {
-    this.driver = driver;
+  public void setDriverId(Long driverId) {
+    this.driverId = driverId;
   }
 
-  public Vehicle id(Long id) {
+  public VehicleDTO id(Long id) {
     this.id = id;
     return this;
   }
@@ -121,7 +117,7 @@ public class Vehicle   {
     this.id = id;
   }
 
-  public Vehicle occupied(Boolean occupied) {
+  public VehicleDTO occupied(Boolean occupied) {
     this.occupied = occupied;
     return this;
   }
@@ -141,7 +137,7 @@ public class Vehicle   {
     this.occupied = occupied;
   }
 
-  public Vehicle registerNo(String registerNo) {
+  public VehicleDTO registerNo(String registerNo) {
     this.registerNo = registerNo;
     return this;
   }
@@ -161,7 +157,7 @@ public class Vehicle   {
     this.registerNo = registerNo;
   }
 
-  public Vehicle vehicleLookupId(Long vehicleLookupId) {
+  public VehicleDTO vehicleLookupId(Long vehicleLookupId) {
     this.vehicleLookupId = vehicleLookupId;
     return this;
   }
@@ -190,29 +186,29 @@ public class Vehicle   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Vehicle vehicle = (Vehicle) o;
-    return Objects.equals(this.company, vehicle.company) &&
-        Objects.equals(this.currentLocationGeopoint, vehicle.currentLocationGeopoint) &&
-        Objects.equals(this.driver, vehicle.driver) &&
-        Objects.equals(this.id, vehicle.id) &&
-        Objects.equals(this.occupied, vehicle.occupied) &&
-        Objects.equals(this.registerNo, vehicle.registerNo) &&
-        Objects.equals(this.vehicleLookupId, vehicle.vehicleLookupId);
+    VehicleDTO vehicleDTO = (VehicleDTO) o;
+    return Objects.equals(this.companyId, vehicleDTO.companyId) &&
+        Objects.equals(this.currentLocationGeopoint, vehicleDTO.currentLocationGeopoint) &&
+        Objects.equals(this.driverId, vehicleDTO.driverId) &&
+        Objects.equals(this.id, vehicleDTO.id) &&
+        Objects.equals(this.occupied, vehicleDTO.occupied) &&
+        Objects.equals(this.registerNo, vehicleDTO.registerNo) &&
+        Objects.equals(this.vehicleLookupId, vehicleDTO.vehicleLookupId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(company, currentLocationGeopoint, driver, id, occupied, registerNo, vehicleLookupId);
+    return Objects.hash(companyId, currentLocationGeopoint, driverId, id, occupied, registerNo, vehicleLookupId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Vehicle {\n");
+    sb.append("class VehicleDTO {\n");
     
-    sb.append("    company: ").append(toIndentedString(company)).append("\n");
+    sb.append("    companyId: ").append(toIndentedString(companyId)).append("\n");
     sb.append("    currentLocationGeopoint: ").append(toIndentedString(currentLocationGeopoint)).append("\n");
-    sb.append("    driver: ").append(toIndentedString(driver)).append("\n");
+    sb.append("    driverId: ").append(toIndentedString(driverId)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    occupied: ").append(toIndentedString(occupied)).append("\n");
     sb.append("    registerNo: ").append(toIndentedString(registerNo)).append("\n");

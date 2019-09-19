@@ -5,7 +5,7 @@
  */
 package com.illud.freightgw.client.freight.api;
 
-import com.illud.freightgw.client.freight.model.Driver;
+import com.illud.freightgw.client.freight.model.DriverDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,14 +25,14 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-19T13:10:39.142+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-19T15:26:20.711+05:30[Asia/Calcutta]")
 
 @Api(value = "DriverResource", description = "the DriverResource API")
 public interface DriverResourceApi {
 
-    @ApiOperation(value = "createDriver", nickname = "createDriverUsingPOST", notes = "", response = Driver.class, tags={ "driver-resource", })
+    @ApiOperation(value = "createDriver", nickname = "createDriverUsingPOST", notes = "", response = DriverDTO.class, tags={ "driver-resource", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = Driver.class),
+        @ApiResponse(code = 200, message = "OK", response = DriverDTO.class),
         @ApiResponse(code = 201, message = "Created"),
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
@@ -41,7 +41,7 @@ public interface DriverResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<Driver> createDriverUsingPOST(@ApiParam(value = "driver" ,required=true )  @Valid @RequestBody Driver driver);
+    ResponseEntity<DriverDTO> createDriverUsingPOST(@ApiParam(value = "driverDTO" ,required=true )  @Valid @RequestBody DriverDTO driverDTO);
 
 
     @ApiOperation(value = "deleteDriver", nickname = "deleteDriverUsingDELETE", notes = "", tags={ "driver-resource", })
@@ -55,45 +55,45 @@ public interface DriverResourceApi {
     ResponseEntity<Void> deleteDriverUsingDELETE(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
 
 
-    @ApiOperation(value = "getAllDrivers", nickname = "getAllDriversUsingGET", notes = "", response = Driver.class, responseContainer = "List", tags={ "driver-resource", })
+    @ApiOperation(value = "getAllDrivers", nickname = "getAllDriversUsingGET", notes = "", response = DriverDTO.class, responseContainer = "List", tags={ "driver-resource", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = Driver.class, responseContainer = "List"),
+        @ApiResponse(code = 200, message = "OK", response = DriverDTO.class, responseContainer = "List"),
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
         @ApiResponse(code = 404, message = "Not Found") })
     @RequestMapping(value = "/api/drivers",
         produces = "*/*", 
         method = RequestMethod.GET)
-    ResponseEntity<List<Driver>> getAllDriversUsingGET();
+    ResponseEntity<List<DriverDTO>> getAllDriversUsingGET(@ApiParam(value = "Page number of the requested page") @Valid @RequestParam(value = "page", required = false) Integer page,@ApiParam(value = "Size of a page") @Valid @RequestParam(value = "size", required = false) Integer size,@ApiParam(value = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.") @Valid @RequestParam(value = "sort", required = false) List<String> sort);
 
 
-    @ApiOperation(value = "getDriver", nickname = "getDriverUsingGET", notes = "", response = Driver.class, tags={ "driver-resource", })
+    @ApiOperation(value = "getDriver", nickname = "getDriverUsingGET", notes = "", response = DriverDTO.class, tags={ "driver-resource", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = Driver.class),
+        @ApiResponse(code = 200, message = "OK", response = DriverDTO.class),
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
         @ApiResponse(code = 404, message = "Not Found") })
     @RequestMapping(value = "/api/drivers/{id}",
         produces = "*/*", 
         method = RequestMethod.GET)
-    ResponseEntity<Driver> getDriverUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
+    ResponseEntity<DriverDTO> getDriverUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
 
 
-    @ApiOperation(value = "searchDrivers", nickname = "searchDriversUsingGET", notes = "", response = Driver.class, responseContainer = "List", tags={ "driver-resource", })
+    @ApiOperation(value = "searchDrivers", nickname = "searchDriversUsingGET", notes = "", response = DriverDTO.class, responseContainer = "List", tags={ "driver-resource", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = Driver.class, responseContainer = "List"),
+        @ApiResponse(code = 200, message = "OK", response = DriverDTO.class, responseContainer = "List"),
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
         @ApiResponse(code = 404, message = "Not Found") })
     @RequestMapping(value = "/api/_search/drivers",
         produces = "*/*", 
         method = RequestMethod.GET)
-    ResponseEntity<List<Driver>> searchDriversUsingGET(@NotNull @ApiParam(value = "query", required = true) @Valid @RequestParam(value = "query", required = true) String query);
+    ResponseEntity<List<DriverDTO>> searchDriversUsingGET(@NotNull @ApiParam(value = "query", required = true) @Valid @RequestParam(value = "query", required = true) String query,@ApiParam(value = "Page number of the requested page") @Valid @RequestParam(value = "page", required = false) Integer page,@ApiParam(value = "Size of a page") @Valid @RequestParam(value = "size", required = false) Integer size,@ApiParam(value = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.") @Valid @RequestParam(value = "sort", required = false) List<String> sort);
 
 
-    @ApiOperation(value = "updateDriver", nickname = "updateDriverUsingPUT", notes = "", response = Driver.class, tags={ "driver-resource", })
+    @ApiOperation(value = "updateDriver", nickname = "updateDriverUsingPUT", notes = "", response = DriverDTO.class, tags={ "driver-resource", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = Driver.class),
+        @ApiResponse(code = 200, message = "OK", response = DriverDTO.class),
         @ApiResponse(code = 201, message = "Created"),
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
@@ -102,6 +102,6 @@ public interface DriverResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.PUT)
-    ResponseEntity<Driver> updateDriverUsingPUT(@ApiParam(value = "driver" ,required=true )  @Valid @RequestBody Driver driver);
+    ResponseEntity<DriverDTO> updateDriverUsingPUT(@ApiParam(value = "driverDTO" ,required=true )  @Valid @RequestBody DriverDTO driverDTO);
 
 }

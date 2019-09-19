@@ -5,7 +5,7 @@
  */
 package com.illud.freightgw.client.freight.api;
 
-import com.illud.freightgw.client.freight.model.Company;
+import com.illud.freightgw.client.freight.model.CompanyDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,14 +25,14 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-19T13:10:39.142+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-19T15:26:20.711+05:30[Asia/Calcutta]")
 
 @Api(value = "CompanyResource", description = "the CompanyResource API")
 public interface CompanyResourceApi {
 
-    @ApiOperation(value = "createCompany", nickname = "createCompanyUsingPOST", notes = "", response = Company.class, tags={ "company-resource", })
+    @ApiOperation(value = "createCompany", nickname = "createCompanyUsingPOST", notes = "", response = CompanyDTO.class, tags={ "company-resource", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = Company.class),
+        @ApiResponse(code = 200, message = "OK", response = CompanyDTO.class),
         @ApiResponse(code = 201, message = "Created"),
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
@@ -41,7 +41,7 @@ public interface CompanyResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<Company> createCompanyUsingPOST(@ApiParam(value = "company" ,required=true )  @Valid @RequestBody Company company);
+    ResponseEntity<CompanyDTO> createCompanyUsingPOST(@ApiParam(value = "companyDTO" ,required=true )  @Valid @RequestBody CompanyDTO companyDTO);
 
 
     @ApiOperation(value = "deleteCompany", nickname = "deleteCompanyUsingDELETE", notes = "", tags={ "company-resource", })
@@ -55,45 +55,45 @@ public interface CompanyResourceApi {
     ResponseEntity<Void> deleteCompanyUsingDELETE(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
 
 
-    @ApiOperation(value = "getAllCompanies", nickname = "getAllCompaniesUsingGET", notes = "", response = Company.class, responseContainer = "List", tags={ "company-resource", })
+    @ApiOperation(value = "getAllCompanies", nickname = "getAllCompaniesUsingGET", notes = "", response = CompanyDTO.class, responseContainer = "List", tags={ "company-resource", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = Company.class, responseContainer = "List"),
+        @ApiResponse(code = 200, message = "OK", response = CompanyDTO.class, responseContainer = "List"),
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
         @ApiResponse(code = 404, message = "Not Found") })
     @RequestMapping(value = "/api/companies",
         produces = "*/*", 
         method = RequestMethod.GET)
-    ResponseEntity<List<Company>> getAllCompaniesUsingGET();
+    ResponseEntity<List<CompanyDTO>> getAllCompaniesUsingGET(@ApiParam(value = "Page number of the requested page") @Valid @RequestParam(value = "page", required = false) Integer page,@ApiParam(value = "Size of a page") @Valid @RequestParam(value = "size", required = false) Integer size,@ApiParam(value = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.") @Valid @RequestParam(value = "sort", required = false) List<String> sort);
 
 
-    @ApiOperation(value = "getCompany", nickname = "getCompanyUsingGET", notes = "", response = Company.class, tags={ "company-resource", })
+    @ApiOperation(value = "getCompany", nickname = "getCompanyUsingGET", notes = "", response = CompanyDTO.class, tags={ "company-resource", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = Company.class),
+        @ApiResponse(code = 200, message = "OK", response = CompanyDTO.class),
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
         @ApiResponse(code = 404, message = "Not Found") })
     @RequestMapping(value = "/api/companies/{id}",
         produces = "*/*", 
         method = RequestMethod.GET)
-    ResponseEntity<Company> getCompanyUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
+    ResponseEntity<CompanyDTO> getCompanyUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
 
 
-    @ApiOperation(value = "searchCompanies", nickname = "searchCompaniesUsingGET", notes = "", response = Company.class, responseContainer = "List", tags={ "company-resource", })
+    @ApiOperation(value = "searchCompanies", nickname = "searchCompaniesUsingGET", notes = "", response = CompanyDTO.class, responseContainer = "List", tags={ "company-resource", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = Company.class, responseContainer = "List"),
+        @ApiResponse(code = 200, message = "OK", response = CompanyDTO.class, responseContainer = "List"),
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
         @ApiResponse(code = 404, message = "Not Found") })
     @RequestMapping(value = "/api/_search/companies",
         produces = "*/*", 
         method = RequestMethod.GET)
-    ResponseEntity<List<Company>> searchCompaniesUsingGET(@NotNull @ApiParam(value = "query", required = true) @Valid @RequestParam(value = "query", required = true) String query);
+    ResponseEntity<List<CompanyDTO>> searchCompaniesUsingGET(@NotNull @ApiParam(value = "query", required = true) @Valid @RequestParam(value = "query", required = true) String query,@ApiParam(value = "Page number of the requested page") @Valid @RequestParam(value = "page", required = false) Integer page,@ApiParam(value = "Size of a page") @Valid @RequestParam(value = "size", required = false) Integer size,@ApiParam(value = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.") @Valid @RequestParam(value = "sort", required = false) List<String> sort);
 
 
-    @ApiOperation(value = "updateCompany", nickname = "updateCompanyUsingPUT", notes = "", response = Company.class, tags={ "company-resource", })
+    @ApiOperation(value = "updateCompany", nickname = "updateCompanyUsingPUT", notes = "", response = CompanyDTO.class, tags={ "company-resource", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = Company.class),
+        @ApiResponse(code = 200, message = "OK", response = CompanyDTO.class),
         @ApiResponse(code = 201, message = "Created"),
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
@@ -102,6 +102,6 @@ public interface CompanyResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.PUT)
-    ResponseEntity<Company> updateCompanyUsingPUT(@ApiParam(value = "company" ,required=true )  @Valid @RequestBody Company company);
+    ResponseEntity<CompanyDTO> updateCompanyUsingPUT(@ApiParam(value = "companyDTO" ,required=true )  @Valid @RequestBody CompanyDTO companyDTO);
 
 }

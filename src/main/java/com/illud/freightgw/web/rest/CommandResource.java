@@ -16,7 +16,7 @@ import com.illud.freightgw.client.freight.model.Customer;
 import com.illud.freightgw.client.freight.model.Driver;
 import com.illud.freightgw.client.freight.model.Freight;
 import com.illud.freightgw.client.freight.model.Vehicle;
-import com.illud.freightgw.client.freight.model.VehicleLookUp;
+import com.illud.freightgw.client.freight.model.*;
 import com.illud.freightgw.service.CommandService;
 
 @RestController
@@ -34,7 +34,7 @@ public class CommandResource {
 		this.comService=commantService;
 	}
 	@PostMapping("/create/company")
-	public ResponseEntity<Company> createCompany(@RequestBody Company company) {
+	public ResponseEntity<CompanyDTO> createCompany(@RequestBody CompanyDTO company) {
 		log.debug("<<<<<<<<<<< create Comapny >>>>>>>>",company);
 		
 		//return comService.save(company);
@@ -43,63 +43,63 @@ public class CommandResource {
 	}
 	
 	@PutMapping("/update/company")
-	public ResponseEntity<Company> updateCompany(@RequestBody Company company) {
+	public ResponseEntity<CompanyDTO> updateCompany(@RequestBody CompanyDTO company) {
 		log.debug("<<<<<<<< update company >>>>>>>>>", company);
 		return comService.update(company);	
 	}
 	
 	@PostMapping("/create/customer")
-	public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer){
+	public ResponseEntity<CustomerDTO> createCustomer(@RequestBody CustomerDTO customer){
 		log.debug("<<<<<<<< update customer >>>>>>>>>", customer);
 		return comService.save(customer);
 		
 	}
 	@PutMapping("/update/customer")
-	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
+	public ResponseEntity<CustomerDTO> updateCustomer(@RequestBody CustomerDTO customer) {
 		log.debug("<<<<<<<< update company >>>>>>>>>", customer);
 		return comService.update(customer);	
 	}
 	@PostMapping("/create/freight")
-	public ResponseEntity<Freight> createFreight(@RequestBody Freight freight){
+	public ResponseEntity<FreightDTO> createFreight(@RequestBody FreightDTO freight){
 		log.debug("<<<<<<<< update customer >>>>>>>>>", freight);
 		return comService.save(freight);
 		
 	}
 	@PutMapping("/update/freight")
-	public ResponseEntity<Freight> updateFreight(@RequestBody Freight freight) {
+	public ResponseEntity<FreightDTO> updateFreight(@RequestBody FreightDTO freight) {
 		log.debug("<<<<<<<< update freight >>>>>>>>>", freight);
 		return comService.update(freight);	
 	}
 	@PostMapping("/create/driver")
-	public ResponseEntity<Driver> createDriver(@RequestBody Driver driver){
+	public ResponseEntity<DriverDTO> createDriver(@RequestBody DriverDTO driver){
 		log.debug("<<<<<<<< update customer >>>>>>>>>", driver);
 		return comService.save(driver);
 		
 	}
 	@PutMapping("/update/driver")
-	public ResponseEntity<Driver> updateDriver(@RequestBody Driver driver) {
+	public ResponseEntity<DriverDTO> updateDriver(@RequestBody DriverDTO driver) {
 		log.debug("<<<<<<<< update freight >>>>>>>>>", driver);
 		return comService.update(driver);	
 	}
 	@PostMapping("/create/vehicle")
-	public ResponseEntity<Vehicle> createVehicle(@RequestBody Vehicle vehicle){
+	public ResponseEntity<VehicleDTO> createVehicle(@RequestBody VehicleDTO vehicle){
 		log.debug("<<<<<<<< update customer >>>>>>>>>", vehicle);
 		return comService.save(vehicle);
 		
 	}
 	@PutMapping("/update/vehicle")
-	public ResponseEntity<Vehicle> updateVehicle(@RequestBody Vehicle vehicle) {
+	public ResponseEntity<VehicleDTO> updateVehicle(@RequestBody VehicleDTO vehicle) {
 		log.debug("<<<<<<<< update freight >>>>>>>>>", vehicle);
 		return comService.update(vehicle);	
 	}
 	@PostMapping("/create/vehiclelookup")
-	public ResponseEntity<VehicleLookUp> createVehicleLookUp(@RequestBody VehicleLookUp vehicleLookUp){
+	public ResponseEntity<VehicleLookUpDTO> createVehicleLookUp(@RequestBody VehicleLookUpDTO vehicleLookUp){
 		log.debug("<<<<<<<< update customer >>>>>>>>>", vehicleLookUp);
 		return comService.save(vehicleLookUp);
 		
 	}
 	@PutMapping("/update/vehiclelookup")
-	public ResponseEntity<VehicleLookUp> updateVehicleLookUp(@RequestBody VehicleLookUp vehicleLookUp) {
+	public ResponseEntity<VehicleLookUpDTO> updateVehicleLookUp(@RequestBody VehicleLookUpDTO vehicleLookUp) {
 		log.debug("<<<<<<<< update freight >>>>>>>>>", vehicleLookUp);
 		return comService.update(vehicleLookUp);	
 	}

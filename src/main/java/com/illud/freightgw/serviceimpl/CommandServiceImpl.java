@@ -13,6 +13,7 @@ import com.illud.freightgw.client.freight.api.FreightResourceApi;
 import com.illud.freightgw.client.freight.api.VehicleLookUpResourceApi;
 import com.illud.freightgw.client.freight.api.VehicleResourceApi;
 import com.illud.freightgw.client.freight.model.Company;
+import com.illud.freightgw.client.freight.model.*;
 import com.illud.freightgw.client.freight.model.Customer;
 import com.illud.freightgw.client.freight.model.Driver;
 import com.illud.freightgw.client.freight.model.Freight;
@@ -41,7 +42,7 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 
 
 	@Override
-	public ResponseEntity<Company> update(Company company) {
+	public ResponseEntity<CompanyDTO> update(CompanyDTO company) {
 		log.debug("<<<<<< update >>>>>>",company);
 		return comResourceApi.updateCompanyUsingPUT(company);
 	}
@@ -53,61 +54,61 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 	 */
 
 	@Override
-	public ResponseEntity<Customer> save(Customer customer) {
+	public ResponseEntity<CustomerDTO> save(CustomerDTO customer) {
 		log.debug("<<<<<< create customer in impl >>>>>>",customer);
 		return cusResourceApi.createCustomerUsingPOST(customer);
 	}
 
 	@Override
-	public ResponseEntity<Customer> update(Customer customer) {
+	public ResponseEntity<CustomerDTO> update(CustomerDTO customer) {
 		log.debug("<<<<<<< update customer in impl >>>>>>>",customer);
 		return cusResourceApi.updateCustomerUsingPUT(customer);
 	}
 
 	@Override
-	public ResponseEntity<Freight> save(Freight freight) {
+	public ResponseEntity<FreightDTO> save(FreightDTO freight) {
 		log.debug("<<<<<<< create freight in impl >>>>>>>",freight);
 		return freResourceApi.createFreightUsingPOST(freight);
 	}
 
 	@Override
-	public ResponseEntity<Freight> update(Freight freight) {
+	public ResponseEntity<FreightDTO> update(FreightDTO freight) {
 		log.debug("<<<<<<<< update freight in impl >>>>>>>",freight);
 		return freResourceApi.updateFreightUsingPUT(freight);
 	}
 
 	@Override
-	public ResponseEntity<Driver> save(Driver driver) {
+	public ResponseEntity<DriverDTO> save(DriverDTO driver) {
 		log.debug("<<<<<<<< create driver in impl >>>>>>>",driver);
 		return driResourceApi.createDriverUsingPOST(driver);
 	}
 
 	@Override
-	public ResponseEntity<Driver> update(Driver driver) {
+	public ResponseEntity<DriverDTO> update(DriverDTO driver) {
 		log.debug("<<<<<<<< update driver in impl >>>>>>>",driver);
 		return driResourceApi.updateDriverUsingPUT(driver);
 	}
 
 	@Override
-	public ResponseEntity<Vehicle> save(Vehicle vehicle) {
+	public ResponseEntity<VehicleDTO> save(VehicleDTO vehicle) {
 		log.debug("<<<<<<<< create vehicle in impl >>>>>>>",vehicle);
 		return vehResourceApi.createVehicleUsingPOST(vehicle);
 	}
 
 	@Override
-	public ResponseEntity<Vehicle> update(Vehicle vehicle) {
+	public ResponseEntity<VehicleDTO> update(VehicleDTO vehicle) {
 		log.debug("<<<<<<<< update vehicle in impl >>>>>>>",vehicle);
 		return vehResourceApi.updateVehicleUsingPUT(vehicle);
 	}
 
 	@Override
-	public ResponseEntity<VehicleLookUp> save(VehicleLookUp vehicleLookUp) {
+	public ResponseEntity<VehicleLookUpDTO> save(VehicleLookUpDTO vehicleLookUp) {
 		log.debug("<<<<<<<< create vehiclelookup in impl >>>>>>>",vehicleLookUp);
 		return vehLookUpResourceApi.createVehicleLookUpUsingPOST(vehicleLookUp);
 	}
 
 	@Override
-	public ResponseEntity<VehicleLookUp> update(VehicleLookUp vehicleLookUp) {
+	public ResponseEntity<VehicleLookUpDTO> update(VehicleLookUpDTO vehicleLookUp) {
 		log.debug("<<<<<<<< update vehiclelookup in impl >>>>>>>",vehicleLookUp);
 		return vehLookUpResourceApi.updateVehicleLookUpUsingPUT(vehicleLookUp);
 	}

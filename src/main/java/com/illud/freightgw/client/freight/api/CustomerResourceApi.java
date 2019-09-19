@@ -5,7 +5,7 @@
  */
 package com.illud.freightgw.client.freight.api;
 
-import com.illud.freightgw.client.freight.model.Customer;
+import com.illud.freightgw.client.freight.model.CustomerDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,14 +25,14 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-19T13:10:39.142+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-19T15:26:20.711+05:30[Asia/Calcutta]")
 
 @Api(value = "CustomerResource", description = "the CustomerResource API")
 public interface CustomerResourceApi {
 
-    @ApiOperation(value = "createCustomer", nickname = "createCustomerUsingPOST", notes = "", response = Customer.class, tags={ "customer-resource", })
+    @ApiOperation(value = "createCustomer", nickname = "createCustomerUsingPOST", notes = "", response = CustomerDTO.class, tags={ "customer-resource", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = Customer.class),
+        @ApiResponse(code = 200, message = "OK", response = CustomerDTO.class),
         @ApiResponse(code = 201, message = "Created"),
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
@@ -41,7 +41,7 @@ public interface CustomerResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<Customer> createCustomerUsingPOST(@ApiParam(value = "customer" ,required=true )  @Valid @RequestBody Customer customer);
+    ResponseEntity<CustomerDTO> createCustomerUsingPOST(@ApiParam(value = "customerDTO" ,required=true )  @Valid @RequestBody CustomerDTO customerDTO);
 
 
     @ApiOperation(value = "deleteCustomer", nickname = "deleteCustomerUsingDELETE", notes = "", tags={ "customer-resource", })
@@ -55,45 +55,45 @@ public interface CustomerResourceApi {
     ResponseEntity<Void> deleteCustomerUsingDELETE(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
 
 
-    @ApiOperation(value = "getAllCustomers", nickname = "getAllCustomersUsingGET", notes = "", response = Customer.class, responseContainer = "List", tags={ "customer-resource", })
+    @ApiOperation(value = "getAllCustomers", nickname = "getAllCustomersUsingGET", notes = "", response = CustomerDTO.class, responseContainer = "List", tags={ "customer-resource", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = Customer.class, responseContainer = "List"),
+        @ApiResponse(code = 200, message = "OK", response = CustomerDTO.class, responseContainer = "List"),
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
         @ApiResponse(code = 404, message = "Not Found") })
     @RequestMapping(value = "/api/customers",
         produces = "*/*", 
         method = RequestMethod.GET)
-    ResponseEntity<List<Customer>> getAllCustomersUsingGET();
+    ResponseEntity<List<CustomerDTO>> getAllCustomersUsingGET(@ApiParam(value = "Page number of the requested page") @Valid @RequestParam(value = "page", required = false) Integer page,@ApiParam(value = "Size of a page") @Valid @RequestParam(value = "size", required = false) Integer size,@ApiParam(value = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.") @Valid @RequestParam(value = "sort", required = false) List<String> sort);
 
 
-    @ApiOperation(value = "getCustomer", nickname = "getCustomerUsingGET", notes = "", response = Customer.class, tags={ "customer-resource", })
+    @ApiOperation(value = "getCustomer", nickname = "getCustomerUsingGET", notes = "", response = CustomerDTO.class, tags={ "customer-resource", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = Customer.class),
+        @ApiResponse(code = 200, message = "OK", response = CustomerDTO.class),
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
         @ApiResponse(code = 404, message = "Not Found") })
     @RequestMapping(value = "/api/customers/{id}",
         produces = "*/*", 
         method = RequestMethod.GET)
-    ResponseEntity<Customer> getCustomerUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
+    ResponseEntity<CustomerDTO> getCustomerUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
 
 
-    @ApiOperation(value = "searchCustomers", nickname = "searchCustomersUsingGET", notes = "", response = Customer.class, responseContainer = "List", tags={ "customer-resource", })
+    @ApiOperation(value = "searchCustomers", nickname = "searchCustomersUsingGET", notes = "", response = CustomerDTO.class, responseContainer = "List", tags={ "customer-resource", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = Customer.class, responseContainer = "List"),
+        @ApiResponse(code = 200, message = "OK", response = CustomerDTO.class, responseContainer = "List"),
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
         @ApiResponse(code = 404, message = "Not Found") })
     @RequestMapping(value = "/api/_search/customers",
         produces = "*/*", 
         method = RequestMethod.GET)
-    ResponseEntity<List<Customer>> searchCustomersUsingGET(@NotNull @ApiParam(value = "query", required = true) @Valid @RequestParam(value = "query", required = true) String query);
+    ResponseEntity<List<CustomerDTO>> searchCustomersUsingGET(@NotNull @ApiParam(value = "query", required = true) @Valid @RequestParam(value = "query", required = true) String query,@ApiParam(value = "Page number of the requested page") @Valid @RequestParam(value = "page", required = false) Integer page,@ApiParam(value = "Size of a page") @Valid @RequestParam(value = "size", required = false) Integer size,@ApiParam(value = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.") @Valid @RequestParam(value = "sort", required = false) List<String> sort);
 
 
-    @ApiOperation(value = "updateCustomer", nickname = "updateCustomerUsingPUT", notes = "", response = Customer.class, tags={ "customer-resource", })
+    @ApiOperation(value = "updateCustomer", nickname = "updateCustomerUsingPUT", notes = "", response = CustomerDTO.class, tags={ "customer-resource", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = Customer.class),
+        @ApiResponse(code = 200, message = "OK", response = CustomerDTO.class),
         @ApiResponse(code = 201, message = "Created"),
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
@@ -102,6 +102,6 @@ public interface CustomerResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.PUT)
-    ResponseEntity<Customer> updateCustomerUsingPUT(@ApiParam(value = "customer" ,required=true )  @Valid @RequestBody Customer customer);
+    ResponseEntity<CustomerDTO> updateCustomerUsingPUT(@ApiParam(value = "customerDTO" ,required=true )  @Valid @RequestBody CustomerDTO customerDTO);
 
 }

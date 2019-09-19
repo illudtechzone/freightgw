@@ -10,12 +10,12 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * VehicleLookUp
+ * VehicleLookUpDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-19T15:07:50.741+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-19T15:26:20.711+05:30[Asia/Calcutta]")
 
-public class VehicleLookUp   {
+public class VehicleLookUpDTO   {
   @JsonProperty("height")
   private Double height = null;
 
@@ -40,7 +40,7 @@ public class VehicleLookUp   {
   @JsonProperty("width")
   private Double width = null;
 
-  public VehicleLookUp height(Double height) {
+  public VehicleLookUpDTO height(Double height) {
     this.height = height;
     return this;
   }
@@ -60,7 +60,7 @@ public class VehicleLookUp   {
     this.height = height;
   }
 
-  public VehicleLookUp id(Long id) {
+  public VehicleLookUpDTO id(Long id) {
     this.id = id;
     return this;
   }
@@ -80,7 +80,7 @@ public class VehicleLookUp   {
     this.id = id;
   }
 
-  public VehicleLookUp image(byte[] image) {
+  public VehicleLookUpDTO image(byte[] image) {
     this.image = image;
     return this;
   }
@@ -100,7 +100,7 @@ public class VehicleLookUp   {
     this.image = image;
   }
 
-  public VehicleLookUp imageContentType(String imageContentType) {
+  public VehicleLookUpDTO imageContentType(String imageContentType) {
     this.imageContentType = imageContentType;
     return this;
   }
@@ -120,7 +120,7 @@ public class VehicleLookUp   {
     this.imageContentType = imageContentType;
   }
 
-  public VehicleLookUp length(Double length) {
+  public VehicleLookUpDTO length(Double length) {
     this.length = length;
     return this;
   }
@@ -140,7 +140,7 @@ public class VehicleLookUp   {
     this.length = length;
   }
 
-  public VehicleLookUp maxWeight(Long maxWeight) {
+  public VehicleLookUpDTO maxWeight(Long maxWeight) {
     this.maxWeight = maxWeight;
     return this;
   }
@@ -160,7 +160,7 @@ public class VehicleLookUp   {
     this.maxWeight = maxWeight;
   }
 
-  public VehicleLookUp name(String name) {
+  public VehicleLookUpDTO name(String name) {
     this.name = name;
     return this;
   }
@@ -180,7 +180,7 @@ public class VehicleLookUp   {
     this.name = name;
   }
 
-  public VehicleLookUp width(Double width) {
+  public VehicleLookUpDTO width(Double width) {
     this.width = width;
     return this;
   }
@@ -209,15 +209,15 @@ public class VehicleLookUp   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    VehicleLookUp vehicleLookUp = (VehicleLookUp) o;
-    return Objects.equals(this.height, vehicleLookUp.height) &&
-        Objects.equals(this.id, vehicleLookUp.id) &&
-        Objects.equals(this.image, vehicleLookUp.image) &&
-        Objects.equals(this.imageContentType, vehicleLookUp.imageContentType) &&
-        Objects.equals(this.length, vehicleLookUp.length) &&
-        Objects.equals(this.maxWeight, vehicleLookUp.maxWeight) &&
-        Objects.equals(this.name, vehicleLookUp.name) &&
-        Objects.equals(this.width, vehicleLookUp.width);
+    VehicleLookUpDTO vehicleLookUpDTO = (VehicleLookUpDTO) o;
+    return Objects.equals(this.height, vehicleLookUpDTO.height) &&
+        Objects.equals(this.id, vehicleLookUpDTO.id) &&
+        Objects.equals(this.image, vehicleLookUpDTO.image) &&
+        Objects.equals(this.imageContentType, vehicleLookUpDTO.imageContentType) &&
+        Objects.equals(this.length, vehicleLookUpDTO.length) &&
+        Objects.equals(this.maxWeight, vehicleLookUpDTO.maxWeight) &&
+        Objects.equals(this.name, vehicleLookUpDTO.name) &&
+        Objects.equals(this.width, vehicleLookUpDTO.width);
   }
 
   @Override
@@ -228,7 +228,7 @@ public class VehicleLookUp   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class VehicleLookUp {\n");
+    sb.append("class VehicleLookUpDTO {\n");
     
     sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");

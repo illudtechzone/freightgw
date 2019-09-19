@@ -12,12 +12,12 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * Freight
+ * FreightDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-19T15:07:50.741+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-19T15:26:20.711+05:30[Asia/Calcutta]")
 
-public class Freight   {
+public class FreightDTO   {
   /**
    * Gets or Sets acceptedStatus
    */
@@ -138,7 +138,7 @@ public class Freight   {
   @JsonProperty("vehicleId")
   private String vehicleId = null;
 
-  public Freight acceptedStatus(AcceptedStatusEnum acceptedStatus) {
+  public FreightDTO acceptedStatus(AcceptedStatusEnum acceptedStatus) {
     this.acceptedStatus = acceptedStatus;
     return this;
   }
@@ -158,7 +158,7 @@ public class Freight   {
     this.acceptedStatus = acceptedStatus;
   }
 
-  public Freight amount(Long amount) {
+  public FreightDTO amount(Long amount) {
     this.amount = amount;
     return this;
   }
@@ -178,7 +178,7 @@ public class Freight   {
     this.amount = amount;
   }
 
-  public Freight companyId(String companyId) {
+  public FreightDTO companyId(String companyId) {
     this.companyId = companyId;
     return this;
   }
@@ -198,7 +198,7 @@ public class Freight   {
     this.companyId = companyId;
   }
 
-  public Freight createdTime(OffsetDateTime createdTime) {
+  public FreightDTO createdTime(OffsetDateTime createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -219,7 +219,7 @@ public class Freight   {
     this.createdTime = createdTime;
   }
 
-  public Freight customerId(String customerId) {
+  public FreightDTO customerId(String customerId) {
     this.customerId = customerId;
     return this;
   }
@@ -239,7 +239,7 @@ public class Freight   {
     this.customerId = customerId;
   }
 
-  public Freight destinationAddress(String destinationAddress) {
+  public FreightDTO destinationAddress(String destinationAddress) {
     this.destinationAddress = destinationAddress;
     return this;
   }
@@ -259,7 +259,7 @@ public class Freight   {
     this.destinationAddress = destinationAddress;
   }
 
-  public Freight destinationGeopoint(String destinationGeopoint) {
+  public FreightDTO destinationGeopoint(String destinationGeopoint) {
     this.destinationGeopoint = destinationGeopoint;
     return this;
   }
@@ -279,7 +279,7 @@ public class Freight   {
     this.destinationGeopoint = destinationGeopoint;
   }
 
-  public Freight destinationPlaceId(String destinationPlaceId) {
+  public FreightDTO destinationPlaceId(String destinationPlaceId) {
     this.destinationPlaceId = destinationPlaceId;
     return this;
   }
@@ -299,7 +299,7 @@ public class Freight   {
     this.destinationPlaceId = destinationPlaceId;
   }
 
-  public Freight destionationTime(OffsetDateTime destionationTime) {
+  public FreightDTO destionationTime(OffsetDateTime destionationTime) {
     this.destionationTime = destionationTime;
     return this;
   }
@@ -320,7 +320,7 @@ public class Freight   {
     this.destionationTime = destionationTime;
   }
 
-  public Freight distance(Long distance) {
+  public FreightDTO distance(Long distance) {
     this.distance = distance;
     return this;
   }
@@ -340,7 +340,7 @@ public class Freight   {
     this.distance = distance;
   }
 
-  public Freight id(Long id) {
+  public FreightDTO id(Long id) {
     this.id = id;
     return this;
   }
@@ -360,7 +360,7 @@ public class Freight   {
     this.id = id;
   }
 
-  public Freight pickupAddress(String pickupAddress) {
+  public FreightDTO pickupAddress(String pickupAddress) {
     this.pickupAddress = pickupAddress;
     return this;
   }
@@ -380,7 +380,7 @@ public class Freight   {
     this.pickupAddress = pickupAddress;
   }
 
-  public Freight pickupGeopoint(String pickupGeopoint) {
+  public FreightDTO pickupGeopoint(String pickupGeopoint) {
     this.pickupGeopoint = pickupGeopoint;
     return this;
   }
@@ -400,7 +400,7 @@ public class Freight   {
     this.pickupGeopoint = pickupGeopoint;
   }
 
-  public Freight pickupPlaceId(String pickupPlaceId) {
+  public FreightDTO pickupPlaceId(String pickupPlaceId) {
     this.pickupPlaceId = pickupPlaceId;
     return this;
   }
@@ -420,7 +420,7 @@ public class Freight   {
     this.pickupPlaceId = pickupPlaceId;
   }
 
-  public Freight requestedStatus(RequestedStatusEnum requestedStatus) {
+  public FreightDTO requestedStatus(RequestedStatusEnum requestedStatus) {
     this.requestedStatus = requestedStatus;
     return this;
   }
@@ -440,7 +440,7 @@ public class Freight   {
     this.requestedStatus = requestedStatus;
   }
 
-  public Freight startTime(OffsetDateTime startTime) {
+  public FreightDTO startTime(OffsetDateTime startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -461,7 +461,7 @@ public class Freight   {
     this.startTime = startTime;
   }
 
-  public Freight type(String type) {
+  public FreightDTO type(String type) {
     this.type = type;
     return this;
   }
@@ -481,7 +481,7 @@ public class Freight   {
     this.type = type;
   }
 
-  public Freight vehicleId(String vehicleId) {
+  public FreightDTO vehicleId(String vehicleId) {
     this.vehicleId = vehicleId;
     return this;
   }
@@ -510,25 +510,25 @@ public class Freight   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Freight freight = (Freight) o;
-    return Objects.equals(this.acceptedStatus, freight.acceptedStatus) &&
-        Objects.equals(this.amount, freight.amount) &&
-        Objects.equals(this.companyId, freight.companyId) &&
-        Objects.equals(this.createdTime, freight.createdTime) &&
-        Objects.equals(this.customerId, freight.customerId) &&
-        Objects.equals(this.destinationAddress, freight.destinationAddress) &&
-        Objects.equals(this.destinationGeopoint, freight.destinationGeopoint) &&
-        Objects.equals(this.destinationPlaceId, freight.destinationPlaceId) &&
-        Objects.equals(this.destionationTime, freight.destionationTime) &&
-        Objects.equals(this.distance, freight.distance) &&
-        Objects.equals(this.id, freight.id) &&
-        Objects.equals(this.pickupAddress, freight.pickupAddress) &&
-        Objects.equals(this.pickupGeopoint, freight.pickupGeopoint) &&
-        Objects.equals(this.pickupPlaceId, freight.pickupPlaceId) &&
-        Objects.equals(this.requestedStatus, freight.requestedStatus) &&
-        Objects.equals(this.startTime, freight.startTime) &&
-        Objects.equals(this.type, freight.type) &&
-        Objects.equals(this.vehicleId, freight.vehicleId);
+    FreightDTO freightDTO = (FreightDTO) o;
+    return Objects.equals(this.acceptedStatus, freightDTO.acceptedStatus) &&
+        Objects.equals(this.amount, freightDTO.amount) &&
+        Objects.equals(this.companyId, freightDTO.companyId) &&
+        Objects.equals(this.createdTime, freightDTO.createdTime) &&
+        Objects.equals(this.customerId, freightDTO.customerId) &&
+        Objects.equals(this.destinationAddress, freightDTO.destinationAddress) &&
+        Objects.equals(this.destinationGeopoint, freightDTO.destinationGeopoint) &&
+        Objects.equals(this.destinationPlaceId, freightDTO.destinationPlaceId) &&
+        Objects.equals(this.destionationTime, freightDTO.destionationTime) &&
+        Objects.equals(this.distance, freightDTO.distance) &&
+        Objects.equals(this.id, freightDTO.id) &&
+        Objects.equals(this.pickupAddress, freightDTO.pickupAddress) &&
+        Objects.equals(this.pickupGeopoint, freightDTO.pickupGeopoint) &&
+        Objects.equals(this.pickupPlaceId, freightDTO.pickupPlaceId) &&
+        Objects.equals(this.requestedStatus, freightDTO.requestedStatus) &&
+        Objects.equals(this.startTime, freightDTO.startTime) &&
+        Objects.equals(this.type, freightDTO.type) &&
+        Objects.equals(this.vehicleId, freightDTO.vehicleId);
   }
 
   @Override
@@ -539,7 +539,7 @@ public class Freight   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Freight {\n");
+    sb.append("class FreightDTO {\n");
     
     sb.append("    acceptedStatus: ").append(toIndentedString(acceptedStatus)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");

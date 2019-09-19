@@ -10,12 +10,15 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * Driver
+ * CompanyDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-19T15:07:50.741+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-19T15:26:20.711+05:30[Asia/Calcutta]")
 
-public class Driver   {
+public class CompanyDTO   {
+  @JsonProperty("address")
+  private String address = null;
+
   @JsonProperty("email")
   private String email = null;
 
@@ -25,13 +28,39 @@ public class Driver   {
   @JsonProperty("id")
   private Long id = null;
 
+  @JsonProperty("locationAddress")
+  private String locationAddress = null;
+
+  @JsonProperty("locationGeopoint")
+  private String locationGeopoint = null;
+
   @JsonProperty("name")
   private String name = null;
 
   @JsonProperty("phoneNumber")
   private Long phoneNumber = null;
 
-  public Driver email(String email) {
+  public CompanyDTO address(String address) {
+    this.address = address;
+    return this;
+  }
+
+  /**
+   * Get address
+   * @return address
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getAddress() {
+    return address;
+  }
+
+  public void setAddress(String address) {
+    this.address = address;
+  }
+
+  public CompanyDTO email(String email) {
     this.email = email;
     return this;
   }
@@ -51,7 +80,7 @@ public class Driver   {
     this.email = email;
   }
 
-  public Driver iDPCode(String iDPCode) {
+  public CompanyDTO iDPCode(String iDPCode) {
     this.iDPCode = iDPCode;
     return this;
   }
@@ -71,7 +100,7 @@ public class Driver   {
     this.iDPCode = iDPCode;
   }
 
-  public Driver id(Long id) {
+  public CompanyDTO id(Long id) {
     this.id = id;
     return this;
   }
@@ -91,7 +120,47 @@ public class Driver   {
     this.id = id;
   }
 
-  public Driver name(String name) {
+  public CompanyDTO locationAddress(String locationAddress) {
+    this.locationAddress = locationAddress;
+    return this;
+  }
+
+  /**
+   * Get locationAddress
+   * @return locationAddress
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getLocationAddress() {
+    return locationAddress;
+  }
+
+  public void setLocationAddress(String locationAddress) {
+    this.locationAddress = locationAddress;
+  }
+
+  public CompanyDTO locationGeopoint(String locationGeopoint) {
+    this.locationGeopoint = locationGeopoint;
+    return this;
+  }
+
+  /**
+   * Get locationGeopoint
+   * @return locationGeopoint
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getLocationGeopoint() {
+    return locationGeopoint;
+  }
+
+  public void setLocationGeopoint(String locationGeopoint) {
+    this.locationGeopoint = locationGeopoint;
+  }
+
+  public CompanyDTO name(String name) {
     this.name = name;
     return this;
   }
@@ -111,7 +180,7 @@ public class Driver   {
     this.name = name;
   }
 
-  public Driver phoneNumber(Long phoneNumber) {
+  public CompanyDTO phoneNumber(Long phoneNumber) {
     this.phoneNumber = phoneNumber;
     return this;
   }
@@ -140,27 +209,33 @@ public class Driver   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Driver driver = (Driver) o;
-    return Objects.equals(this.email, driver.email) &&
-        Objects.equals(this.iDPCode, driver.iDPCode) &&
-        Objects.equals(this.id, driver.id) &&
-        Objects.equals(this.name, driver.name) &&
-        Objects.equals(this.phoneNumber, driver.phoneNumber);
+    CompanyDTO companyDTO = (CompanyDTO) o;
+    return Objects.equals(this.address, companyDTO.address) &&
+        Objects.equals(this.email, companyDTO.email) &&
+        Objects.equals(this.iDPCode, companyDTO.iDPCode) &&
+        Objects.equals(this.id, companyDTO.id) &&
+        Objects.equals(this.locationAddress, companyDTO.locationAddress) &&
+        Objects.equals(this.locationGeopoint, companyDTO.locationGeopoint) &&
+        Objects.equals(this.name, companyDTO.name) &&
+        Objects.equals(this.phoneNumber, companyDTO.phoneNumber);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(email, iDPCode, id, name, phoneNumber);
+    return Objects.hash(address, email, iDPCode, id, locationAddress, locationGeopoint, name, phoneNumber);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Driver {\n");
+    sb.append("class CompanyDTO {\n");
     
+    sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    iDPCode: ").append(toIndentedString(iDPCode)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    locationAddress: ").append(toIndentedString(locationAddress)).append("\n");
+    sb.append("    locationGeopoint: ").append(toIndentedString(locationGeopoint)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
     sb.append("}");

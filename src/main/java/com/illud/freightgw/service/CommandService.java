@@ -7,32 +7,32 @@ import com.illud.freightgw.client.freight.model.Customer;
 import com.illud.freightgw.client.freight.model.Driver;
 import com.illud.freightgw.client.freight.model.Freight;
 import com.illud.freightgw.client.freight.model.Vehicle;
-import com.illud.freightgw.client.freight.model.VehicleLookUp;
+import com.illud.freightgw.client.freight.model.*;
 
 public interface CommandService {
-	ResponseEntity<Company> update(Company company);
+	ResponseEntity<CompanyDTO> update(CompanyDTO company);
 
 	//ResponseEntity<Company> save(Company company);
 
-	ResponseEntity<Customer> save(Customer customer);
+	ResponseEntity<CustomerDTO> save(CustomerDTO customer);
 
-	ResponseEntity<Customer> update(Customer customer);
+	ResponseEntity<CustomerDTO> update(CustomerDTO customer);
 
-	ResponseEntity<Freight> save(Freight freight);
+	ResponseEntity<FreightDTO> save(FreightDTO freight);
 
-	ResponseEntity<Freight> update(Freight freight);
+	ResponseEntity<FreightDTO> update(FreightDTO freight);
 
-	ResponseEntity<Driver> save(Driver driver);
+	ResponseEntity<DriverDTO> save(DriverDTO driver);
 
-	ResponseEntity<Driver> update(Driver driver);
+	ResponseEntity<DriverDTO> update(DriverDTO driver);
 
-	ResponseEntity<Vehicle> save(Vehicle vehicle);
+	ResponseEntity<VehicleDTO> save(VehicleDTO vehicle);
 
-	ResponseEntity<Vehicle> update(Vehicle vehicle);
+	ResponseEntity<VehicleDTO> update(VehicleDTO vehicle);
 
-	ResponseEntity<VehicleLookUp> save(VehicleLookUp vehicleLookUp);
+	ResponseEntity<VehicleLookUpDTO> save(VehicleLookUpDTO vehicleLookUp);
 
-	ResponseEntity<VehicleLookUp> update(VehicleLookUp vehicleLookUp);
+	ResponseEntity<VehicleLookUpDTO> update(VehicleLookUpDTO vehicleLookUp);
 
 	 
 

@@ -2,6 +2,7 @@ package com.illud.freightgw.web.rest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.illud.freightgw.client.freight.api.CompanyResourceApi;
 import com.illud.freightgw.client.freight.model.Company;
 import com.illud.freightgw.client.freight.model.Customer;
 import com.illud.freightgw.client.freight.model.Driver;
@@ -23,7 +25,9 @@ public class CommandResource {
 	
 	private final Logger log =LoggerFactory.getLogger(CommandResource.class);
 	private final CommandService comService;
-
+	
+	@Autowired
+	CompanyResourceApi api;
 	
 	
 	public CommandResource(CommandService commantService) {
@@ -32,7 +36,9 @@ public class CommandResource {
 	@PostMapping("/create/company")
 	public ResponseEntity<Company> createCompany(@RequestBody Company company) {
 		log.debug("<<<<<<<<<<< create Comapny >>>>>>>>",company);
-		return comService.save(company);
+		
+		//return comService.save(company);
+		return api.createCompanyUsingPOST(company);
 		
 	}
 	

@@ -46,11 +46,11 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 		return comResourceApi.updateCompanyUsingPUT(company);
 	}
 
-	@Override
-	public ResponseEntity<Company> save(Company company) {
-		log.debug("<<<<<< create company in impl >>>>>>",company);
-		return comResourceApi.createCompanyUsingPOST(company);
-	}
+	/*
+	 * @Override public ResponseEntity<Company> save(Company company) {
+	 * log.debug("<<<<<< create company in impl >>>>>>",company); return
+	 * comResourceApi.createCompanyUsingPOST(company); }
+	 */
 
 	@Override
 	public ResponseEntity<Customer> save(Customer customer) {

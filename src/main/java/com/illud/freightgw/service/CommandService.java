@@ -12,7 +12,7 @@ import com.illud.freightgw.client.freight.model.VehicleLookUp;
 public interface CommandService {
 	ResponseEntity<Company> update(Company company);
 
-	ResponseEntity<Company> save(Company company);
+	//ResponseEntity<Company> save(Company company);
 
 	ResponseEntity<Customer> save(Customer customer);
 

@@ -37,7 +37,7 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	@Override
 	public Company getOneCompany(String iDPCode) {
 		log.debug("<<<<<< getOne>>>>",iDPCode);
-		StringQuery sq = new StringQuery(termQuery("iDPCode", iDPCode).toString());
+		StringQuery sq = new StringQuery(termQuery("companyIdpCode", iDPCode).toString());
 		
 		return   esTemplate.queryForObject(sq, Company.class);
 	}
@@ -45,21 +45,21 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	@Override
 	public Customer getOneCustomer(String iDPCode) {
 		log.debug("<<<<<< getOne customer >>>>",iDPCode);
-		StringQuery sq = new StringQuery(termQuery("iDPCode", iDPCode).toString());
+		StringQuery sq = new StringQuery(termQuery("customerIdpCode", iDPCode).toString());
 		return esTemplate.queryForObject(sq, Customer.class);
 	}
 
 	@Override
 	public Driver getOneDriver(String iDPCode) {
 		log.debug("<<<<<< getOne driver>>>>",iDPCode);
-		StringQuery sq =new StringQuery(termQuery("iDPCode",iDPCode).toString());
+		StringQuery sq =new StringQuery(termQuery("driverIdpCode",iDPCode).toString());
 		return esTemplate.queryForObject(sq, Driver.class);
 	}
 	
 	@Override
 	public Page<Vehicle> findAllVehiclesByCompanyIdpCode(String iDPCode,Pageable page) {
 		log.debug("<<<<<< getOne driver>>>>",iDPCode);
-		SearchQuery searchQuery= new NativeSearchQueryBuilder().withQuery(termQuery("company.iDPCode", iDPCode)).build();
+		SearchQuery searchQuery= new NativeSearchQueryBuilder().withQuery(termQuery("company.companyIdpCode", iDPCode)).build();
 		return esTemplate.queryForPage(searchQuery, Vehicle.class);
 	}
 	

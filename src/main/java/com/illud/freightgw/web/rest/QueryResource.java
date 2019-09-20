@@ -19,7 +19,7 @@ import com.illud.freightgw.client.freight.model.Vehicle;
 import com.illud.freightgw.service.QueryService;
 
 @RestController
-@RequestMapping("api")
+//@RequestMapping("api")
 public class QueryResource {
 
 private final Logger log = LoggerFactory.getLogger(QueryResource.class);

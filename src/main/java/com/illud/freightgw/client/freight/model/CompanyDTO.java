@@ -13,17 +13,17 @@ import javax.validation.constraints.*;
  * CompanyDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-19T15:26:20.711+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-20T11:29:20.373+05:30[Asia/Calcutta]")
 
 public class CompanyDTO   {
   @JsonProperty("address")
   private String address = null;
 
+  @JsonProperty("companyIdpCode")
+  private String companyIdpCode = null;
+
   @JsonProperty("email")
   private String email = null;
-
-  @JsonProperty("iDPCode")
-  private String iDPCode = null;
 
   @JsonProperty("id")
   private Long id = null;
@@ -60,6 +60,26 @@ public class CompanyDTO   {
     this.address = address;
   }
 
+  public CompanyDTO companyIdpCode(String companyIdpCode) {
+    this.companyIdpCode = companyIdpCode;
+    return this;
+  }
+
+  /**
+   * Get companyIdpCode
+   * @return companyIdpCode
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getCompanyIdpCode() {
+    return companyIdpCode;
+  }
+
+  public void setCompanyIdpCode(String companyIdpCode) {
+    this.companyIdpCode = companyIdpCode;
+  }
+
   public CompanyDTO email(String email) {
     this.email = email;
     return this;
@@ -78,26 +98,6 @@ public class CompanyDTO   {
 
   public void setEmail(String email) {
     this.email = email;
-  }
-
-  public CompanyDTO iDPCode(String iDPCode) {
-    this.iDPCode = iDPCode;
-    return this;
-  }
-
-  /**
-   * Get iDPCode
-   * @return iDPCode
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getIDPCode() {
-    return iDPCode;
-  }
-
-  public void setIDPCode(String iDPCode) {
-    this.iDPCode = iDPCode;
   }
 
   public CompanyDTO id(Long id) {
@@ -211,8 +211,8 @@ public class CompanyDTO   {
     }
     CompanyDTO companyDTO = (CompanyDTO) o;
     return Objects.equals(this.address, companyDTO.address) &&
+        Objects.equals(this.companyIdpCode, companyDTO.companyIdpCode) &&
         Objects.equals(this.email, companyDTO.email) &&
-        Objects.equals(this.iDPCode, companyDTO.iDPCode) &&
         Objects.equals(this.id, companyDTO.id) &&
         Objects.equals(this.locationAddress, companyDTO.locationAddress) &&
         Objects.equals(this.locationGeopoint, companyDTO.locationGeopoint) &&
@@ -222,7 +222,7 @@ public class CompanyDTO   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, email, iDPCode, id, locationAddress, locationGeopoint, name, phoneNumber);
+    return Objects.hash(address, companyIdpCode, email, id, locationAddress, locationGeopoint, name, phoneNumber);
   }
 
   @Override
@@ -231,8 +231,8 @@ public class CompanyDTO   {
     sb.append("class CompanyDTO {\n");
     
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
+    sb.append("    companyIdpCode: ").append(toIndentedString(companyIdpCode)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    iDPCode: ").append(toIndentedString(iDPCode)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    locationAddress: ").append(toIndentedString(locationAddress)).append("\n");
     sb.append("    locationGeopoint: ").append(toIndentedString(locationGeopoint)).append("\n");

@@ -2,11 +2,7 @@ package com.illud.freightgw.service;
 
 import org.springframework.http.ResponseEntity;
 
-import com.illud.freightgw.client.freight.model.Company;
-import com.illud.freightgw.client.freight.model.Customer;
-import com.illud.freightgw.client.freight.model.Driver;
-import com.illud.freightgw.client.freight.model.Freight;
-import com.illud.freightgw.client.freight.model.Vehicle;
+
 import com.illud.freightgw.client.freight.model.*;
 
 public interface CommandService {

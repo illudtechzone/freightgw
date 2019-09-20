@@ -13,14 +13,14 @@ import javax.validation.constraints.*;
  * DriverDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-19T15:26:20.711+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-20T11:29:20.373+05:30[Asia/Calcutta]")
 
 public class DriverDTO   {
+  @JsonProperty("driverIdpCode")
+  private String driverIdpCode = null;
+
   @JsonProperty("email")
   private String email = null;
-
-  @JsonProperty("iDPCode")
-  private String iDPCode = null;
 
   @JsonProperty("id")
   private Long id = null;
@@ -30,6 +30,26 @@ public class DriverDTO   {
 
   @JsonProperty("phoneNumber")
   private Long phoneNumber = null;
+
+  public DriverDTO driverIdpCode(String driverIdpCode) {
+    this.driverIdpCode = driverIdpCode;
+    return this;
+  }
+
+  /**
+   * Get driverIdpCode
+   * @return driverIdpCode
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getDriverIdpCode() {
+    return driverIdpCode;
+  }
+
+  public void setDriverIdpCode(String driverIdpCode) {
+    this.driverIdpCode = driverIdpCode;
+  }
 
   public DriverDTO email(String email) {
     this.email = email;
@@ -49,26 +69,6 @@ public class DriverDTO   {
 
   public void setEmail(String email) {
     this.email = email;
-  }
-
-  public DriverDTO iDPCode(String iDPCode) {
-    this.iDPCode = iDPCode;
-    return this;
-  }
-
-  /**
-   * Get iDPCode
-   * @return iDPCode
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getIDPCode() {
-    return iDPCode;
-  }
-
-  public void setIDPCode(String iDPCode) {
-    this.iDPCode = iDPCode;
   }
 
   public DriverDTO id(Long id) {
@@ -141,8 +141,8 @@ public class DriverDTO   {
       return false;
     }
     DriverDTO driverDTO = (DriverDTO) o;
-    return Objects.equals(this.email, driverDTO.email) &&
-        Objects.equals(this.iDPCode, driverDTO.iDPCode) &&
+    return Objects.equals(this.driverIdpCode, driverDTO.driverIdpCode) &&
+        Objects.equals(this.email, driverDTO.email) &&
         Objects.equals(this.id, driverDTO.id) &&
         Objects.equals(this.name, driverDTO.name) &&
         Objects.equals(this.phoneNumber, driverDTO.phoneNumber);
@@ -150,7 +150,7 @@ public class DriverDTO   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(email, iDPCode, id, name, phoneNumber);
+    return Objects.hash(driverIdpCode, email, id, name, phoneNumber);
   }
 
   @Override
@@ -158,8 +158,8 @@ public class DriverDTO   {
     StringBuilder sb = new StringBuilder();
     sb.append("class DriverDTO {\n");
     
+    sb.append("    driverIdpCode: ").append(toIndentedString(driverIdpCode)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    iDPCode: ").append(toIndentedString(iDPCode)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");

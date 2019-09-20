@@ -1,577 +1,355 @@
 package com.illud.freightgw.client.freight.model;
 
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import javax.persistence.*;
+
+import org.springframework.data.elasticsearch.annotations.Document;
+import java.io.Serializable;
+import java.time.Instant;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import java.time.OffsetDateTime;
-import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+
 
 /**
- * Freight
+ * A Freight.
  */
-@Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-19T15:07:50.741+05:30[Asia/Calcutta]")
 
-public class Freight   {
-  /**
-   * Gets or Sets acceptedStatus
-   */
-  public enum AcceptedStatusEnum {
-    START("START"),
+@Document(indexName = "freight")
+public class Freight implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     
-    COMPLETE("COMPLETE"),
-    
-    NOT_STARTED("NOT_STARTED");
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private String value;
+    @Column(name = "jhi_type")
+    private String type;
 
-    AcceptedStatusEnum(String value) {
-      this.value = value;
+    @Column(name = "distance")
+    private Long distance;
+
+    @Column(name = "pickup_address")
+    private String pickupAddress;
+
+    @Column(name = "pickup_place_id")
+    private String pickupPlaceId;
+
+    @Column(name = "destination_place_id")
+    private String destinationPlaceId;
+
+    @Column(name = "destination_address")
+    private String destinationAddress;
+
+    @Column(name = "pickup_geopoint")
+    private String pickupGeopoint;
+
+    @Column(name = "destination_geopoint")
+    private String destinationGeopoint;
+
+    @Column(name = "customer_id")
+    private String customerId;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "requested_status")
+    private RequestStatus requestedStatus;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "accepted_status")
+    private FreightStatus acceptedStatus;
+
+    @Column(name = "vehicle_id")
+    private String vehicleId;
+
+    @Column(name = "company_id")
+    private String companyId;
+
+    @Column(name = "amount")
+    private Long amount;
+
+    @Column(name = "created_time")
+    private Instant createdTime;
+
+    @Column(name = "start_time")
+    private Instant startTime;
+
+    @Column(name = "destionation_time")
+    private Instant destionationTime;
+
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public Freight type(String type) {
+        this.type = type;
+        return this;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Long getDistance() {
+        return distance;
+    }
+
+    public Freight distance(Long distance) {
+        this.distance = distance;
+        return this;
+    }
+
+    public void setDistance(Long distance) {
+        this.distance = distance;
+    }
+
+    public String getPickupAddress() {
+        return pickupAddress;
+    }
+
+    public Freight pickupAddress(String pickupAddress) {
+        this.pickupAddress = pickupAddress;
+        return this;
+    }
+
+    public void setPickupAddress(String pickupAddress) {
+        this.pickupAddress = pickupAddress;
+    }
+
+    public String getPickupPlaceId() {
+        return pickupPlaceId;
+    }
+
+    public Freight pickupPlaceId(String pickupPlaceId) {
+        this.pickupPlaceId = pickupPlaceId;
+        return this;
+    }
+
+    public void setPickupPlaceId(String pickupPlaceId) {
+        this.pickupPlaceId = pickupPlaceId;
+    }
+
+    public String getDestinationPlaceId() {
+        return destinationPlaceId;
+    }
+
+    public Freight destinationPlaceId(String destinationPlaceId) {
+        this.destinationPlaceId = destinationPlaceId;
+        return this;
+    }
+
+    public void setDestinationPlaceId(String destinationPlaceId) {
+        this.destinationPlaceId = destinationPlaceId;
+    }
+
+    public String getDestinationAddress() {
+        return destinationAddress;
+    }
+
+    public Freight destinationAddress(String destinationAddress) {
+        this.destinationAddress = destinationAddress;
+        return this;
+    }
+
+    public void setDestinationAddress(String destinationAddress) {
+        this.destinationAddress = destinationAddress;
+    }
+
+    public String getPickupGeopoint() {
+        return pickupGeopoint;
+    }
+
+    public Freight pickupGeopoint(String pickupGeopoint) {
+        this.pickupGeopoint = pickupGeopoint;
+        return this;
+    }
+
+    public void setPickupGeopoint(String pickupGeopoint) {
+        this.pickupGeopoint = pickupGeopoint;
+    }
+
+    public String getDestinationGeopoint() {
+        return destinationGeopoint;
+    }
+
+    public Freight destinationGeopoint(String destinationGeopoint) {
+        this.destinationGeopoint = destinationGeopoint;
+        return this;
+    }
+
+    public void setDestinationGeopoint(String destinationGeopoint) {
+        this.destinationGeopoint = destinationGeopoint;
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public Freight customerId(String customerId) {
+        this.customerId = customerId;
+        return this;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    public RequestStatus getRequestedStatus() {
+        return requestedStatus;
+    }
+
+    public Freight requestedStatus(RequestStatus requestedStatus) {
+        this.requestedStatus = requestedStatus;
+        return this;
+    }
+
+    public void setRequestedStatus(RequestStatus requestedStatus) {
+        this.requestedStatus = requestedStatus;
+    }
+
+    public FreightStatus getAcceptedStatus() {
+        return acceptedStatus;
+    }
+
+    public Freight acceptedStatus(FreightStatus acceptedStatus) {
+        this.acceptedStatus = acceptedStatus;
+        return this;
+    }
+
+    public void setAcceptedStatus(FreightStatus acceptedStatus) {
+        this.acceptedStatus = acceptedStatus;
+    }
+
+    public String getVehicleId() {
+        return vehicleId;
+    }
+
+    public Freight vehicleId(String vehicleId) {
+        this.vehicleId = vehicleId;
+        return this;
+    }
+
+    public void setVehicleId(String vehicleId) {
+        this.vehicleId = vehicleId;
+    }
+
+    public String getCompanyId() {
+        return companyId;
+    }
+
+    public Freight companyId(String companyId) {
+        this.companyId = companyId;
+        return this;
+    }
+
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
+    }
+
+    public Long getAmount() {
+        return amount;
+    }
+
+    public Freight amount(Long amount) {
+        this.amount = amount;
+        return this;
+    }
+
+    public void setAmount(Long amount) {
+        this.amount = amount;
+    }
+
+    public Instant getCreatedTime() {
+        return createdTime;
+    }
+
+    public Freight createdTime(Instant createdTime) {
+        this.createdTime = createdTime;
+        return this;
+    }
+
+    public void setCreatedTime(Instant createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public Instant getStartTime() {
+        return startTime;
+    }
+
+    public Freight startTime(Instant startTime) {
+        this.startTime = startTime;
+        return this;
+    }
+
+    public void setStartTime(Instant startTime) {
+        this.startTime = startTime;
+    }
+
+    public Instant getDestionationTime() {
+        return destionationTime;
+    }
+
+    public Freight destionationTime(Instant destionationTime) {
+        this.destionationTime = destionationTime;
+        return this;
+    }
+
+    public void setDestionationTime(Instant destionationTime) {
+        this.destionationTime = destionationTime;
+    }
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Freight freight = (Freight) o;
+        if (freight.getId() == null || getId() == null) {
+            return false;
+        }
+        return Objects.equals(getId(), freight.getId());
     }
 
     @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static AcceptedStatusEnum fromValue(String text) {
-      for (AcceptedStatusEnum b : AcceptedStatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("acceptedStatus")
-  private AcceptedStatusEnum acceptedStatus = null;
-
-  @JsonProperty("amount")
-  private Long amount = null;
-
-  @JsonProperty("companyId")
-  private String companyId = null;
-
-  @JsonProperty("createdTime")
-  private OffsetDateTime createdTime = null;
-
-  @JsonProperty("customerId")
-  private String customerId = null;
-
-  @JsonProperty("destinationAddress")
-  private String destinationAddress = null;
-
-  @JsonProperty("destinationGeopoint")
-  private String destinationGeopoint = null;
-
-  @JsonProperty("destinationPlaceId")
-  private String destinationPlaceId = null;
-
-  @JsonProperty("destionationTime")
-  private OffsetDateTime destionationTime = null;
-
-  @JsonProperty("distance")
-  private Long distance = null;
-
-  @JsonProperty("id")
-  private Long id = null;
-
-  @JsonProperty("pickupAddress")
-  private String pickupAddress = null;
-
-  @JsonProperty("pickupGeopoint")
-  private String pickupGeopoint = null;
-
-  @JsonProperty("pickupPlaceId")
-  private String pickupPlaceId = null;
-
-  /**
-   * Gets or Sets requestedStatus
-   */
-  public enum RequestedStatusEnum {
-    REQUEST("REQUEST"),
-    
-    CONFIRM("CONFIRM"),
-    
-    REJECT("REJECT");
-
-    private String value;
-
-    RequestedStatusEnum(String value) {
-      this.value = value;
+    public int hashCode() {
+        return Objects.hashCode(getId());
     }
 
     @Override
-    @JsonValue
     public String toString() {
-      return String.valueOf(value);
+        return "Freight{" +
+            "id=" + getId() +
+            ", type='" + getType() + "'" +
+            ", distance=" + getDistance() +
+            ", pickupAddress='" + getPickupAddress() + "'" +
+            ", pickupPlaceId='" + getPickupPlaceId() + "'" +
+            ", destinationPlaceId='" + getDestinationPlaceId() + "'" +
+            ", destinationAddress='" + getDestinationAddress() + "'" +
+            ", pickupGeopoint='" + getPickupGeopoint() + "'" +
+            ", destinationGeopoint='" + getDestinationGeopoint() + "'" +
+            ", customerId='" + getCustomerId() + "'" +
+            ", requestedStatus='" + getRequestedStatus() + "'" +
+            ", acceptedStatus='" + getAcceptedStatus() + "'" +
+            ", vehicleId='" + getVehicleId() + "'" +
+            ", companyId='" + getCompanyId() + "'" +
+            ", amount=" + getAmount() +
+            ", createdTime='" + getCreatedTime() + "'" +
+            ", startTime='" + getStartTime() + "'" +
+            ", destionationTime='" + getDestionationTime() + "'" +
+            "}";
     }
-
-    @JsonCreator
-    public static RequestedStatusEnum fromValue(String text) {
-      for (RequestedStatusEnum b : RequestedStatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("requestedStatus")
-  private RequestedStatusEnum requestedStatus = null;
-
-  @JsonProperty("startTime")
-  private OffsetDateTime startTime = null;
-
-  @JsonProperty("type")
-  private String type = null;
-
-  @JsonProperty("vehicleId")
-  private String vehicleId = null;
-
-  public Freight acceptedStatus(AcceptedStatusEnum acceptedStatus) {
-    this.acceptedStatus = acceptedStatus;
-    return this;
-  }
-
-  /**
-   * Get acceptedStatus
-   * @return acceptedStatus
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public AcceptedStatusEnum getAcceptedStatus() {
-    return acceptedStatus;
-  }
-
-  public void setAcceptedStatus(AcceptedStatusEnum acceptedStatus) {
-    this.acceptedStatus = acceptedStatus;
-  }
-
-  public Freight amount(Long amount) {
-    this.amount = amount;
-    return this;
-  }
-
-  /**
-   * Get amount
-   * @return amount
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Long getAmount() {
-    return amount;
-  }
-
-  public void setAmount(Long amount) {
-    this.amount = amount;
-  }
-
-  public Freight companyId(String companyId) {
-    this.companyId = companyId;
-    return this;
-  }
-
-  /**
-   * Get companyId
-   * @return companyId
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getCompanyId() {
-    return companyId;
-  }
-
-  public void setCompanyId(String companyId) {
-    this.companyId = companyId;
-  }
-
-  public Freight createdTime(OffsetDateTime createdTime) {
-    this.createdTime = createdTime;
-    return this;
-  }
-
-  /**
-   * Get createdTime
-   * @return createdTime
-  **/
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public OffsetDateTime getCreatedTime() {
-    return createdTime;
-  }
-
-  public void setCreatedTime(OffsetDateTime createdTime) {
-    this.createdTime = createdTime;
-  }
-
-  public Freight customerId(String customerId) {
-    this.customerId = customerId;
-    return this;
-  }
-
-  /**
-   * Get customerId
-   * @return customerId
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getCustomerId() {
-    return customerId;
-  }
-
-  public void setCustomerId(String customerId) {
-    this.customerId = customerId;
-  }
-
-  public Freight destinationAddress(String destinationAddress) {
-    this.destinationAddress = destinationAddress;
-    return this;
-  }
-
-  /**
-   * Get destinationAddress
-   * @return destinationAddress
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getDestinationAddress() {
-    return destinationAddress;
-  }
-
-  public void setDestinationAddress(String destinationAddress) {
-    this.destinationAddress = destinationAddress;
-  }
-
-  public Freight destinationGeopoint(String destinationGeopoint) {
-    this.destinationGeopoint = destinationGeopoint;
-    return this;
-  }
-
-  /**
-   * Get destinationGeopoint
-   * @return destinationGeopoint
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getDestinationGeopoint() {
-    return destinationGeopoint;
-  }
-
-  public void setDestinationGeopoint(String destinationGeopoint) {
-    this.destinationGeopoint = destinationGeopoint;
-  }
-
-  public Freight destinationPlaceId(String destinationPlaceId) {
-    this.destinationPlaceId = destinationPlaceId;
-    return this;
-  }
-
-  /**
-   * Get destinationPlaceId
-   * @return destinationPlaceId
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getDestinationPlaceId() {
-    return destinationPlaceId;
-  }
-
-  public void setDestinationPlaceId(String destinationPlaceId) {
-    this.destinationPlaceId = destinationPlaceId;
-  }
-
-  public Freight destionationTime(OffsetDateTime destionationTime) {
-    this.destionationTime = destionationTime;
-    return this;
-  }
-
-  /**
-   * Get destionationTime
-   * @return destionationTime
-  **/
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public OffsetDateTime getDestionationTime() {
-    return destionationTime;
-  }
-
-  public void setDestionationTime(OffsetDateTime destionationTime) {
-    this.destionationTime = destionationTime;
-  }
-
-  public Freight distance(Long distance) {
-    this.distance = distance;
-    return this;
-  }
-
-  /**
-   * Get distance
-   * @return distance
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Long getDistance() {
-    return distance;
-  }
-
-  public void setDistance(Long distance) {
-    this.distance = distance;
-  }
-
-  public Freight id(Long id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public Freight pickupAddress(String pickupAddress) {
-    this.pickupAddress = pickupAddress;
-    return this;
-  }
-
-  /**
-   * Get pickupAddress
-   * @return pickupAddress
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getPickupAddress() {
-    return pickupAddress;
-  }
-
-  public void setPickupAddress(String pickupAddress) {
-    this.pickupAddress = pickupAddress;
-  }
-
-  public Freight pickupGeopoint(String pickupGeopoint) {
-    this.pickupGeopoint = pickupGeopoint;
-    return this;
-  }
-
-  /**
-   * Get pickupGeopoint
-   * @return pickupGeopoint
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getPickupGeopoint() {
-    return pickupGeopoint;
-  }
-
-  public void setPickupGeopoint(String pickupGeopoint) {
-    this.pickupGeopoint = pickupGeopoint;
-  }
-
-  public Freight pickupPlaceId(String pickupPlaceId) {
-    this.pickupPlaceId = pickupPlaceId;
-    return this;
-  }
-
-  /**
-   * Get pickupPlaceId
-   * @return pickupPlaceId
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getPickupPlaceId() {
-    return pickupPlaceId;
-  }
-
-  public void setPickupPlaceId(String pickupPlaceId) {
-    this.pickupPlaceId = pickupPlaceId;
-  }
-
-  public Freight requestedStatus(RequestedStatusEnum requestedStatus) {
-    this.requestedStatus = requestedStatus;
-    return this;
-  }
-
-  /**
-   * Get requestedStatus
-   * @return requestedStatus
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public RequestedStatusEnum getRequestedStatus() {
-    return requestedStatus;
-  }
-
-  public void setRequestedStatus(RequestedStatusEnum requestedStatus) {
-    this.requestedStatus = requestedStatus;
-  }
-
-  public Freight startTime(OffsetDateTime startTime) {
-    this.startTime = startTime;
-    return this;
-  }
-
-  /**
-   * Get startTime
-   * @return startTime
-  **/
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public OffsetDateTime getStartTime() {
-    return startTime;
-  }
-
-  public void setStartTime(OffsetDateTime startTime) {
-    this.startTime = startTime;
-  }
-
-  public Freight type(String type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getType() {
-    return type;
-  }
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
-  public Freight vehicleId(String vehicleId) {
-    this.vehicleId = vehicleId;
-    return this;
-  }
-
-  /**
-   * Get vehicleId
-   * @return vehicleId
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getVehicleId() {
-    return vehicleId;
-  }
-
-  public void setVehicleId(String vehicleId) {
-    this.vehicleId = vehicleId;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Freight freight = (Freight) o;
-    return Objects.equals(this.acceptedStatus, freight.acceptedStatus) &&
-        Objects.equals(this.amount, freight.amount) &&
-        Objects.equals(this.companyId, freight.companyId) &&
-        Objects.equals(this.createdTime, freight.createdTime) &&
-        Objects.equals(this.customerId, freight.customerId) &&
-        Objects.equals(this.destinationAddress, freight.destinationAddress) &&
-        Objects.equals(this.destinationGeopoint, freight.destinationGeopoint) &&
-        Objects.equals(this.destinationPlaceId, freight.destinationPlaceId) &&
-        Objects.equals(this.destionationTime, freight.destionationTime) &&
-        Objects.equals(this.distance, freight.distance) &&
-        Objects.equals(this.id, freight.id) &&
-        Objects.equals(this.pickupAddress, freight.pickupAddress) &&
-        Objects.equals(this.pickupGeopoint, freight.pickupGeopoint) &&
-        Objects.equals(this.pickupPlaceId, freight.pickupPlaceId) &&
-        Objects.equals(this.requestedStatus, freight.requestedStatus) &&
-        Objects.equals(this.startTime, freight.startTime) &&
-        Objects.equals(this.type, freight.type) &&
-        Objects.equals(this.vehicleId, freight.vehicleId);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(acceptedStatus, amount, companyId, createdTime, customerId, destinationAddress, destinationGeopoint, destinationPlaceId, destionationTime, distance, id, pickupAddress, pickupGeopoint, pickupPlaceId, requestedStatus, startTime, type, vehicleId);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Freight {\n");
-    
-    sb.append("    acceptedStatus: ").append(toIndentedString(acceptedStatus)).append("\n");
-    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-    sb.append("    companyId: ").append(toIndentedString(companyId)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
-    sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
-    sb.append("    destinationAddress: ").append(toIndentedString(destinationAddress)).append("\n");
-    sb.append("    destinationGeopoint: ").append(toIndentedString(destinationGeopoint)).append("\n");
-    sb.append("    destinationPlaceId: ").append(toIndentedString(destinationPlaceId)).append("\n");
-    sb.append("    destionationTime: ").append(toIndentedString(destionationTime)).append("\n");
-    sb.append("    distance: ").append(toIndentedString(distance)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    pickupAddress: ").append(toIndentedString(pickupAddress)).append("\n");
-    sb.append("    pickupGeopoint: ").append(toIndentedString(pickupGeopoint)).append("\n");
-    sb.append("    pickupPlaceId: ").append(toIndentedString(pickupPlaceId)).append("\n");
-    sb.append("    requestedStatus: ").append(toIndentedString(requestedStatus)).append("\n");
-    sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    vehicleId: ").append(toIndentedString(vehicleId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
 }
-

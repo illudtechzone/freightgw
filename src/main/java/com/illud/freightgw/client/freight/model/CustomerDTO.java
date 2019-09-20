@@ -13,14 +13,14 @@ import javax.validation.constraints.*;
  * CustomerDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-19T15:26:20.711+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-20T11:29:20.373+05:30[Asia/Calcutta]")
 
 public class CustomerDTO   {
+  @JsonProperty("customerIdpCode")
+  private String customerIdpCode = null;
+
   @JsonProperty("email")
   private String email = null;
-
-  @JsonProperty("iDPCode")
-  private String iDPCode = null;
 
   @JsonProperty("id")
   private Long id = null;
@@ -30,6 +30,26 @@ public class CustomerDTO   {
 
   @JsonProperty("phoneNumber")
   private Long phoneNumber = null;
+
+  public CustomerDTO customerIdpCode(String customerIdpCode) {
+    this.customerIdpCode = customerIdpCode;
+    return this;
+  }
+
+  /**
+   * Get customerIdpCode
+   * @return customerIdpCode
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getCustomerIdpCode() {
+    return customerIdpCode;
+  }
+
+  public void setCustomerIdpCode(String customerIdpCode) {
+    this.customerIdpCode = customerIdpCode;
+  }
 
   public CustomerDTO email(String email) {
     this.email = email;
@@ -49,26 +69,6 @@ public class CustomerDTO   {
 
   public void setEmail(String email) {
     this.email = email;
-  }
-
-  public CustomerDTO iDPCode(String iDPCode) {
-    this.iDPCode = iDPCode;
-    return this;
-  }
-
-  /**
-   * Get iDPCode
-   * @return iDPCode
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getIDPCode() {
-    return iDPCode;
-  }
-
-  public void setIDPCode(String iDPCode) {
-    this.iDPCode = iDPCode;
   }
 
   public CustomerDTO id(Long id) {
@@ -141,8 +141,8 @@ public class CustomerDTO   {
       return false;
     }
     CustomerDTO customerDTO = (CustomerDTO) o;
-    return Objects.equals(this.email, customerDTO.email) &&
-        Objects.equals(this.iDPCode, customerDTO.iDPCode) &&
+    return Objects.equals(this.customerIdpCode, customerDTO.customerIdpCode) &&
+        Objects.equals(this.email, customerDTO.email) &&
         Objects.equals(this.id, customerDTO.id) &&
         Objects.equals(this.name, customerDTO.name) &&
         Objects.equals(this.phoneNumber, customerDTO.phoneNumber);
@@ -150,7 +150,7 @@ public class CustomerDTO   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(email, iDPCode, id, name, phoneNumber);
+    return Objects.hash(customerIdpCode, email, id, name, phoneNumber);
   }
 
   @Override
@@ -158,8 +158,8 @@ public class CustomerDTO   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomerDTO {\n");
     
+    sb.append("    customerIdpCode: ").append(toIndentedString(customerIdpCode)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    iDPCode: ").append(toIndentedString(iDPCode)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");

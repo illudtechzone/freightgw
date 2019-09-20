@@ -11,12 +11,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.github.vanroy.springdata.jest.JestElasticsearchTemplate;
-import com.illud.freightgw.client.freight.model.Company;
-import com.illud.freightgw.client.freight.model.Customer;
-import com.illud.freightgw.client.freight.model.Driver;
-import com.illud.freightgw.client.freight.model.Vehicle;
+
 
 import static org.elasticsearch.index.query.QueryBuilders.termQuery;
+
+import com.illud.freightgw.client.freight.model.*;
 import com.illud.freightgw.service.QueryService;
 
 import io.searchbox.client.JestClient;

@@ -12,13 +12,9 @@ import com.illud.freightgw.client.freight.api.DriverResourceApi;
 import com.illud.freightgw.client.freight.api.FreightResourceApi;
 import com.illud.freightgw.client.freight.api.VehicleLookUpResourceApi;
 import com.illud.freightgw.client.freight.api.VehicleResourceApi;
-import com.illud.freightgw.client.freight.model.Company;
+
 import com.illud.freightgw.client.freight.model.*;
-import com.illud.freightgw.client.freight.model.Customer;
-import com.illud.freightgw.client.freight.model.Driver;
-import com.illud.freightgw.client.freight.model.Freight;
-import com.illud.freightgw.client.freight.model.Vehicle;
-import com.illud.freightgw.client.freight.model.VehicleLookUp;
+
 import com.illud.freightgw.service.CommandService;
 
 @Service

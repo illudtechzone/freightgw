@@ -10,11 +10,11 @@ import com.illud.freightgw.client.freight.model.Vehicle;
 
 public interface QueryService {
 
-	Company getOneCompany(String iDPCode);
+	Company getOneCompany(String companyIdpCode);
 
-	Customer getOneCustomer(String iDPCode);
+	Customer getOneCustomer(String customerIdpCode);
 
-	Driver getOneDriver(String iDPCode);
+	Driver getOneDriver(String driverIdpCode);
 
-	Page<Vehicle> findAllVehiclesByCompanyIdpCode(String iDPCode, Pageable page);
+	Page<Vehicle> findAllVehiclesByCompanyIdpCode(String companyiDPCode, Pageable page);
 }

@@ -30,32 +30,32 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		this.queService=queService;
 	}
 	
-	@GetMapping("/getcompany/{iDPCode}")
-	public Company searchCompanyIDPCode(@PathVariable String iDPCode){
-		log.debug("<<<<<<<<< input a idpcode to get a company details >>>>>>" , iDPCode);
+	@GetMapping("/getcompany/{comapnyiDPCode}")
+	public Company searchCompanyIDPCode(@PathVariable String companyIdpCode){
+		log.debug("<<<<<<<<< input a idpcode to get a company details >>>>>>" , companyIdpCode);
 		
-		return queService.getOneCompany(iDPCode);
+		return queService.getOneCompany(companyIdpCode);
 		
 	}
-	@GetMapping("/getcustomer/{iDPCode}")
-	public Customer searchCustomerIDPCode(@PathVariable String iDPCode){
-		log.debug(" <<<<<<<<< input a idpcode to get a customer details>>>>>> " , iDPCode);
+	@GetMapping("/getcustomer/{customeriDPCode}")
+	public Customer searchCustomerIDPCode(@PathVariable String customerIdpCode){
+		log.debug(" <<<<<<<<< input a idpcode to get a customer details>>>>>> " , customerIdpCode);
 		//Page<Customer> page = queService.getDetailsFromCustomeriDPCode(iDPCode);
 		//return ResponseEntity.ok().body(page.getContent());
 		
-		return queService.getOneCustomer(iDPCode);
+		return queService.getOneCustomer(customerIdpCode);
 	}
-	@GetMapping("/getdriver/{iDPCode}")
-	public Driver searchDriverIDPCode(@PathVariable String iDPCode){
-		log.debug("<<<<<<<<< input a idpcode to get a driver details >>>>>>" , iDPCode);
+	@GetMapping("/getdriver/{driveriDPCode}")
+	public Driver searchDriverIDPCode(@PathVariable String driverIdpCode){
+		log.debug("<<<<<<<<< input a idpcode to get a driver details >>>>>>" , driverIdpCode);
 		
-		return queService.getOneDriver(iDPCode);
+		return queService.getOneDriver(driverIdpCode);
 		
 	}
 	@GetMapping("/getAllvehicles")
-	public ResponseEntity<List<Vehicle>> findAllvehicles(String iDPCode,Pageable pageable){
-		log.debug("<<<<<<<< input a idpcode to get all vehicles >>>>>>>>",iDPCode,pageable);
-		Page<Vehicle> page = queService.findAllVehiclesByCompanyIdpCode(iDPCode, pageable);
+	public ResponseEntity<List<Vehicle>> findAllvehicles(String companyIdpCode,Pageable pageable){
+		log.debug("<<<<<<<< input a idpcode to get all vehicles >>>>>>>>",companyIdpCode,pageable);
+		Page<Vehicle> page = queService.findAllVehiclesByCompanyIdpCode(companyIdpCode, pageable);
 		return ResponseEntity.ok().body(page.getContent());
 		
 	}

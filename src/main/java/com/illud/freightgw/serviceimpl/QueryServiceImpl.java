@@ -35,31 +35,29 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	}
 
 	@Override
-	public Company getOneCompany(String companyIdpCode) {
-		log.debug("<<<<<< getOne>>>>",companyIdpCode);
-		StringQuery sq = new StringQuery(termQuery("iDPCode", companyIdpCode).toString());
-		
+	public Company getOneCompany(String iDPCode) {
+		log.debug("<<<<<< getOne>>>>",iDPCode);
+		StringQuery sq = new StringQuery(termQuery("companyIdpCode.keyword", iDPCode).toString());
 		return   esTemplate.queryForObject(sq, Company.class);
 	}
-
 	@Override
-	public Customer getOneCustomer(String customerIdpCode) {
-		log.debug("<<<<<< getOne customer >>>>",customerIdpCode);
-		StringQuery sq = new StringQuery(termQuery("iDPCode", customerIdpCode).toString());
+	public Customer getOneCustomer(String iDPCode) {
+		log.debug("<<<<<< getOne customer >>>>",iDPCode);
+		StringQuery sq = new StringQuery(termQuery("customerIdpCode.keyword", iDPCode).toString());
 		return esTemplate.queryForObject(sq, Customer.class);
 	}
 
 	@Override
-	public Driver getOneDriver(String driverIdpCode) {
-		log.debug("<<<<<< getOne driver>>>>",driverIdpCode);
-		StringQuery sq =new StringQuery(termQuery("iDPCode",driverIdpCode).toString());
+	public Driver getOneDriver(String iDPCode) {
+		log.debug("<<<<<< getOne driver>>>>",iDPCode);
+		StringQuery sq =new StringQuery(termQuery("driverIdpCode.keyword",iDPCode).toString());
 		return esTemplate.queryForObject(sq, Driver.class);
 	}
 	
 	@Override
-	public Page<Vehicle> findAllVehiclesByCompanyIdpCode(String companyIdpCode,Pageable pageable) {
-		log.debug("<<<<<< getOne driver>>>>",companyIdpCode);
-		SearchQuery searchQuery= new NativeSearchQueryBuilder().withQuery(termQuery("company.iDPCode", companyIdpCode)).build();
+	public Page<Vehicle> findAllVehiclesByCompanyIdpCode(String iDPCode,Pageable page) {
+		log.debug("<<<<<< getOne driver>>>>",iDPCode);
+		SearchQuery searchQuery= new NativeSearchQueryBuilder().withQuery(termQuery("company.companyIdpCode.keyword", iDPCode)).build();
 		return esTemplate.queryForPage(searchQuery, Vehicle.class);
 	}
 	

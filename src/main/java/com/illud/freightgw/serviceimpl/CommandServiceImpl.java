@@ -109,4 +109,22 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 		return vehLookUpResourceApi.updateVehicleLookUpUsingPUT(vehicleLookUp);
 	}
 
+	@Override
+	public ResponseEntity<CompanyDTO> createcompanyIfnotExist(CompanyDTO companyDTO) {
+		log.debug("<<<<<<<< create company if not exist>>>>>>>>",companyDTO);
+		return comResourceApi.createcompantIfnotExistUsingPOST(companyDTO);
+	}
+
+	@Override
+	public ResponseEntity<CustomerDTO> createcustomerIfnotExist(CustomerDTO customerDTO) {
+		log.debug("<<<<<<<< create customer if not exist >>>>>>>",customerDTO);
+		return cusResourceApi.createcustomerIfnotExistUsingPOST(customerDTO);
+	}
+
+	@Override
+	public ResponseEntity<DriverDTO> createdriverIfnotExist(DriverDTO driverDTO) {
+		log.debug("<<<<<< create driver if ot exist >>>>>>",driverDTO);
+		return driResourceApi.createdriverIfnotExistUsingPOST(driverDTO);
+	}
+
 }

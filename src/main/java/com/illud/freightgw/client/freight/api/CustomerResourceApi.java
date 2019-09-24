@@ -25,7 +25,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-20T11:29:20.373+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-24T09:57:01.751+05:30[Asia/Calcutta]")
 
 @Api(value = "CustomerResource", description = "the CustomerResource API")
 public interface CustomerResourceApi {
@@ -42,6 +42,20 @@ public interface CustomerResourceApi {
         consumes = "application/json",
         method = RequestMethod.POST)
     ResponseEntity<CustomerDTO> createCustomerUsingPOST(@ApiParam(value = "customerDTO" ,required=true )  @Valid @RequestBody CustomerDTO customerDTO);
+
+
+    @ApiOperation(value = "createcustomerIfnotExist", nickname = "createcustomerIfnotExistUsingPOST", notes = "", response = CustomerDTO.class, tags={ "customer-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = CustomerDTO.class),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/create/customers",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<CustomerDTO> createcustomerIfnotExistUsingPOST(@ApiParam(value = "customerDTO" ,required=true )  @Valid @RequestBody CustomerDTO customerDTO);
 
 
     @ApiOperation(value = "deleteCustomer", nickname = "deleteCustomerUsingDELETE", notes = "", tags={ "customer-resource", })

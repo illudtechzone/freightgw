@@ -30,6 +30,12 @@ public interface CommandService {
 
 	ResponseEntity<VehicleLookUpDTO> update(VehicleLookUpDTO vehicleLookUp);
 
+	ResponseEntity<CompanyDTO> createcompanyIfnotExist(CompanyDTO companyDTO);
+
+	ResponseEntity<CustomerDTO> createcustomerIfnotExist(CustomerDTO customerDTO);
+
+	ResponseEntity<DriverDTO> createdriverIfnotExist(DriverDTO driverDTO);
+
 	 
 
 }

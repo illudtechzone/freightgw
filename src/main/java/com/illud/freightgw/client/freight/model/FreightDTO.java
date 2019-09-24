@@ -6,7 +6,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.Date;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -15,7 +18,7 @@ import javax.validation.constraints.*;
  * FreightDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-20T11:29:20.373+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-24T09:57:01.751+05:30[Asia/Calcutta]")
 
 public class FreightDTO   {
   /**
@@ -54,17 +57,17 @@ public class FreightDTO   {
   @JsonProperty("acceptedStatus")
   private AcceptedStatusEnum acceptedStatus = null;
 
-  @JsonProperty("amount")
-  private Long amount = null;
-
   @JsonProperty("companyId")
-  private String companyId = null;
+  private Long companyId = null;
 
   @JsonProperty("createdTime")
   private OffsetDateTime createdTime = null;
 
   @JsonProperty("customerId")
-  private String customerId = null;
+  private Long customerId = null;
+
+  @JsonProperty("deliveryDate")
+  private LocalDate deliveryDate = null;
 
   @JsonProperty("destinationAddress")
   private String destinationAddress = null;
@@ -81,8 +84,23 @@ public class FreightDTO   {
   @JsonProperty("distance")
   private Long distance = null;
 
+  @JsonProperty("estimatedAmount")
+  private Double estimatedAmount = null;
+
+  @JsonProperty("fragile")
+  private Boolean fragile = null;
+
+  @JsonProperty("height")
+  private Double height = null;
+
   @JsonProperty("id")
   private Long id = null;
+
+  @JsonProperty("length")
+  private Double length = null;
+
+  @JsonProperty("originalAmount")
+  private Double originalAmount = null;
 
   @JsonProperty("pickupAddress")
   private String pickupAddress = null;
@@ -136,7 +154,13 @@ public class FreightDTO   {
   private String type = null;
 
   @JsonProperty("vehicleId")
-  private String vehicleId = null;
+  private Long vehicleId = null;
+
+  @JsonProperty("weight")
+  private Double weight = null;
+
+  @JsonProperty("width")
+  private Double width = null;
 
   public FreightDTO acceptedStatus(AcceptedStatusEnum acceptedStatus) {
     this.acceptedStatus = acceptedStatus;
@@ -158,27 +182,7 @@ public class FreightDTO   {
     this.acceptedStatus = acceptedStatus;
   }
 
-  public FreightDTO amount(Long amount) {
-    this.amount = amount;
-    return this;
-  }
-
-  /**
-   * Get amount
-   * @return amount
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Long getAmount() {
-    return amount;
-  }
-
-  public void setAmount(Long amount) {
-    this.amount = amount;
-  }
-
-  public FreightDTO companyId(String companyId) {
+  public FreightDTO companyId(Long companyId) {
     this.companyId = companyId;
     return this;
   }
@@ -190,11 +194,11 @@ public class FreightDTO   {
   @ApiModelProperty(value = "")
 
 
-  public String getCompanyId() {
+  public Long getCompanyId() {
     return companyId;
   }
 
-  public void setCompanyId(String companyId) {
+  public void setCompanyId(Long companyId) {
     this.companyId = companyId;
   }
 
@@ -219,7 +223,7 @@ public class FreightDTO   {
     this.createdTime = createdTime;
   }
 
-  public FreightDTO customerId(String customerId) {
+  public FreightDTO customerId(Long customerId) {
     this.customerId = customerId;
     return this;
   }
@@ -231,12 +235,33 @@ public class FreightDTO   {
   @ApiModelProperty(value = "")
 
 
-  public String getCustomerId() {
+  public Long getCustomerId() {
     return customerId;
   }
 
-  public void setCustomerId(String customerId) {
+  public void setCustomerId(Long customerId) {
     this.customerId = customerId;
+  }
+
+  public FreightDTO deliveryDate(LocalDate deliveryDate) {
+    this.deliveryDate = deliveryDate;
+    return this;
+  }
+
+  /**
+   * Get deliveryDate
+   * @return deliveryDate
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public LocalDate getDeliveryDate() {
+    return deliveryDate;
+  }
+
+  public void setDeliveryDate(LocalDate deliveryDate) {
+    this.deliveryDate = deliveryDate;
   }
 
   public FreightDTO destinationAddress(String destinationAddress) {
@@ -340,6 +365,66 @@ public class FreightDTO   {
     this.distance = distance;
   }
 
+  public FreightDTO estimatedAmount(Double estimatedAmount) {
+    this.estimatedAmount = estimatedAmount;
+    return this;
+  }
+
+  /**
+   * Get estimatedAmount
+   * @return estimatedAmount
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Double getEstimatedAmount() {
+    return estimatedAmount;
+  }
+
+  public void setEstimatedAmount(Double estimatedAmount) {
+    this.estimatedAmount = estimatedAmount;
+  }
+
+  public FreightDTO fragile(Boolean fragile) {
+    this.fragile = fragile;
+    return this;
+  }
+
+  /**
+   * Get fragile
+   * @return fragile
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Boolean isFragile() {
+    return fragile;
+  }
+
+  public void setFragile(Boolean fragile) {
+    this.fragile = fragile;
+  }
+
+  public FreightDTO height(Double height) {
+    this.height = height;
+    return this;
+  }
+
+  /**
+   * Get height
+   * @return height
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Double getHeight() {
+    return height;
+  }
+
+  public void setHeight(Double height) {
+    this.height = height;
+  }
+
   public FreightDTO id(Long id) {
     this.id = id;
     return this;
@@ -358,6 +443,46 @@ public class FreightDTO   {
 
   public void setId(Long id) {
     this.id = id;
+  }
+
+  public FreightDTO length(Double length) {
+    this.length = length;
+    return this;
+  }
+
+  /**
+   * Get length
+   * @return length
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Double getLength() {
+    return length;
+  }
+
+  public void setLength(Double length) {
+    this.length = length;
+  }
+
+  public FreightDTO originalAmount(Double originalAmount) {
+    this.originalAmount = originalAmount;
+    return this;
+  }
+
+  /**
+   * Get originalAmount
+   * @return originalAmount
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Double getOriginalAmount() {
+    return originalAmount;
+  }
+
+  public void setOriginalAmount(Double originalAmount) {
+    this.originalAmount = originalAmount;
   }
 
   public FreightDTO pickupAddress(String pickupAddress) {
@@ -481,7 +606,7 @@ public class FreightDTO   {
     this.type = type;
   }
 
-  public FreightDTO vehicleId(String vehicleId) {
+  public FreightDTO vehicleId(Long vehicleId) {
     this.vehicleId = vehicleId;
     return this;
   }
@@ -493,12 +618,52 @@ public class FreightDTO   {
   @ApiModelProperty(value = "")
 
 
-  public String getVehicleId() {
+  public Long getVehicleId() {
     return vehicleId;
   }
 
-  public void setVehicleId(String vehicleId) {
+  public void setVehicleId(Long vehicleId) {
     this.vehicleId = vehicleId;
+  }
+
+  public FreightDTO weight(Double weight) {
+    this.weight = weight;
+    return this;
+  }
+
+  /**
+   * Get weight
+   * @return weight
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Double getWeight() {
+    return weight;
+  }
+
+  public void setWeight(Double weight) {
+    this.weight = weight;
+  }
+
+  public FreightDTO width(Double width) {
+    this.width = width;
+    return this;
+  }
+
+  /**
+   * Get width
+   * @return width
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Double getWidth() {
+    return width;
+  }
+
+  public void setWidth(Double width) {
+    this.width = width;
   }
 
 
@@ -512,28 +677,35 @@ public class FreightDTO   {
     }
     FreightDTO freightDTO = (FreightDTO) o;
     return Objects.equals(this.acceptedStatus, freightDTO.acceptedStatus) &&
-        Objects.equals(this.amount, freightDTO.amount) &&
         Objects.equals(this.companyId, freightDTO.companyId) &&
         Objects.equals(this.createdTime, freightDTO.createdTime) &&
         Objects.equals(this.customerId, freightDTO.customerId) &&
+        Objects.equals(this.deliveryDate, freightDTO.deliveryDate) &&
         Objects.equals(this.destinationAddress, freightDTO.destinationAddress) &&
         Objects.equals(this.destinationGeopoint, freightDTO.destinationGeopoint) &&
         Objects.equals(this.destinationPlaceId, freightDTO.destinationPlaceId) &&
         Objects.equals(this.destionationTime, freightDTO.destionationTime) &&
         Objects.equals(this.distance, freightDTO.distance) &&
+        Objects.equals(this.estimatedAmount, freightDTO.estimatedAmount) &&
+        Objects.equals(this.fragile, freightDTO.fragile) &&
+        Objects.equals(this.height, freightDTO.height) &&
         Objects.equals(this.id, freightDTO.id) &&
+        Objects.equals(this.length, freightDTO.length) &&
+        Objects.equals(this.originalAmount, freightDTO.originalAmount) &&
         Objects.equals(this.pickupAddress, freightDTO.pickupAddress) &&
         Objects.equals(this.pickupGeopoint, freightDTO.pickupGeopoint) &&
         Objects.equals(this.pickupPlaceId, freightDTO.pickupPlaceId) &&
         Objects.equals(this.requestedStatus, freightDTO.requestedStatus) &&
         Objects.equals(this.startTime, freightDTO.startTime) &&
         Objects.equals(this.type, freightDTO.type) &&
-        Objects.equals(this.vehicleId, freightDTO.vehicleId);
+        Objects.equals(this.vehicleId, freightDTO.vehicleId) &&
+        Objects.equals(this.weight, freightDTO.weight) &&
+        Objects.equals(this.width, freightDTO.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(acceptedStatus, amount, companyId, createdTime, customerId, destinationAddress, destinationGeopoint, destinationPlaceId, destionationTime, distance, id, pickupAddress, pickupGeopoint, pickupPlaceId, requestedStatus, startTime, type, vehicleId);
+    return Objects.hash(acceptedStatus, companyId, createdTime, customerId, deliveryDate, destinationAddress, destinationGeopoint, destinationPlaceId, destionationTime, distance, estimatedAmount, fragile, height, id, length, originalAmount, pickupAddress, pickupGeopoint, pickupPlaceId, requestedStatus, startTime, type, vehicleId, weight, width);
   }
 
   @Override
@@ -542,16 +714,21 @@ public class FreightDTO   {
     sb.append("class FreightDTO {\n");
     
     sb.append("    acceptedStatus: ").append(toIndentedString(acceptedStatus)).append("\n");
-    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    companyId: ").append(toIndentedString(companyId)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
+    sb.append("    deliveryDate: ").append(toIndentedString(deliveryDate)).append("\n");
     sb.append("    destinationAddress: ").append(toIndentedString(destinationAddress)).append("\n");
     sb.append("    destinationGeopoint: ").append(toIndentedString(destinationGeopoint)).append("\n");
     sb.append("    destinationPlaceId: ").append(toIndentedString(destinationPlaceId)).append("\n");
     sb.append("    destionationTime: ").append(toIndentedString(destionationTime)).append("\n");
     sb.append("    distance: ").append(toIndentedString(distance)).append("\n");
+    sb.append("    estimatedAmount: ").append(toIndentedString(estimatedAmount)).append("\n");
+    sb.append("    fragile: ").append(toIndentedString(fragile)).append("\n");
+    sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    length: ").append(toIndentedString(length)).append("\n");
+    sb.append("    originalAmount: ").append(toIndentedString(originalAmount)).append("\n");
     sb.append("    pickupAddress: ").append(toIndentedString(pickupAddress)).append("\n");
     sb.append("    pickupGeopoint: ").append(toIndentedString(pickupGeopoint)).append("\n");
     sb.append("    pickupPlaceId: ").append(toIndentedString(pickupPlaceId)).append("\n");
@@ -559,6 +736,8 @@ public class FreightDTO   {
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    vehicleId: ").append(toIndentedString(vehicleId)).append("\n");
+    sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
+    sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();
   }

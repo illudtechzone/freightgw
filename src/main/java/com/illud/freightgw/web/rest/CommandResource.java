@@ -103,5 +103,22 @@ public class CommandResource {
 		log.debug("<<<<<<<< update freight >>>>>>>>>", vehicleLookUp);
 		return comService.update(vehicleLookUp);	
 	}
+	@PostMapping("/create/company/ifnotexist")
+	public ResponseEntity<CompanyDTO> createcompanyIfnotExist(@RequestBody CompanyDTO companyDTO){
+		log.debug("<<<<<<< create companyIfnotExist>>>>>>>",companyDTO);
+		return comService.createcompanyIfnotExist(companyDTO);
+		
+	}
+	@PostMapping("/create/customer/ifnotexist")
+	public ResponseEntity<CustomerDTO> createcustomerIfnotExist(@RequestBody CustomerDTO customerDTO){
+		log.debug("<<<<<<< customer if not exist >>>>>>>",customerDTO);
+		return comService.createcustomerIfnotExist(customerDTO);
+	}
+	@PostMapping("/create/driver/ifnotexist")
+	public ResponseEntity<DriverDTO> createdriverIfnotExist(@RequestBody DriverDTO driverDTO){
+		log.debug("<<<<< create if not exist >>>>>",driverDTO);
+		return comService.createdriverIfnotExist(driverDTO);
+		
+	}
 
 }

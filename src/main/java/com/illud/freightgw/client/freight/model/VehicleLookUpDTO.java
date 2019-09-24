@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * VehicleLookUpDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-20T11:29:20.373+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-24T09:57:01.751+05:30[Asia/Calcutta]")
 
 public class VehicleLookUpDTO   {
   @JsonProperty("height")
@@ -32,7 +32,7 @@ public class VehicleLookUpDTO   {
   private Double length = null;
 
   @JsonProperty("maxWeight")
-  private Long maxWeight = null;
+  private Double maxWeight = null;
 
   @JsonProperty("name")
   private String name = null;
@@ -140,7 +140,7 @@ public class VehicleLookUpDTO   {
     this.length = length;
   }
 
-  public VehicleLookUpDTO maxWeight(Long maxWeight) {
+  public VehicleLookUpDTO maxWeight(Double maxWeight) {
     this.maxWeight = maxWeight;
     return this;
   }
@@ -152,11 +152,11 @@ public class VehicleLookUpDTO   {
   @ApiModelProperty(value = "")
 
 
-  public Long getMaxWeight() {
+  public Double getMaxWeight() {
     return maxWeight;
   }
 
-  public void setMaxWeight(Long maxWeight) {
+  public void setMaxWeight(Double maxWeight) {
     this.maxWeight = maxWeight;
   }
 

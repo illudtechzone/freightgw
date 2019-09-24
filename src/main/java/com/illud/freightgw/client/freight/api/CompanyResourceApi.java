@@ -25,7 +25,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-20T11:29:20.373+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-24T09:57:01.751+05:30[Asia/Calcutta]")
 
 @Api(value = "CompanyResource", description = "the CompanyResource API")
 public interface CompanyResourceApi {
@@ -42,6 +42,20 @@ public interface CompanyResourceApi {
         consumes = "application/json",
         method = RequestMethod.POST)
     ResponseEntity<CompanyDTO> createCompanyUsingPOST(@ApiParam(value = "companyDTO" ,required=true )  @Valid @RequestBody CompanyDTO companyDTO);
+
+
+    @ApiOperation(value = "createcompantIfnotExist", nickname = "createcompantIfnotExistUsingPOST", notes = "", response = CompanyDTO.class, tags={ "company-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = CompanyDTO.class),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/create/companies",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<CompanyDTO> createcompantIfnotExistUsingPOST(@ApiParam(value = "companyDTO" ,required=true )  @Valid @RequestBody CompanyDTO companyDTO);
 
 
     @ApiOperation(value = "deleteCompany", nickname = "deleteCompanyUsingDELETE", notes = "", tags={ "company-resource", })

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.illud.freightgw.client.freight.api.CommandResourceApi;
 import com.illud.freightgw.client.freight.api.CompanyResourceApi;
 import com.illud.freightgw.client.freight.api.CustomerResourceApi;
 import com.illud.freightgw.client.freight.api.DriverResourceApi;
@@ -34,6 +35,8 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 	VehicleResourceApi vehResourceApi;
 	@Autowired
 	VehicleLookUpResourceApi vehLookUpResourceApi;
+	@Autowired
+	CommandResourceApi commandResourceApi;
 	
 
 
@@ -61,11 +64,7 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 		return cusResourceApi.updateCustomerUsingPUT(customer);
 	}
 
-	@Override
-	public ResponseEntity<FreightDTO> save(FreightDTO freight) {
-		log.debug("<<<<<<< create freight in impl >>>>>>>",freight);
-		return freResourceApi.createFreightUsingPOST(freight);
-	}
+	
 
 	@Override
 	public ResponseEntity<FreightDTO> update(FreightDTO freight) {
@@ -126,5 +125,26 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 		log.debug("<<<<<< create driver if ot exist >>>>>>",driverDTO);
 		return driResourceApi.createdriverIfnotExistUsingPOST(driverDTO);
 	}
+	
+///////////////////////////activiti-workflow///////////////////////////////////
 
+	@Override
+	public ResponseEntity<FreightDTO> save(FreightDTO freight) {
+		log.debug("<<<<<<< create freight in impl >>>>>>>",freight);
+		return freResourceApi.createFreightUsingPOST(freight);
+	}
+
+	@Override
+	public void sendQuatation(String taskId, QuotationDTO response) {
+		commandResourceApi.sendQuatationUsingPOST(taskId, response);
+		
+	}
+
+	@Override
+	public void customerStatus(String taskId, CustomerStatus customerStatus) {
+		
+		commandResourceApi.customerStatusUsingPOST(taskId, customerStatus);
+	}
+	
+	
 }

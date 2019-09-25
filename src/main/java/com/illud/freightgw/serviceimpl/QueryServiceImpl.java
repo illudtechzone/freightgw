@@ -2,11 +2,13 @@ package com.illud.freightgw.serviceimpl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.data.elasticsearch.core.query.StringQuery;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +17,11 @@ import com.github.vanroy.springdata.jest.JestElasticsearchTemplate;
 
 import static org.elasticsearch.index.query.QueryBuilders.termQuery;
 
+import java.util.List;
+
+import javax.validation.Valid;
+
+import com.illud.freightgw.client.freight.api.QueryResourceApi;
 import com.illud.freightgw.client.freight.model.*;
 import com.illud.freightgw.service.QueryService;
 
@@ -28,6 +35,9 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	
 	private final JestClient jestClient;
 	private final JestElasticsearchTemplate esTemplate;
+	
+	@Autowired 
+	QueryResourceApi queryResourceApi;
 	
 	public QueryServiceImpl(JestClient jestClient,JestElasticsearchTemplate esTemplate) {
 		this.jestClient=jestClient;
@@ -59,6 +69,39 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 		log.debug("<<<<<< getOne driver>>>>",iDPCode);
 		SearchQuery searchQuery= new NativeSearchQueryBuilder().withQuery(termQuery("company.companyIdpCode.keyword", iDPCode)).build();
 		return esTemplate.queryForPage(searchQuery, Vehicle.class);
+	}
+
+	@Override
+	public ResponseEntity<DataResponse> getTasks(String name, String nameLike, String description, String priority,
+			String minimumPriority, String maximumPriority, String assignee, String assigneeLike, String owner,
+			String ownerLike, String unassigned, String delegationState, String candidateUser, String candidateGroup,
+			String candidateGroups, String involvedUser, String taskDefinitionKey, String taskDefinitionKeyLike,
+			String processInstanceId, String processInstanceBusinessKey, String processInstanceBusinessKeyLike,
+			@Valid String processDefinitionId, @Valid String processDefinitionKey,
+			@Valid String processDefinitionKeyLike, @Valid String processDefinitionName,
+			@Valid String processDefinitionNameLike, @Valid String executionId, @Valid String createdOn,
+			@Valid String createdBefore, @Valid String createdAfter, @Valid String dueOn, @Valid String dueBefore,
+			@Valid String dueAfter, @Valid Boolean withoutDueDate, @Valid Boolean excludeSubTasks,
+			@Valid Boolean active, @Valid Boolean includeTaskLocalVariables, @Valid Boolean includeProcessVariables,
+			@Valid String tenantId, @Valid String tenantIdLike, @Valid Boolean withoutTenantId,
+			@Valid String candidateOrAssigned, @Valid String category) {
+		
+		return queryResourceApi.getTasksUsingGET(active, assignee, assigneeLike, candidateGroup, candidateGroups, candidateOrAssigned, candidateUser, category, createdAfter, createdBefore, createdOn, delegationState, description, dueAfter, dueBefore, dueOn, excludeSubTasks, executionId, includeProcessVariables, includeTaskLocalVariables, involvedUser, maximumPriority, minimumPriority, name, nameLike, owner, ownerLike, maximumPriority, processDefinitionId, processDefinitionKey, processDefinitionKeyLike, processDefinitionName, processDefinitionNameLike, processInstanceBusinessKey, processInstanceBusinessKeyLike, processInstanceId, taskDefinitionKey, taskDefinitionKeyLike, tenantId, tenantIdLike, unassigned, withoutDueDate, withoutTenantId);
+	}
+
+	@Override
+	public ResponseEntity<List<FreightDTO>> getPendingFreights(String name, String nameLike, String assignee, String assigneeLike,
+			String candidateUser, String candidateGroup, String candidateGroups, String processInstanceId,
+			@Valid String processDefinitionId, @Valid String processDefinitionKey, @Valid String createdOn,
+			@Valid String createdBefore, @Valid String createdAfter) {
+		
+		return queryResourceApi.getPendingFreightsUsingGET(assignee, assigneeLike, candidateGroup, candidateGroups, candidateUser, createdAfter, createdBefore, createdOn, name, nameLike, processDefinitionId, processDefinitionKey, processInstanceId);
+	}
+
+	@Override
+	public ResponseEntity<FreightDTO> getBookingDetails(String processInstanceId) {
+		
+		return queryResourceApi.getBookingDetailsUsingGET(processInstanceId);
 	}
 	
 

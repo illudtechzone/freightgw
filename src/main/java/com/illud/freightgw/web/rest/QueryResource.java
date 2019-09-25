@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.illud.freightgw.client.freight.model.Company;
 import com.illud.freightgw.client.freight.model.Customer;
 import com.illud.freightgw.client.freight.model.Driver;
+import com.illud.freightgw.client.freight.model.Freight;
+import com.illud.freightgw.client.freight.model.RequestStatus;
 import com.illud.freightgw.client.freight.model.Vehicle;
 import com.illud.freightgw.service.QueryService;
 
@@ -53,9 +55,16 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		
 	}
 	@GetMapping("/getAllvehicles")
-	public ResponseEntity<List<Vehicle>> findAllvehicles(String companyIdpCode,Pageable pageable){
+	public ResponseEntity<List<Vehicle>> findAllvehicles(@PathVariable String companyIdpCode,Pageable pageable){
 		log.debug("<<<<<<<< input a idpcode to get all vehicles >>>>>>>>",companyIdpCode,pageable);
 		Page<Vehicle> page = queService.findAllVehiclesByCompanyIdpCode(companyIdpCode, pageable);
+		return ResponseEntity.ok().body(page.getContent());
+		
+	}
+	@GetMapping("/getAllFreight")
+	public ResponseEntity<List<Freight>> findAllFreights(@PathVariable RequestStatus requestedStatus,Pageable pageable){
+		log.debug("<<<<<<<<< getall freights input requestedstatus>>>>>>>",requestedStatus);
+		Page<Freight> page = queService.findAllFreightsByRequestedStatus(requestedStatus,pageable);
 		return ResponseEntity.ok().body(page.getContent());
 		
 	}

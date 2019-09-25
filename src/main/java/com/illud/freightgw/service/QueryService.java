@@ -6,6 +6,8 @@ import org.springframework.data.domain.Pageable;
 import com.illud.freightgw.client.freight.model.Company;
 import com.illud.freightgw.client.freight.model.Customer;
 import com.illud.freightgw.client.freight.model.Driver;
+import com.illud.freightgw.client.freight.model.Freight;
+import com.illud.freightgw.client.freight.model.RequestStatus;
 import com.illud.freightgw.client.freight.model.Vehicle;
 
 public interface QueryService {
@@ -17,4 +19,6 @@ public interface QueryService {
 	Driver getOneDriver(String driverIdpCode);
 
 	Page<Vehicle> findAllVehiclesByCompanyIdpCode(String companyiDPCode, Pageable page);
+
+	Page<Freight> findAllFreightsByRequestedStatus(RequestStatus requestedStatus, Pageable pageable);
 }

@@ -30,14 +30,14 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		this.queService=queService;
 	}
 	
-	@GetMapping("/getcompany/{comapnyiDPCode}")
+	@GetMapping("/getcompany/{comapanyIdpCode}")
 	public Company searchCompanyIDPCode(@PathVariable String companyIdpCode){
 		log.debug("<<<<<<<<< input a idpcode to get a company details >>>>>>" , companyIdpCode);
 		
 		return queService.getOneCompany(companyIdpCode);
 		
 	}
-	@GetMapping("/getcustomer/{customeriDPCode}")
+	@GetMapping("/getcustomer/{customerIdpCode}")
 	public Customer searchCustomerIDPCode(@PathVariable String customerIdpCode){
 		log.debug(" <<<<<<<<< input a idpcode to get a customer details>>>>>> " , customerIdpCode);
 		//Page<Customer> page = queService.getDetailsFromCustomeriDPCode(iDPCode);
@@ -45,7 +45,7 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		
 		return queService.getOneCustomer(customerIdpCode);
 	}
-	@GetMapping("/getdriver/{driveriDPCode}")
+	@GetMapping("/getdriver/{driverIdpCode}")
 	public Driver searchDriverIDPCode(@PathVariable String driverIdpCode){
 		log.debug("<<<<<<<<< input a idpcode to get a driver details >>>>>>" , driverIdpCode);
 		

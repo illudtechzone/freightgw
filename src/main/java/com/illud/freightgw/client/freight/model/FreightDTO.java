@@ -6,8 +6,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Date;
 import org.springframework.validation.annotation.Validated;
@@ -18,7 +16,7 @@ import javax.validation.constraints.*;
  * FreightDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-25T10:23:56.523+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-25T15:31:07.496+05:30[Asia/Kolkata]")
 
 public class FreightDTO   {
   /**
@@ -149,6 +147,9 @@ public class FreightDTO   {
 
   @JsonProperty("startTime")
   private OffsetDateTime startTime = null;
+
+  @JsonProperty("trackingId")
+  private String trackingId = null;
 
   @JsonProperty("type")
   private String type = null;
@@ -586,6 +587,26 @@ public class FreightDTO   {
     this.startTime = startTime;
   }
 
+  public FreightDTO trackingId(String trackingId) {
+    this.trackingId = trackingId;
+    return this;
+  }
+
+  /**
+   * Get trackingId
+   * @return trackingId
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getTrackingId() {
+    return trackingId;
+  }
+
+  public void setTrackingId(String trackingId) {
+    this.trackingId = trackingId;
+  }
+
   public FreightDTO type(String type) {
     this.type = type;
     return this;
@@ -697,6 +718,7 @@ public class FreightDTO   {
         Objects.equals(this.pickupPlaceId, freightDTO.pickupPlaceId) &&
         Objects.equals(this.requestedStatus, freightDTO.requestedStatus) &&
         Objects.equals(this.startTime, freightDTO.startTime) &&
+        Objects.equals(this.trackingId, freightDTO.trackingId) &&
         Objects.equals(this.type, freightDTO.type) &&
         Objects.equals(this.vehicleId, freightDTO.vehicleId) &&
         Objects.equals(this.weight, freightDTO.weight) &&
@@ -705,7 +727,7 @@ public class FreightDTO   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(acceptedStatus, companyId, createdTime, customerId, deliveryDate, destinationAddress, destinationGeopoint, destinationPlaceId, destionationTime, distance, estimatedAmount, fragile, height, id, length, originalAmount, pickupAddress, pickupGeopoint, pickupPlaceId, requestedStatus, startTime, type, vehicleId, weight, width);
+    return Objects.hash(acceptedStatus, companyId, createdTime, customerId, deliveryDate, destinationAddress, destinationGeopoint, destinationPlaceId, destionationTime, distance, estimatedAmount, fragile, height, id, length, originalAmount, pickupAddress, pickupGeopoint, pickupPlaceId, requestedStatus, startTime, trackingId, type, vehicleId, weight, width);
   }
 
   @Override
@@ -734,6 +756,7 @@ public class FreightDTO   {
     sb.append("    pickupPlaceId: ").append(toIndentedString(pickupPlaceId)).append("\n");
     sb.append("    requestedStatus: ").append(toIndentedString(requestedStatus)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
+    sb.append("    trackingId: ").append(toIndentedString(trackingId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    vehicleId: ").append(toIndentedString(vehicleId)).append("\n");
     sb.append("    weight: ").append(toIndentedString(weight)).append("\n");

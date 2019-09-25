@@ -30,7 +30,7 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		this.queService=queService;
 	}
 	
-	@GetMapping("/getcompany/{comapanyIdpCode}")
+	@GetMapping("/getcompany/{companyIdpCode}")
 	public Company searchCompanyIDPCode(@PathVariable String companyIdpCode){
 		log.debug("<<<<<<<<< input a idpcode to get a company details >>>>>>" , companyIdpCode);
 		

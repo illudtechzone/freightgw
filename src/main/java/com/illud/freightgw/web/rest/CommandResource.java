@@ -111,12 +111,12 @@ public class CommandResource {
 	}
 	@PostMapping("/create/customer/ifnotexist")
 	public ResponseEntity<CustomerDTO> createcustomerIfnotExist(@RequestBody CustomerDTO customerDTO){
-		log.debug("<<<<<<< customer if not exist >>>>>>>",customerDTO);
+		log.debug("<<<<<<< customer customer if not exist >>>>>>>",customerDTO);
 		return comService.createcustomerIfnotExist(customerDTO);
 	}
 	@PostMapping("/create/driver/ifnotexist")
 	public ResponseEntity<DriverDTO> createdriverIfnotExist(@RequestBody DriverDTO driverDTO){
-		log.debug("<<<<< create if not exist >>>>>",driverDTO);
+		log.debug("<<<<< create driver if not exist >>>>>",driverDTO);
 		return comService.createdriverIfnotExist(driverDTO);
 		
 	}

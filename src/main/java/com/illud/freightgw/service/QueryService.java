@@ -28,6 +28,7 @@ public interface QueryService {
 	Page<Vehicle> findAllVehiclesByCompanyIdpCode(String companyiDPCode, Pageable page);
 
 
+
 	Page<Freight> findAllFreightsByRequestedStatus(RequestStatus requestedStatus, Pageable pageable);
 
 	ResponseEntity<DataResponse> getTasks(String name, String nameLike, String description, String priority,
@@ -50,5 +51,6 @@ public interface QueryService {
 			@Valid String createdBefore, @Valid String createdAfter);
 
 	ResponseEntity<FreightDTO> getBookingDetails(String processInstanceId);
+
 
 }

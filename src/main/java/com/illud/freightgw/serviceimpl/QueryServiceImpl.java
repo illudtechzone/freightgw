@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.github.vanroy.springdata.jest.JestElasticsearchTemplate;
 
 
-import static org.elasticsearch.index.query.QueryBuilders.termQuery;
+import static org.elasticsearch.index.query.QueryBuilders.*;
 
 import java.util.List;
 
@@ -71,6 +71,7 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 		return esTemplate.queryForPage(searchQuery, Vehicle.class);
 	}
 
+
 	@Override
 	public Page<Freight> findAllFreightsByRequestedStatus(RequestStatus requestedStatus, Pageable pageable) {
 		log.debug("<<<<<< input a requeststatus to get AllFreights>>>>>>",requestedStatus,pageable);
@@ -108,7 +109,5 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	public ResponseEntity<FreightDTO> getBookingDetails(String processInstanceId) {
 		
 		return queryResourceApi.getBookingDetailsUsingGET(processInstanceId);
-	}
-	
-
+	}	
 }

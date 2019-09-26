@@ -62,14 +62,14 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		return queService.getOneDriver(driverIdpCode);
 		
 	}
-	@GetMapping("/getAllvehicles")
+	@GetMapping("/getAllvehicles/{companyIdpCode}")
 	public ResponseEntity<List<Vehicle>> findAllvehicles(@PathVariable String companyIdpCode,Pageable pageable){
 		log.debug("<<<<<<<< input a idpcode to get all vehicles >>>>>>>>",companyIdpCode,pageable);
 		Page<Vehicle> page = queService.findAllVehiclesByCompanyIdpCode(companyIdpCode, pageable);
 		return ResponseEntity.ok().body(page.getContent());
 		
 	}
-	@GetMapping("/getAllFreight")
+	@GetMapping("/getAllFreight/{requestedStatus}")
 	public ResponseEntity<List<Freight>> findAllFreights(@PathVariable RequestStatus requestedStatus,Pageable pageable){
 		log.debug("<<<<<<<<< getall freights input requestedstatus>>>>>>>",requestedStatus);
 		Page<Freight> page = queService.findAllFreightsByRequestedStatus(requestedStatus,pageable);

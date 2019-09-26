@@ -29,7 +29,7 @@ import com.illud.freightgw.service.QueryService;
 import io.swagger.annotations.ApiParam;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api")
 public class QueryResource {
 
 private final Logger log = LoggerFactory.getLogger(QueryResource.class);

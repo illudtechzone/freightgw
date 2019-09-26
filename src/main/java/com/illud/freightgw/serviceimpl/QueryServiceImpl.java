@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.github.vanroy.springdata.jest.JestElasticsearchTemplate;
 
 
-import static org.elasticsearch.index.query.QueryBuilders.termQuery;
+import static org.elasticsearch.index.query.QueryBuilders.*;
 
 import com.illud.freightgw.client.freight.model.*;
 import com.illud.freightgw.service.QueryService;
@@ -60,6 +60,13 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 		SearchQuery searchQuery= new NativeSearchQueryBuilder().withQuery(termQuery("company.companyIdpCode.keyword", iDPCode)).build();
 		return esTemplate.queryForPage(searchQuery, Vehicle.class);
 	}
-	
 
+	@Override
+	public Page<Vehicle> findAllRequestedFreights(Pageable pageable) {
+		log.debug("<<<<<<find All Requested Freights>>>>",pageable);
+		SearchQuery searchQuery= new NativeSearchQueryBuilder().withQuery(match).build();
+		return null;
+	}
+	
+	
 }

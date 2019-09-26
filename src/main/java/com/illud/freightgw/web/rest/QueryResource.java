@@ -59,5 +59,14 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		return ResponseEntity.ok().body(page.getContent());
 		
 	}
+	
+	@GetMapping("/getAllvehicles")
+	public ResponseEntity<List<Vehicle>> findAllRequestedFreights(Pageable pageable){
+		log.debug("<<<<<<<< input a pageable to get requested Freights >>>>>>>>",pageable);
+		Page<Vehicle> page = queService.findAllRequestedFreights(pageable);
+		return ResponseEntity.ok().body(page.getContent());
+		
+	}
+	
 
 }

@@ -17,4 +17,7 @@ public interface QueryService {
 	Driver getOneDriver(String driverIdpCode);
 
 	Page<Vehicle> findAllVehiclesByCompanyIdpCode(String companyiDPCode, Pageable page);
+	
+	
+	Page<Vehicle> findAllRequestedFreights(Pageable pageable);
 }

@@ -71,7 +71,7 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 	}
 	@GetMapping("/getAllFreight/{requestedStatus}")
 	public ResponseEntity<List<Freight>> findAllFreights(@PathVariable RequestStatus requestedStatus,Pageable pageable){
-		log.debug("<<<<<<<<< getall freights input requestedstatus>>>>>>>",requestedStatus);
+		log.debug("<<<<<<<<< getall freights input requestedstatus>>>>>>>"+requestedStatus);
 		Page<Freight> page = queService.findAllFreightsByRequestedStatus(requestedStatus,pageable);
 		return ResponseEntity.ok().body(page.getContent());
 		

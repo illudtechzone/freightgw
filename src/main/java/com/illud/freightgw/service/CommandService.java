@@ -14,7 +14,7 @@ public interface CommandService {
 
 	ResponseEntity<CustomerDTO> update(CustomerDTO customer);
 
-	ResponseEntity<FreightDTO> save(FreightDTO freight);
+	
 
 	ResponseEntity<FreightDTO> update(FreightDTO freight);
 
@@ -36,6 +36,12 @@ public interface CommandService {
 
 	ResponseEntity<DriverDTO> createdriverIfnotExist(DriverDTO driverDTO);
 
-	 
+///////////////////////////activiti-workflow///////////////////////////////////
+	
+	ResponseEntity<FreightDTO> save(FreightDTO freight);
+
+	void sendQuatation(String taskId, QuotationDTO response);
+
+	void customerStatus(String taskId, CustomerStatus customerStatus);
 
 }

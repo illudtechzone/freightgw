@@ -67,15 +67,15 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	@Override
 	public Page<Vehicle> findAllVehiclesByCompanyIdpCode(String iDPCode,Pageable page) {
 		log.debug("<<<<<< getOne driver>>>>",iDPCode);
-		SearchQuery searchQuery= new NativeSearchQueryBuilder().withQuery(termQuery("company.companyIdpCode.keyword", iDPCode)).build();
+		SearchQuery searchQuery= new NativeSearchQueryBuilder().withQuery(termQuery("companyIdpCode.keyword", iDPCode)).build();
 		return esTemplate.queryForPage(searchQuery, Vehicle.class);
 	}
 
 
 	@Override
 	public Page<Freight> findAllFreightsByRequestedStatus(RequestStatus requestedStatus, Pageable pageable) {
-		log.debug("<<<<<< input a requeststatus to get AllFreights>>>>>>",requestedStatus,pageable);
-		SearchQuery sq =new NativeSearchQueryBuilder().withQuery(termQuery("freight.requestedStatus.keyword",requestedStatus)).build();
+		log.debug("<<<<<< input a requeststatus to get AllFreights>>"+requestedStatus.toString()+">>>>"+requestedStatus,pageable);
+		SearchQuery sq =new NativeSearchQueryBuilder().withQuery(termQuery("requestedStatus.keyword",requestedStatus)).build();
 		return esTemplate.queryForPage(sq, Freight.class);
 	}
 		@Override

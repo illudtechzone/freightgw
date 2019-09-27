@@ -23,6 +23,7 @@ import com.illud.freightgw.client.freight.model.Driver;
 import com.illud.freightgw.client.freight.model.Freight;
 import com.illud.freightgw.client.freight.model.RequestStatus;
 import com.illud.freightgw.client.freight.model.FreightDTO;
+import com.illud.freightgw.client.freight.model.Quotation;
 import com.illud.freightgw.client.freight.model.Vehicle;
 import com.illud.freightgw.service.QueryService;
 
@@ -70,15 +71,20 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		
 	}
 	@GetMapping("/getAllFreight/{requestedStatus}")
-	public ResponseEntity<List<Freight>> findAllFreights(@PathVariable RequestStatus requestedStatus,Pageable pageable){
+	public ResponseEntity<List<FreightDTO>> findAllFreights(@PathVariable RequestStatus requestedStatus,Pageable pageable){
 		log.debug("<<<<<<<<< getall freights input requestedstatus>>>>>>>"+requestedStatus);
-		Page<Freight> page = queService.findAllFreightsByRequestedStatus(requestedStatus,pageable);
+		return queService.findAllFreightsByRequestedStatus(requestedStatus,pageable);
+		
+		
+	}
+	@GetMapping("/getAllQuotations/{freightId")
+	public ResponseEntity<List<Quotation>> findAllQuotations(@PathVariable Long freightId,Pageable pageable){
+		log.debug("<<<<<<< findAllQuotations >>>>>>",freightId);
+		Page<Quotation> page = queService.findAllQuotationsByfreightId(freightId, pageable);
 		return ResponseEntity.ok().body(page.getContent());
 		
 	}
-	
-
-///////////////////////////activiti-workflow-apis///////////////////////////////////
+	//////////////////////////activiti-workflow-apis///////////////////////////////////
 	
 	@GetMapping("/tasks")
 	public ResponseEntity<DataResponse> getTasks(@RequestParam(value = "name", required = false) String name,

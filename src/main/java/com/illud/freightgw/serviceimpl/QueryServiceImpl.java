@@ -21,6 +21,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.illud.freightgw.client.freight.api.FreightResourceApi;
 import com.illud.freightgw.client.freight.api.QueryResourceApi;
 import com.illud.freightgw.client.freight.model.*;
 import com.illud.freightgw.service.QueryService;
@@ -38,6 +39,9 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	
 	@Autowired 
 	QueryResourceApi queryResourceApi;
+	
+	@Autowired
+	FreightResourceApi freightResourceApi;
 	
 	public QueryServiceImpl(JestClient jestClient,JestElasticsearchTemplate esTemplate) {
 		this.jestClient=jestClient;
@@ -73,12 +77,19 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 
 
 	@Override
-	public Page<Freight> findAllFreightsByRequestedStatus(RequestStatus requestedStatus, Pageable pageable) {
+	public ResponseEntity<List<FreightDTO>> findAllFreightsByRequestedStatus(RequestStatus requestedStatus, Pageable pageable) {
 		log.debug("<<<<<< input a requeststatus to get AllFreights>>"+requestedStatus.toString()+">>>>"+requestedStatus,pageable);
 		SearchQuery sq =new NativeSearchQueryBuilder().withQuery(termQuery("requestedStatus.keyword",requestedStatus)).build();
-		return esTemplate.queryForPage(sq, Freight.class);
+		return freightResourceApi.createFreightDtoListUsingPOST(esTemplate.queryForPage(sq, Freight.class));
 	}
-		@Override
+	@Override
+	public Page<Quotation> findAllQuotationsByfreightId(Long freightId, Pageable pageable) {
+		log.debug("<<<<<< findAllQuotations in impl >>>>>>>",freightId);
+		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(termQuery("freightId.keyword",freightId)).build();
+		return esTemplate.queryForPage(sq, Quotation.class);
+	}	
+	
+	@Override
 	public ResponseEntity<DataResponse> getTasks(String name, String nameLike, String description, String priority,
 			String minimumPriority, String maximumPriority, String assignee, String assigneeLike, String owner,
 			String ownerLike, String unassigned, String delegationState, String candidateUser, String candidateGroup,
@@ -109,5 +120,7 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	public ResponseEntity<FreightDTO> getBookingDetails(String processInstanceId) {
 		
 		return queryResourceApi.getBookingDetailsUsingGET(processInstanceId);
-	}	
+	}
+
+
 }

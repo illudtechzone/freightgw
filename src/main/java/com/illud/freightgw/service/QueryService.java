@@ -15,6 +15,7 @@ import com.illud.freightgw.client.freight.model.Driver;
 import com.illud.freightgw.client.freight.model.Freight;
 import com.illud.freightgw.client.freight.model.RequestStatus;
 import com.illud.freightgw.client.freight.model.FreightDTO;
+import com.illud.freightgw.client.freight.model.Quotation;
 import com.illud.freightgw.client.freight.model.Vehicle;
 
 public interface QueryService {
@@ -27,9 +28,9 @@ public interface QueryService {
 
 	Page<Vehicle> findAllVehiclesByCompanyIdpCode(String companyiDPCode, Pageable page);
 
-
-
-	Page<Freight> findAllFreightsByRequestedStatus(RequestStatus requestedStatus, Pageable pageable);
+	ResponseEntity<List<FreightDTO>> findAllFreightsByRequestedStatus(RequestStatus requestedStatus, Pageable pageable);
+	
+	Page<Quotation> findAllQuotationsByfreightId(Long freightId, Pageable pageable);
 
 	ResponseEntity<DataResponse> getTasks(String name, String nameLike, String description, String priority,
 			String minimumPriority, String maximumPriority, String assignee, String assigneeLike, String owner,
@@ -51,6 +52,8 @@ public interface QueryService {
 			@Valid String createdBefore, @Valid String createdAfter);
 
 	ResponseEntity<FreightDTO> getBookingDetails(String processInstanceId);
+
+	
 
 
 }

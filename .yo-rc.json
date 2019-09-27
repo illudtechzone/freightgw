@@ -33,7 +33,7 @@
     },
     "generator-jhipster-swagger-cli": {
         "promptValues": {
-            "inputSpec": "http://35.232.29.128:8085/v2/api-docs",
+            "inputSpec": "http://localhost:8085/v2/api-docs",
             "cliName": "freight"
         },
         "apis": {
@@ -41,7 +41,7 @@
                 "spec": "http://35.232.29.128:8085/freight/v2/api-docs"
             },
             "freight": {
-                "spec": "http://35.232.29.128:8085/v2/api-docs"
+                "spec": "http://localhost:8085/v2/api-docs"
             }
         }
     }

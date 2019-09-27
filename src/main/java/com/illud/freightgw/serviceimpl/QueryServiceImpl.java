@@ -67,7 +67,7 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	@Override
 	public Page<Vehicle> findAllVehiclesByCompanyIdpCode(String iDPCode,Pageable page) {
 		log.debug("<<<<<< getOne driver>>>>",iDPCode);
-		SearchQuery searchQuery= new NativeSearchQueryBuilder().withQuery(termQuery("companyIdpCode.keyword", iDPCode)).build();
+		SearchQuery searchQuery= new NativeSearchQueryBuilder().withQuery(termQuery("company.companyIdpCode.keyword", iDPCode)).build();
 		return esTemplate.queryForPage(searchQuery, Vehicle.class);
 	}
 

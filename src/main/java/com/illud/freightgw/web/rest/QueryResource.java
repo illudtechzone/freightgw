@@ -21,9 +21,9 @@ import com.illud.freightgw.client.freight.model.Customer;
 import com.illud.freightgw.client.freight.model.DataResponse;
 import com.illud.freightgw.client.freight.model.Driver;
 import com.illud.freightgw.client.freight.model.Freight;
-import com.illud.freightgw.client.freight.model.RequestStatus;
 import com.illud.freightgw.client.freight.model.FreightDTO;
 import com.illud.freightgw.client.freight.model.Quotation;
+import com.illud.freightgw.client.freight.model.RequestStatus;
 import com.illud.freightgw.client.freight.model.Vehicle;
 import com.illud.freightgw.service.QueryService;
 

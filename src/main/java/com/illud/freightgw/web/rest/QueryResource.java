@@ -76,6 +76,7 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		return ResponseEntity.ok().body(page.getContent());
 		
 	}
+	
 
 ///////////////////////////activiti-workflow-apis///////////////////////////////////
 	

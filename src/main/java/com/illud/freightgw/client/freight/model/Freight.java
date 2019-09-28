@@ -14,13 +14,16 @@ import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
+import org.springframework.data.elasticsearch.annotations.Document;
+
 /**
  * Freight
  */
 @Validated
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-27T15:11:08.290+05:30[Asia/Calcutta]")
-
-public class Freight   {
+@Document(indexName = "freight")
+    
+ public class Freight   {
   /**
    * Gets or Sets acceptedStatus
    */

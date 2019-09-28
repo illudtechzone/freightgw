@@ -80,7 +80,7 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	public ResponseEntity<List<FreightDTO>> findAllFreightsByRequestedStatus(RequestStatus requestedStatus, Pageable pageable) {
 		log.debug("<<<<<< input a requeststatus to get AllFreights>>"+requestedStatus.toString()+">>>>"+requestedStatus,pageable);
 		SearchQuery sq =new NativeSearchQueryBuilder().withQuery(termQuery("requestedStatus.keyword",requestedStatus)).build();
-		return freightResourceApi.createFreightDtoListUsingPOST(esTemplate.queryForPage(sq, Freight.class));
+		return freightResourceApi.createFreightDtoListUsingPOST(esTemplate.queryForPage(sq, Freight.class).getContent());
 	}
 	@Override
 	public Page<Quotation> findAllQuotationsByfreightId(Long freightId, Pageable pageable) {

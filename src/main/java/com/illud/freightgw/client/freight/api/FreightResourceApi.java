@@ -7,9 +7,8 @@ package com.illud.freightgw.client.freight.api;
 
 import com.illud.freightgw.client.freight.model.Freight;
 import com.illud.freightgw.client.freight.model.FreightDTO;
+import java.util.List;
 import io.swagger.annotations.*;
-
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-27T15:11:08.290+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-28T11:33:41.604+05:30[Asia/Calcutta]")
 
 @Api(value = "FreightResource", description = "the FreightResource API")
 public interface FreightResourceApi {
@@ -58,7 +57,7 @@ public interface FreightResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<List<FreightDTO>> createFreightDtoListUsingPOST(@ApiParam(value = "page" ,required=true )  @Valid @RequestBody Page<Freight> pages);
+    ResponseEntity<List<FreightDTO>> createFreightDtoListUsingPOST(@ApiParam(value = "page" ,required=true )  @Valid @RequestBody List<Freight> freight);
 
 
     @ApiOperation(value = "createFreight", nickname = "createFreightUsingPOST", notes = "", response = FreightDTO.class, tags={ "freight-resource", })

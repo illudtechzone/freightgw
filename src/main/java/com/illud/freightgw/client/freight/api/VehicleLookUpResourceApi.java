@@ -25,7 +25,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-27T15:11:08.290+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-28T11:33:41.604+05:30[Asia/Calcutta]")
 
 @Api(value = "VehicleLookUpResource", description = "the VehicleLookUpResource API")
 public interface VehicleLookUpResourceApi {

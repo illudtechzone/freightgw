@@ -38,7 +38,7 @@ spring:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:mysql://localhost:3306/freightgw?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
         username: root
-        password: root
+        password:
         hikari:
             poolName: Hikari
             auto-commit: false
@@ -59,17 +59,9 @@ spring:
             hibernate.generate_statistics: true
     data:
         elasticsearch:
-           cluster-name: ac250e1fe16d4aaeb0fb82c45affbb2b
-           cluster-nodes: https://ac250e1fe16d4aaeb0fb82c45affbb2b.asia-northeast1.gcp.cloud.es.io:9243/
-           properties:
-               path:
-                   logs: target/elasticsearch/log
-                   data: target/elasticsearch/data
-        jest:
-           password: znlw0fQs9BzVwQxrCxxSe5I3
-           username: elastic
-           readTimeout: 10000
-           uri: https://ac250e1fe16d4aaeb0fb82c45affbb2b.asia-northeast1.gcp.cloud.es.io:9243/
+            properties:
+                path:
+                    home: target/elasticsearch
     liquibase:
         contexts: dev
     mail:

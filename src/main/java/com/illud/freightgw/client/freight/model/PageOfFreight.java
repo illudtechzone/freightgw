@@ -17,7 +17,7 @@ import javax.validation.constraints.*;
  * PageOfFreight
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-27T15:11:08.290+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-28T11:30:30.981+05:30[Asia/Calcutta]")
 
 public class PageOfFreight   {
   @JsonProperty("content")

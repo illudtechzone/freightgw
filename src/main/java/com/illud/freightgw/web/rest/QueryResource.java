@@ -41,6 +41,28 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		this.queService=queService;
 	}
 	
+	@GetMapping("/findCompanybyId/{id}")
+	public Company findCompanyById(@PathVariable Long id){
+		log.debug("<<<<<<<<< input a id to get a company details >>>>>>" , id);
+		
+		return queService.findCompanyById(id);
+		
+	}
+	@GetMapping("/findCustomerbyId/{id}")
+	public Customer findCustomerById(@PathVariable Long id){
+		log.debug(" <<<<<<<<< input a id to get a customer details>>>>>> " , id);
+		//Page<Customer> page = queService.getDetailsFromCustomeriDPCode(iDPCode);
+		//return ResponseEntity.ok().body(page.getContent());
+		
+		return queService.findCustomerById(id);
+	}
+	@GetMapping("/findDriverbyId/{id}")
+	public Driver findDriverById(@PathVariable Long id){
+		log.debug("<<<<<<<<< input a id to get a driver details >>>>>>" , id);
+		
+		return queService.findDriverById(id);
+	}
+	
 	@GetMapping("/getcompany/{companyIdpCode}")
 	public Company searchCompanyIDPCode(@PathVariable String companyIdpCode){
 		log.debug("<<<<<<<<< input a idpcode to get a company details >>>>>>" , companyIdpCode);

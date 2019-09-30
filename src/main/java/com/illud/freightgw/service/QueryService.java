@@ -20,6 +20,12 @@ import com.illud.freightgw.client.freight.model.Vehicle;
 
 public interface QueryService {
 
+	Company findCompanyById(Long id);
+
+	Customer findCustomerById(Long id);
+
+	Driver findDriverById(Long id);
+	
 	Company getOneCompany(String companyIdpCode);
 
 	Customer getOneCustomer(String customerIdpCode);

@@ -49,6 +49,26 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	}
 
 	@Override
+	public Company findCompanyById(Long id) {
+		log.debug("<<<<<< getOne Company by id>>>>",id);
+		StringQuery sq = new StringQuery(termQuery("id", id).toString());
+		return   esTemplate.queryForObject(sq, Company.class);
+	}
+	@Override
+	public Customer findCustomerById(Long id) {
+		log.debug("<<<<<< getOne customer by id >>>>",id);
+		StringQuery sq = new StringQuery(termQuery("id", id).toString());
+		return esTemplate.queryForObject(sq, Customer.class);
+	}
+
+	@Override
+	public Driver findDriverById(Long id) {
+		log.debug("<<<<<< getOne driver by id>>>>",id);
+		StringQuery sq =new StringQuery(termQuery("id",id).toString());
+		return esTemplate.queryForObject(sq, Driver.class);
+	}
+	
+	@Override
 	public Company getOneCompany(String iDPCode) {
 		log.debug("<<<<<< getOne>>>>",iDPCode);
 		StringQuery sq = new StringQuery(termQuery("companyIdpCode.keyword", iDPCode).toString());

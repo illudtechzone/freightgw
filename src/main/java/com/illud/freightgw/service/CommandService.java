@@ -44,4 +44,8 @@ public interface CommandService {
 
 	void customerStatus(String taskId, CustomerStatus customerStatus);
 
+	void deleteVehicle(Long vehicleId);
+	
+	void deleteVehicleLookup(Long vehicleLookupId);
+
 }

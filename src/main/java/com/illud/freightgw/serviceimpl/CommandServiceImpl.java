@@ -149,6 +149,20 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 		
 		commandResourceApi.customerStatusUsingPOST(taskId, customerStatus);
 	}
+
+	@Override
+	public void deleteVehicle(Long vehicleId) {
+	
+		this.vehResourceApi.deleteVehicleUsingDELETE(vehicleId);
+		
+	}
+
+	@Override
+	public void deleteVehicleLookup(Long vehicleLookupId) {
+		
+		this.vehLookUpResourceApi.deleteVehicleLookUpUsingDELETE(vehicleLookupId);
+		
+	}
 	
 	
 }

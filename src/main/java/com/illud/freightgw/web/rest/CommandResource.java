@@ -131,7 +131,7 @@ public class CommandResource {
 	public void deleteVehicle(@PathVariable Long vehicleId,@PathVariable Long vehicleLookupId) {
 		log.debug("<<<<< delete vehicle >>>>>"+vehicleId+vehicleLookupId);
 		comService.deleteVehicle(vehicleId);
-		comService.deleteVehicle(vehicleLookupId);
+		comService.deleteVehicleLookup(vehicleLookupId);
 	}
 
 	/////////////////////////// activiti-workflow-apis///////////////////////////////////

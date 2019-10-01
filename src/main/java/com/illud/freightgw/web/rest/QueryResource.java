@@ -25,6 +25,7 @@ import com.illud.freightgw.client.freight.model.FreightDTO;
 import com.illud.freightgw.client.freight.model.Quotation;
 import com.illud.freightgw.client.freight.model.RequestStatus;
 import com.illud.freightgw.client.freight.model.Vehicle;
+import com.illud.freightgw.client.freight.model.VehicleLookUp;
 import com.illud.freightgw.service.QueryService;
 
 import io.swagger.annotations.ApiParam;
@@ -51,8 +52,6 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 	@GetMapping("/findCustomerbyId/{id}")
 	public Customer findCustomerById(@PathVariable Long id){
 		log.debug(" <<<<<<<<< input a id to get a customer details>>>>>> " , id);
-		//Page<Customer> page = queService.getDetailsFromCustomeriDPCode(iDPCode);
-		//return ResponseEntity.ok().body(page.getContent());
 		
 		return queService.findCustomerById(id);
 	}
@@ -61,6 +60,12 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		log.debug("<<<<<<<<< input a id to get a driver details >>>>>>" , id);
 		
 		return queService.findDriverById(id);
+	}
+	@GetMapping("/findVehiclelookupId/{id}")
+	public VehicleLookUp findVehicleLookUpById(@PathVariable Long id){
+		log.debug(" <<<<<<<<< input a id to get a vehicle look up id details>>>>>> " , id);
+		
+		return queService.findVehicleLookUpById(id);
 	}
 	
 	@GetMapping("/getcompany/{companyIdpCode}")
@@ -103,6 +108,14 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 	public ResponseEntity<List<Quotation>> findAllQuotations(@PathVariable Long freightId,Pageable pageable){
 		log.debug("<<<<<<< findAllQuotations >>>>>>",freightId);
 		Page<Quotation> page = queService.findAllQuotationsByfreightId(freightId, pageable);
+		return ResponseEntity.ok().body(page.getContent());
+		
+	}
+	
+	@GetMapping("/getAllQuotationsby/{companyId}/{freightid}")
+	public ResponseEntity<List<Quotation>> findAllQuotationsByCompanyIdAndFreightId(@PathVariable Long companyId,@PathVariable Long freightId,Pageable pageable){
+		log.debug("<<<<<<<< findAllQuotationsByCompanyIdandFreightId>>>>>>>",companyId,freightId);
+		Page<Quotation> page = queService.findAllQuotationsByCompanyIdAndFreightId(companyId,freightId,pageable);
 		return ResponseEntity.ok().body(page.getContent());
 		
 	}

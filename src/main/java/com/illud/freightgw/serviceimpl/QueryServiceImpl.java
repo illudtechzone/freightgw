@@ -1,5 +1,6 @@
 package com.illud.freightgw.serviceimpl;
 
+import org.elasticsearch.index.query.QueryBuilders;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +68,12 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 		StringQuery sq =new StringQuery(termQuery("id",id).toString());
 		return esTemplate.queryForObject(sq, Driver.class);
 	}
+	@Override
+	public VehicleLookUp findVehicleLookUpById(Long id) {
+		log.debug("<<<<< get vehiclelook up id in impl>>>>>>",id);
+		StringQuery sq =new StringQuery(termQuery("id",id).toString());
+		return esTemplate.queryForObject(sq, VehicleLookUp.class);
+	}
 	
 	@Override
 	public Company getOneCompany(String iDPCode) {
@@ -107,7 +114,15 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 		log.debug("<<<<<< findAllQuotations in impl >>>>>>>",freightId);
 		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(termQuery("freightId.keyword",freightId)).build();
 		return esTemplate.queryForPage(sq, Quotation.class);
-	}	
+	}
+	
+	@Override
+	public Page<Quotation> findAllQuotationsByCompanyIdAndFreightId(Long companyId, Long freightId, Pageable pageable) {
+		log.debug("<<<<< findAllQuotationsByCompanyIdAndFreightId>>>>>>",companyId,freightId);
+		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(QueryBuilders.boolQuery()
+				.must(termQuery("id",companyId)).must(termQuery("id",freightId))).build();
+		return esTemplate.queryForPage(sq, Quotation.class);
+	}
 	
 	@Override
 	public ResponseEntity<DataResponse> getTasks(String name, String nameLike, String description, String priority,
@@ -141,6 +156,10 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 		
 		return queryResourceApi.getBookingDetailsUsingGET(processInstanceId);
 	}
+
+
+
+	
 
 
 }

@@ -139,10 +139,7 @@ public class CommandResource {
 	@PostMapping("/create/freight")
 	public ResponseEntity<FreightDTO> createFreight(@RequestBody FreightDTO freight) {
 		log.debug("<<<<<<<< create freight >>>>>>>>>", freight);
-		return comService.save(freight);
-
-		
-		
+		return comService.save(freight);	
 	}
 
 	@PostMapping("/sendQuatation/{taskId}")
@@ -150,7 +147,6 @@ public class CommandResource {
 		comService.sendQuatation(taskId, response);
 
 	}
-
 	@PostMapping("/customer/status/{taskId}")
 	public void customerStatus(@PathVariable String taskId, @RequestBody CustomerStatus customerStatus) {
 		comService.customerStatus(taskId, customerStatus);

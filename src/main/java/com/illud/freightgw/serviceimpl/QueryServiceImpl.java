@@ -120,7 +120,7 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	public Page<Quotation> findAllQuotationsByCompanyIdAndFreightId(Long companyId, Long freightId, Pageable pageable) {
 		log.debug("<<<<< findAllQuotationsByCompanyIdAndFreightId>>>>>>",companyId,freightId);
 		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(QueryBuilders.boolQuery()
-				.must(termQuery("id",companyId)).must(termQuery("id",freightId))).build();
+				.must(termQuery("companyId",companyId)).must(termQuery("freightId",freightId))).build();
 		return esTemplate.queryForPage(sq, Quotation.class);
 	}
 	

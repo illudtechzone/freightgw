@@ -112,7 +112,7 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		
 	}
 	
-	@GetMapping("/getAllQuotationsby/{companyId}/{freightid}")
+	@GetMapping("/getAllQuotationsby/{companyId}/{freightId}")
 	public ResponseEntity<List<Quotation>> findAllQuotationsByCompanyIdAndFreightId(@PathVariable Long companyId,@PathVariable Long freightId,Pageable pageable){
 		log.debug("<<<<<<<< findAllQuotationsByCompanyIdandFreightId>>>>>>>",companyId,freightId);
 		Page<Quotation> page = queService.findAllQuotationsByCompanyIdAndFreightId(companyId,freightId,pageable);

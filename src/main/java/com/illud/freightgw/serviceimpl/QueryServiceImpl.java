@@ -114,7 +114,7 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	@Override
 	public ResponseEntity<List<FreightDTO>> findAllFreightsByCustomerId(Long customerId, Pageable pageable) {
 		log.debug("<<<<<< input a customerId to get AllFreights>>"+customerId+">>>>"+customerId,pageable);
-		SearchQuery sq =new NativeSearchQueryBuilder().withQuery(termQuery("companyId",customerId)).build();
+		SearchQuery sq =new NativeSearchQueryBuilder().withQuery(termQuery("customerId",customerId)).build();
 		return freightResourceApi.createFreightDtoListUsingPOST(esTemplate.queryForPage(sq, Freight.class).getContent());
 	}
 

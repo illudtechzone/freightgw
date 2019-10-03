@@ -64,6 +64,8 @@ public interface QueryService {
 
 	ResponseEntity<FreightDTO> getBookingDetails(String processInstanceId);
 
+	ResponseEntity<List<FreightDTO>> findAllFreightsByCustomerId(Long customerId, Pageable pageable);
+
 	
 
 	

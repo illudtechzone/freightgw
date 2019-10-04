@@ -27,7 +27,9 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-04T11:57:28.115+05:30[Asia/Kolkata]")
+
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-28T11:33:41.604+05:30[Asia/Calcutta]")
+
 
 @Api(value = "FreightResource", description = "the FreightResource API")
 public interface FreightResourceApi {

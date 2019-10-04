@@ -12,11 +12,23 @@ import com.illud.freightgw.client.freight.model.Company;
 import com.illud.freightgw.client.freight.model.Customer;
 import com.illud.freightgw.client.freight.model.DataResponse;
 import com.illud.freightgw.client.freight.model.Driver;
+import com.illud.freightgw.client.freight.model.Freight;
+import com.illud.freightgw.client.freight.model.RequestStatus;
 import com.illud.freightgw.client.freight.model.FreightDTO;
+import com.illud.freightgw.client.freight.model.Quotation;
 import com.illud.freightgw.client.freight.model.Vehicle;
+import com.illud.freightgw.client.freight.model.VehicleLookUp;
 
 public interface QueryService {
 
+	Company findCompanyById(Long id);
+
+	Customer findCustomerById(Long id);
+
+	Driver findDriverById(Long id);
+	
+	VehicleLookUp findVehicleLookUpById(Long id);
+	
 	Company getOneCompany(String companyIdpCode);
 
 	Customer getOneCustomer(String customerIdpCode);
@@ -24,6 +36,12 @@ public interface QueryService {
 	Driver getOneDriver(String driverIdpCode);
 
 	Page<Vehicle> findAllVehiclesByCompanyIdpCode(String companyiDPCode, Pageable page);
+
+	ResponseEntity<List<FreightDTO>> findAllFreightsByRequestedStatus(RequestStatus requestedStatus, Pageable pageable);
+	
+	Page<Quotation> findAllQuotationsByfreightId(Long freightId, Pageable pageable);
+	
+	Page<Quotation> findAllQuotationsByCompanyIdAndFreightId(Long companyId, Long freightId, Pageable pageable);
 
 	ResponseEntity<DataResponse> getTasks(String name, String nameLike, String description, String priority,
 			String minimumPriority, String maximumPriority, String assignee, String assigneeLike, String owner,
@@ -45,4 +63,14 @@ public interface QueryService {
 			@Valid String createdBefore, @Valid String createdAfter);
 
 	ResponseEntity<FreightDTO> getBookingDetails(String processInstanceId);
+
+	ResponseEntity<List<FreightDTO>> findAllFreightsByCustomerId(Long customerId, Pageable pageable);
+
+	
+
+	
+
+	
+
+
 }

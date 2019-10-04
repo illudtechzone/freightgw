@@ -1,5 +1,6 @@
 package com.illud.freightgw.serviceimpl;
 
+import org.elasticsearch.index.query.QueryBuilders;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +16,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.github.vanroy.springdata.jest.JestElasticsearchTemplate;
 
 
-import static org.elasticsearch.index.query.QueryBuilders.termQuery;
+import static org.elasticsearch.index.query.QueryBuilders.*;
 
 import java.util.List;
 
 import javax.validation.Valid;
 
+import com.illud.freightgw.client.freight.api.FreightResourceApi;
 import com.illud.freightgw.client.freight.api.QueryResourceApi;
 import com.illud.freightgw.client.freight.model.*;
 import com.illud.freightgw.service.QueryService;
@@ -39,11 +41,40 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	@Autowired 
 	QueryResourceApi queryResourceApi;
 	
+	@Autowired
+	FreightResourceApi freightResourceApi;
+	
 	public QueryServiceImpl(JestClient jestClient,JestElasticsearchTemplate esTemplate) {
 		this.jestClient=jestClient;
 		this.esTemplate=esTemplate;
 	}
 
+	@Override
+	public Company findCompanyById(Long id) {
+		log.debug("<<<<<< getOne Company by id>>>>",id);
+		StringQuery sq = new StringQuery(termQuery("id", id).toString());
+		return   esTemplate.queryForObject(sq, Company.class);
+	}
+	@Override
+	public Customer findCustomerById(Long id) {
+		log.debug("<<<<<< getOne customer by id >>>>",id);
+		StringQuery sq = new StringQuery(termQuery("id", id).toString());
+		return esTemplate.queryForObject(sq, Customer.class);
+	}
+
+	@Override
+	public Driver findDriverById(Long id) {
+		log.debug("<<<<<< getOne driver by id>>>>",id);
+		StringQuery sq =new StringQuery(termQuery("id",id).toString());
+		return esTemplate.queryForObject(sq, Driver.class);
+	}
+	@Override
+	public VehicleLookUp findVehicleLookUpById(Long id) {
+		log.debug("<<<<< get vehiclelook up id in impl>>>>>>",id);
+		StringQuery sq =new StringQuery(termQuery("id",id).toString());
+		return esTemplate.queryForObject(sq, VehicleLookUp.class);
+	}
+	
 	@Override
 	public Company getOneCompany(String iDPCode) {
 		log.debug("<<<<<< getOne>>>>",iDPCode);
@@ -71,6 +102,40 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 		return esTemplate.queryForPage(searchQuery, Vehicle.class);
 	}
 
+
+	@Override
+	public ResponseEntity<List<FreightDTO>> findAllFreightsByRequestedStatus(RequestStatus requestedStatus, Pageable pageable) {
+		log.debug("<<<<<< input a requeststatus to get AllFreights>>"+requestedStatus.toString()+">>>>"+requestedStatus,pageable);
+		SearchQuery sq =new NativeSearchQueryBuilder().withQuery(termQuery("requestedStatus.keyword",requestedStatus)).build();
+		return freightResourceApi.createFreightDtoListUsingPOST(esTemplate.queryForPage(sq, Freight.class).getContent());
+	}
+	
+	
+	@Override
+	public ResponseEntity<List<FreightDTO>> findAllFreightsByCustomerId(Long customerId, Pageable pageable) {
+		log.debug("<<<<<< input a customerId to get AllFreights>>"+customerId+">>>>"+customerId,pageable);
+		SearchQuery sq =new NativeSearchQueryBuilder().withQuery(termQuery("customerId",customerId)).build();
+		return freightResourceApi.createFreightDtoListUsingPOST(esTemplate.queryForPage(sq, Freight.class).getContent());
+	}
+
+	
+	
+	
+	@Override
+	public Page<Quotation> findAllQuotationsByfreightId(Long freightId, Pageable pageable) {
+		log.debug("<<<<<< findAllQuotations in impl >>>>>>>",freightId);
+		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(termQuery("freightId",freightId)).build();
+		return esTemplate.queryForPage(sq, Quotation.class);
+	}
+	
+	@Override
+	public Page<Quotation> findAllQuotationsByCompanyIdAndFreightId(Long companyId, Long freightId, Pageable pageable) {
+		log.debug("<<<<< findAllQuotationsByCompanyIdAndFreightId>>>>>>",companyId,freightId);
+		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(QueryBuilders.boolQuery()
+				.must(termQuery("companyId",companyId)).must(termQuery("freightId",freightId))).build();
+		return esTemplate.queryForPage(sq, Quotation.class);
+	}
+	
 	@Override
 	public ResponseEntity<DataResponse> getTasks(String name, String nameLike, String description, String priority,
 			String minimumPriority, String maximumPriority, String assignee, String assigneeLike, String owner,
@@ -103,6 +168,11 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 		
 		return queryResourceApi.getBookingDetailsUsingGET(processInstanceId);
 	}
+
 	
+
+
+	
+
 
 }

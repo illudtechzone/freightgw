@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 import feign.RequestInterceptor;
 
 import com.illud.freightgw.security.oauth2.AuthorizationHeaderUtil;
-
 @Configuration
 public class OAuth2InterceptedFeignConfiguration {
 

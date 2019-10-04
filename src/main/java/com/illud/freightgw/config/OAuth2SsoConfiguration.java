@@ -23,28 +23,20 @@ import org.springframework.security.web.util.matcher.NegatedRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.web.filter.CorsFilter;
 
+
 @EnableOAuth2Sso
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 @Configuration
 public class OAuth2SsoConfiguration extends WebSecurityConfigurerAdapter {
 
-	private final CorsFilter corsFilter;
-	private final RequestMatcher authorizationHeaderRequestMatcher;
+    private final CorsFilter corsFilter;
+    private final RequestMatcher authorizationHeaderRequestMatcher;
+    public OAuth2SsoConfiguration(CorsFilter corsFilter,
+    		@Qualifier("authorizationHeaderRequestMatcher") RequestMatcher authorizationHeaderRequestMatcher) {
+    	this.authorizationHeaderRequestMatcher = authorizationHeaderRequestMatcher;
+        this.corsFilter = corsFilter;
+    }
 
-	public OAuth2SsoConfiguration(
-			@Qualifier("authorizationHeaderRequestMatcher") RequestMatcher authorizationHeaderRequestMatcher,
-			CorsFilter corsFilter) {
-		this.authorizationHeaderRequestMatcher = authorizationHeaderRequestMatcher;
-		this.corsFilter = corsFilter;
-	}
-
-	@Bean
-	public AjaxLogoutSuccessHandler ajaxLogoutSuccessHandler() {
-		return new AjaxLogoutSuccessHandler();
-	}
-
-	@Override
+    @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
             .antMatchers(HttpMethod.OPTIONS, "/**")
@@ -52,11 +44,14 @@ public class OAuth2SsoConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/i18n/**")
             .antMatchers("/content/**")
             .antMatchers("/swagger-ui/index.html")
-            .antMatchers("/test/**")
-        	.antMatchers("/h2-console/**");
+            .antMatchers("/test/**");
     }
 
-	@Override
+	@Bean
+	public AjaxLogoutSuccessHandler ajaxLogoutSuccessHandler() {
+		return new AjaxLogoutSuccessHandler();
+	}
+    @Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
         .csrf()
@@ -79,14 +74,13 @@ public class OAuth2SsoConfiguration extends WebSecurityConfigurerAdapter {
         .anyRequest().permitAll();
 	}
 
-	/**
-	 * This OAuth2RestTemplate is used by
-	 * org.springframework.cloud.security.oauth2.proxy.OAuth2TokenRelayFilter from
-	 * Spring Cloud Security to refresh the access token when needed.
-	 */
-	@Bean
-	public OAuth2RestTemplate oAuth2RestTemplate(OAuth2ProtectedResourceDetails oAuth2ProtectedResourceDetails,
-			OAuth2ClientContext oAuth2ClientContext) {
-		return new OAuth2RestTemplate(oAuth2ProtectedResourceDetails, oAuth2ClientContext);
-	}
+    /**
+     * This OAuth2RestTemplate is used by org.springframework.cloud.security.oauth2.proxy.OAuth2TokenRelayFilter
+     * from Spring Cloud Security to refresh the access token when needed.
+     */
+    @Bean
+    public OAuth2RestTemplate oAuth2RestTemplate(OAuth2ProtectedResourceDetails oAuth2ProtectedResourceDetails,
+        OAuth2ClientContext oAuth2ClientContext) {
+        return new OAuth2RestTemplate(oAuth2ProtectedResourceDetails, oAuth2ClientContext);
+    }
 }

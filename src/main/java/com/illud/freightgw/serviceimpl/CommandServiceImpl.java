@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import com.illud.freightgw.client.freight.api.CommandResourceApi;
@@ -37,8 +38,9 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 	VehicleLookUpResourceApi vehLookUpResourceApi;
 	@Autowired
 	CommandResourceApi commandResourceApi;
+	@Autowired
+    private SimpMessagingTemplate messageSender;
 	
-
 
 	@Override
 	public ResponseEntity<CompanyDTO> update(CompanyDTO company) {
@@ -131,7 +133,9 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 	@Override
 	public ResponseEntity<FreightDTO> save(FreightDTO freight) {
 		log.debug("<<<<<<< create freight in impl >>>>>>>",freight);
-		return freResourceApi.createFreightUsingPOST(freight);
+		 ResponseEntity<FreightDTO>  fdto=freResourceApi.createFreightUsingPOST(freight);
+		messageSender.convertAndSend("/topic/freight", fdto.getBody());
+		 return fdto;
 	}
 
 	@Override
@@ -144,6 +148,20 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 	public void customerStatus(String taskId, CustomerStatus customerStatus) {
 		
 		commandResourceApi.statusUsingPOST(taskId, customerStatus);
+	}
+
+	@Override
+	public void deleteVehicle(Long vehicleId) {
+	
+		this.vehResourceApi.deleteVehicleUsingDELETE(vehicleId);
+		
+	}
+
+	@Override
+	public void deleteVehicleLookup(Long vehicleLookupId) {
+		
+		this.vehLookUpResourceApi.deleteVehicleLookUpUsingDELETE(vehicleLookupId);
+		
 	}
 	
 	

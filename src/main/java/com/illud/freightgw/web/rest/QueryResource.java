@@ -20,14 +20,18 @@ import com.illud.freightgw.client.freight.model.Company;
 import com.illud.freightgw.client.freight.model.Customer;
 import com.illud.freightgw.client.freight.model.DataResponse;
 import com.illud.freightgw.client.freight.model.Driver;
+import com.illud.freightgw.client.freight.model.Freight;
 import com.illud.freightgw.client.freight.model.FreightDTO;
+import com.illud.freightgw.client.freight.model.Quotation;
+import com.illud.freightgw.client.freight.model.RequestStatus;
 import com.illud.freightgw.client.freight.model.Vehicle;
+import com.illud.freightgw.client.freight.model.VehicleLookUp;
 import com.illud.freightgw.service.QueryService;
 
 import io.swagger.annotations.ApiParam;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api")
 public class QueryResource {
 
 private final Logger log = LoggerFactory.getLogger(QueryResource.class);
@@ -36,6 +40,32 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 	
 	public QueryResource(QueryService queService) {
 		this.queService=queService;
+	}
+	
+	@GetMapping("/findCompanybyId/{id}")
+	public Company findCompanyById(@PathVariable Long id){
+		log.debug("<<<<<<<<< input a id to get a company details >>>>>>" , id);
+		
+		return queService.findCompanyById(id);
+		
+	}
+	@GetMapping("/findCustomerbyId/{id}")
+	public Customer findCustomerById(@PathVariable Long id){
+		log.debug(" <<<<<<<<< input a id to get a customer details>>>>>> " , id);
+		
+		return queService.findCustomerById(id);
+	}
+	@GetMapping("/findDriverbyId/{id}")
+	public Driver findDriverById(@PathVariable Long id){
+		log.debug("<<<<<<<<< input a id to get a driver details >>>>>>" , id);
+		
+		return queService.findDriverById(id);
+	}
+	@GetMapping("/findVehiclelookupId/{id}")
+	public VehicleLookUp findVehicleLookUpById(@PathVariable Long id){
+		log.debug(" <<<<<<<<< input a id to get a vehicle look up id details>>>>>> " , id);
+		
+		return queService.findVehicleLookUpById(id);
 	}
 	
 	@GetMapping("/getcompany/{companyIdpCode}")
@@ -60,15 +90,46 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		return queService.getOneDriver(driverIdpCode);
 		
 	}
-	@GetMapping("/getAllvehicles")
-	public ResponseEntity<List<Vehicle>> findAllvehicles(String companyIdpCode,Pageable pageable){
+	@GetMapping("/getAllvehicles/{companyIdpCode}")
+	public ResponseEntity<List<Vehicle>> findAllvehicles(@PathVariable String companyIdpCode,Pageable pageable){
 		log.debug("<<<<<<<< input a idpcode to get all vehicles >>>>>>>>",companyIdpCode,pageable);
 		Page<Vehicle> page = queService.findAllVehiclesByCompanyIdpCode(companyIdpCode, pageable);
 		return ResponseEntity.ok().body(page.getContent());
 		
 	}
-
-///////////////////////////activiti-workflow-apis///////////////////////////////////
+	@GetMapping("/getAllFreight/{requestedStatus}")
+	public ResponseEntity<List<FreightDTO>> findAllFreights(@PathVariable RequestStatus requestedStatus,Pageable pageable){
+		log.debug("<<<<<<<<< getall freights input requestedstatus>>>>>>>"+requestedStatus);
+		return queService.findAllFreightsByRequestedStatus(requestedStatus,pageable);
+		
+		
+	}
+	@GetMapping("/freights/{customerId}")
+	public ResponseEntity<List<FreightDTO>> findAllFreightsByCustomerId(@PathVariable Long customerId,Pageable pageable){
+		log.debug("<<<<<<< findAllFreightDTO >>>>>>",customerId);
+		
+		return queService.findAllFreightsByCustomerId(customerId,pageable);
+		
+	}
+	
+	@GetMapping("/getAllQuotations/{freightId}")
+	public ResponseEntity<List<Quotation>> findAllQuotations(@PathVariable Long freightId,Pageable pageable){
+		log.debug("<<<<<<< findAllQuotations >>>>>>",freightId);
+		Page<Quotation> page = queService.findAllQuotationsByfreightId(freightId, pageable);
+		return ResponseEntity.ok().body(page.getContent());
+		
+	}
+	
+	
+	
+	@GetMapping("/getAllQuotationsby/{companyId}/{freightId}")
+	public ResponseEntity<List<Quotation>> findAllQuotationsByCompanyIdAndFreightId(@PathVariable Long companyId,@PathVariable Long freightId,Pageable pageable){
+		log.debug("<<<<<<<< findAllQuotationsByCompanyIdandFreightId>>>>>>>",companyId,freightId);
+		Page<Quotation> page = queService.findAllQuotationsByCompanyIdAndFreightId(companyId,freightId,pageable);
+		return ResponseEntity.ok().body(page.getContent());
+		
+	}
+	//////////////////////////activiti-workflow-apis///////////////////////////////////
 	
 	@GetMapping("/tasks")
 	public ResponseEntity<DataResponse> getTasks(@RequestParam(value = "name", required = false) String name,

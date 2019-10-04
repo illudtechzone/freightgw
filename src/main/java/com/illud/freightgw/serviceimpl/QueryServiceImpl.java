@@ -124,7 +124,7 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	@Override
 	public Page<Quotation> findAllQuotationsByfreightId(Long freightId, Pageable pageable) {
 		log.debug("<<<<<< findAllQuotations in impl >>>>>>>",freightId);
-		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(termQuery("freightId.keyword",freightId)).build();
+		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(termQuery("freightId",freightId)).build();
 		return esTemplate.queryForPage(sq, Quotation.class);
 	}
 	

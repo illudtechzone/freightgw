@@ -13,11 +13,37 @@ import javax.validation.constraints.*;
  * CustomerStatus
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-25T15:31:07.496+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-04T11:57:28.115+05:30[Asia/Kolkata]")
 
 public class CustomerStatus   {
+  @JsonProperty("quotationId")
+  private Long quotationId = null;
+
   @JsonProperty("status")
   private String status = null;
+
+  @JsonProperty("trackingId")
+  private String trackingId = null;
+
+  public CustomerStatus quotationId(Long quotationId) {
+    this.quotationId = quotationId;
+    return this;
+  }
+
+  /**
+   * Get quotationId
+   * @return quotationId
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Long getQuotationId() {
+    return quotationId;
+  }
+
+  public void setQuotationId(Long quotationId) {
+    this.quotationId = quotationId;
+  }
 
   public CustomerStatus status(String status) {
     this.status = status;
@@ -39,6 +65,26 @@ public class CustomerStatus   {
     this.status = status;
   }
 
+  public CustomerStatus trackingId(String trackingId) {
+    this.trackingId = trackingId;
+    return this;
+  }
+
+  /**
+   * Get trackingId
+   * @return trackingId
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getTrackingId() {
+    return trackingId;
+  }
+
+  public void setTrackingId(String trackingId) {
+    this.trackingId = trackingId;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -49,12 +95,14 @@ public class CustomerStatus   {
       return false;
     }
     CustomerStatus customerStatus = (CustomerStatus) o;
-    return Objects.equals(this.status, customerStatus.status);
+    return Objects.equals(this.quotationId, customerStatus.quotationId) &&
+        Objects.equals(this.status, customerStatus.status) &&
+        Objects.equals(this.trackingId, customerStatus.trackingId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status);
+    return Objects.hash(quotationId, status, trackingId);
   }
 
   @Override
@@ -62,7 +110,9 @@ public class CustomerStatus   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomerStatus {\n");
     
+    sb.append("    quotationId: ").append(toIndentedString(quotationId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    trackingId: ").append(toIndentedString(trackingId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -5,7 +5,9 @@
  */
 package com.illud.freightgw.client.freight.api;
 
+import com.illud.freightgw.client.freight.model.Freight;
 import com.illud.freightgw.client.freight.model.FreightDTO;
+import java.util.List;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,10 +27,38 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-25T15:31:07.496+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-04T11:57:28.115+05:30[Asia/Kolkata]")
 
 @Api(value = "FreightResource", description = "the FreightResource API")
 public interface FreightResourceApi {
+
+    @ApiOperation(value = "createFreightDTO", nickname = "createFreightDTOUsingPOST", notes = "", response = FreightDTO.class, tags={ "freight-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = FreightDTO.class),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/convertToDto",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<FreightDTO> createFreightDTOUsingPOST(@ApiParam(value = "freight" ,required=true )  @Valid @RequestBody Freight freight);
+
+
+    @ApiOperation(value = "createFreightDtoList", nickname = "createFreightDtoListUsingPOST", notes = "", response = FreightDTO.class, responseContainer = "List", tags={ "freight-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = FreightDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/convertToList",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<List<FreightDTO>> createFreightDtoListUsingPOST(@ApiParam(value = "page" ,required=true )  @Valid @RequestBody List<Freight> freight);
+
 
     @ApiOperation(value = "createFreight", nickname = "createFreightUsingPOST", notes = "", response = FreightDTO.class, tags={ "freight-resource", })
     @ApiResponses(value = { 
@@ -65,6 +95,18 @@ public interface FreightResourceApi {
         produces = "*/*", 
         method = RequestMethod.GET)
     ResponseEntity<List<FreightDTO>> getAllFreightsUsingGET(@ApiParam(value = "Page number of the requested page") @Valid @RequestParam(value = "page", required = false) Integer page,@ApiParam(value = "Size of a page") @Valid @RequestParam(value = "size", required = false) Integer size,@ApiParam(value = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.") @Valid @RequestParam(value = "sort", required = false) List<String> sort);
+
+
+    @ApiOperation(value = "getFreightByTrackingId", nickname = "getFreightByTrackingIdUsingGET", notes = "", response = FreightDTO.class, tags={ "freight-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = FreightDTO.class),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/freight/{trackingId}",
+        produces = "*/*", 
+        method = RequestMethod.GET)
+    ResponseEntity<FreightDTO> getFreightByTrackingIdUsingGET(@ApiParam(value = "trackingId",required=true) @PathVariable("trackingId") String trackingId);
 
 
     @ApiOperation(value = "getFreight", nickname = "getFreightUsingGET", notes = "", response = FreightDTO.class, tags={ "freight-resource", })

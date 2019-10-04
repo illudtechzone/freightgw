@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Date;
 import org.springframework.validation.annotation.Validated;
@@ -16,7 +18,7 @@ import javax.validation.constraints.*;
  * FreightDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-25T15:31:07.496+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-04T11:57:28.115+05:30[Asia/Kolkata]")
 
 public class FreightDTO   {
   /**

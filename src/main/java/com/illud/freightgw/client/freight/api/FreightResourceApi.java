@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-28T11:33:41.604+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-05T14:19:02.594+05:30[Asia/Calcutta]")
 
 @Api(value = "FreightResource", description = "the FreightResource API")
 public interface FreightResourceApi {
@@ -95,6 +95,18 @@ public interface FreightResourceApi {
         produces = "*/*", 
         method = RequestMethod.GET)
     ResponseEntity<List<FreightDTO>> getAllFreightsUsingGET(@ApiParam(value = "Page number of the requested page") @Valid @RequestParam(value = "page", required = false) Integer page,@ApiParam(value = "Size of a page") @Valid @RequestParam(value = "size", required = false) Integer size,@ApiParam(value = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.") @Valid @RequestParam(value = "sort", required = false) List<String> sort);
+
+
+    @ApiOperation(value = "getFreightByTrackingId", nickname = "getFreightByTrackingIdUsingGET", notes = "", response = FreightDTO.class, tags={ "freight-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = FreightDTO.class),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/freight/{trackingId}",
+        produces = "*/*", 
+        method = RequestMethod.GET)
+    ResponseEntity<FreightDTO> getFreightByTrackingIdUsingGET(@ApiParam(value = "trackingId",required=true) @PathVariable("trackingId") String trackingId);
 
 
     @ApiOperation(value = "getFreight", nickname = "getFreightUsingGET", notes = "", response = FreightDTO.class, tags={ "freight-resource", })

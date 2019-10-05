@@ -1,130 +1,181 @@
 package com.illud.freightgw.client.freight.model;
 
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
-import javax.persistence.*;
-
-import org.springframework.data.elasticsearch.annotations.Document;
-import java.io.Serializable;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import org.springframework.validation.annotation.Validated;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
- * A Driver.
+ * Driver
  */
+@Validated
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-05T14:19:02.594+05:30[Asia/Calcutta]")
 
-@Document(indexName = "driver")
-public class Driver implements Serializable {
+public class Driver   {
+  @JsonProperty("driverIdpCode")
+  private String driverIdpCode = null;
 
-    private static final long serialVersionUID = 1L;
+  @JsonProperty("email")
+  private String email = null;
+
+  @JsonProperty("id")
+  private Long id = null;
+
+  @JsonProperty("name")
+  private String name = null;
+
+  @JsonProperty("phoneNumber")
+  private Long phoneNumber = null;
+
+  public Driver driverIdpCode(String driverIdpCode) {
+    this.driverIdpCode = driverIdpCode;
+    return this;
+  }
+
+  /**
+   * Get driverIdpCode
+   * @return driverIdpCode
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getDriverIdpCode() {
+    return driverIdpCode;
+  }
+
+  public void setDriverIdpCode(String driverIdpCode) {
+    this.driverIdpCode = driverIdpCode;
+  }
+
+  public Driver email(String email) {
+    this.email = email;
+    return this;
+  }
+
+  /**
+   * Get email
+   * @return email
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public Driver id(Long id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Get id
+   * @return id
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public Driver name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Get name
+   * @return name
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public Driver phoneNumber(Long phoneNumber) {
+    this.phoneNumber = phoneNumber;
+    return this;
+  }
+
+  /**
+   * Get phoneNumber
+   * @return phoneNumber
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Long getPhoneNumber() {
+    return phoneNumber;
+  }
+
+  public void setPhoneNumber(Long phoneNumber) {
+    this.phoneNumber = phoneNumber;
+  }
+
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Driver driver = (Driver) o;
+    return Objects.equals(this.driverIdpCode, driver.driverIdpCode) &&
+        Objects.equals(this.email, driver.email) &&
+        Objects.equals(this.id, driver.id) &&
+        Objects.equals(this.name, driver.name) &&
+        Objects.equals(this.phoneNumber, driver.phoneNumber);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(driverIdpCode, email, id, name, phoneNumber);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class Driver {\n");
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    sb.append("    driverIdpCode: ").append(toIndentedString(driverIdpCode)).append("\n");
+    sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
 
-    @Column(name = "driver_idp_code")
-    private String driverIdpCode;
-
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "phone_number")
-    private Long phoneNumber;
-
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public Long getId() {
-        return id;
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDriverIdpCode() {
-        return driverIdpCode;
-    }
-
-    public Driver driverIdpCode(String driverIdpCode) {
-        this.driverIdpCode = driverIdpCode;
-        return this;
-    }
-
-    public void setDriverIdpCode(String driverIdpCode) {
-        this.driverIdpCode = driverIdpCode;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Driver name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public Driver email(String email) {
-        this.email = email;
-        return this;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Long getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public Driver phoneNumber(Long phoneNumber) {
-        this.phoneNumber = phoneNumber;
-        return this;
-    }
-
-    public void setPhoneNumber(Long phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Driver driver = (Driver) o;
-        if (driver.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), driver.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
-
-    @Override
-    public String toString() {
-        return "Driver{" +
-            "id=" + getId() +
-            ", driverIdpCode='" + getDriverIdpCode() + "'" +
-            ", name='" + getName() + "'" +
-            ", email='" + getEmail() + "'" +
-            ", phoneNumber=" + getPhoneNumber() +
-            "}";
-    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }
+

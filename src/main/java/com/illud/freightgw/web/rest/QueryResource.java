@@ -104,7 +104,15 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		
 		
 	}
-	@GetMapping("/getAllQuotations/{freightId")
+	@GetMapping("/freights/{customerId}")
+	public ResponseEntity<List<FreightDTO>> findAllFreightsByCustomerId(@PathVariable Long customerId,Pageable pageable){
+		log.debug("<<<<<<< findAllFreightDTO >>>>>>",customerId);
+		
+		return queService.findAllFreightsByCustomerId(customerId,pageable);
+		
+	}
+	
+	@GetMapping("/getAllQuotations/{freightId}")
 	public ResponseEntity<List<Quotation>> findAllQuotations(@PathVariable Long freightId,Pageable pageable){
 		log.debug("<<<<<<< findAllQuotations >>>>>>",freightId);
 		Page<Quotation> page = queService.findAllQuotationsByfreightId(freightId, pageable);
@@ -112,7 +120,9 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		
 	}
 	
-	@GetMapping("/getAllQuotationsby/{companyId}/{freightid}")
+	
+	
+	@GetMapping("/getAllQuotationsby/{companyId}/{freightId}")
 	public ResponseEntity<List<Quotation>> findAllQuotationsByCompanyIdAndFreightId(@PathVariable Long companyId,@PathVariable Long freightId,Pageable pageable){
 		log.debug("<<<<<<<< findAllQuotationsByCompanyIdandFreightId>>>>>>>",companyId,freightId);
 		Page<Quotation> page = queService.findAllQuotationsByCompanyIdAndFreightId(companyId,freightId,pageable);

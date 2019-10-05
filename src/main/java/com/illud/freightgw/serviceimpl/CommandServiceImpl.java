@@ -147,7 +147,7 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 	@Override
 	public void customerStatus(String taskId, CustomerStatus customerStatus) {
 		
-		commandResourceApi.customerStatusUsingPOST(taskId, customerStatus);
+		commandResourceApi.statusUsingPOST(taskId, customerStatus);
 	}
 
 	@Override

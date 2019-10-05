@@ -109,10 +109,22 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 		SearchQuery sq =new NativeSearchQueryBuilder().withQuery(termQuery("requestedStatus.keyword",requestedStatus)).build();
 		return freightResourceApi.createFreightDtoListUsingPOST(esTemplate.queryForPage(sq, Freight.class).getContent());
 	}
+	
+	
+	@Override
+	public ResponseEntity<List<FreightDTO>> findAllFreightsByCustomerId(Long customerId, Pageable pageable) {
+		log.debug("<<<<<< input a customerId to get AllFreights>>"+customerId+">>>>"+customerId,pageable);
+		SearchQuery sq =new NativeSearchQueryBuilder().withQuery(termQuery("customerId",customerId)).build();
+		return freightResourceApi.createFreightDtoListUsingPOST(esTemplate.queryForPage(sq, Freight.class).getContent());
+	}
+
+	
+	
+	
 	@Override
 	public Page<Quotation> findAllQuotationsByfreightId(Long freightId, Pageable pageable) {
 		log.debug("<<<<<< findAllQuotations in impl >>>>>>>",freightId);
-		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(termQuery("freightId.keyword",freightId)).build();
+		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(termQuery("freightId",freightId)).build();
 		return esTemplate.queryForPage(sq, Quotation.class);
 	}
 	
@@ -120,7 +132,7 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	public Page<Quotation> findAllQuotationsByCompanyIdAndFreightId(Long companyId, Long freightId, Pageable pageable) {
 		log.debug("<<<<< findAllQuotationsByCompanyIdAndFreightId>>>>>>",companyId,freightId);
 		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(QueryBuilders.boolQuery()
-				.must(termQuery("id",companyId)).must(termQuery("id",freightId))).build();
+				.must(termQuery("companyId",companyId)).must(termQuery("freightId",freightId))).build();
 		return esTemplate.queryForPage(sq, Quotation.class);
 	}
 	
@@ -157,6 +169,7 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 		return queryResourceApi.getBookingDetailsUsingGET(processInstanceId);
 	}
 
+	
 
 
 	

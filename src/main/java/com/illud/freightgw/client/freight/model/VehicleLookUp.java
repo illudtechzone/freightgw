@@ -7,12 +7,16 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.validation.annotation.Validated;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * A VehicleLookUp.
  */
+@Validated
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-05T14:19:02.594+05:30[Asia/Calcutta]")
 
 @Document(indexName = "vehiclelookup")
 public class VehicleLookUp implements Serializable {

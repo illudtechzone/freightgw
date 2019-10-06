@@ -5,6 +5,8 @@
  */
 package com.illud.freightgw.client.freight.api;
 
+import com.illud.freightgw.client.freight.model.PageOfVehicle;
+import com.illud.freightgw.client.freight.model.Vehicle;
 import com.illud.freightgw.client.freight.model.VehicleDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -25,10 +27,41 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-28T11:33:41.604+05:30[Asia/Calcutta]")
+
+
 
 @Api(value = "VehicleResource", description = "the VehicleResource API")
 public interface VehicleResourceApi {
+
+    @ApiOperation(value = "createDtoList", nickname = "createDtoListUsingPOST", notes = "", response = VehicleDTO.class, responseContainer = "List", tags={ "vehicle-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = VehicleDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/converToVehicleDtoList",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<List<VehicleDTO>> createDtoListUsingPOST(@ApiParam(value = "vehicle" ,required=true )  @Valid @RequestBody List<Vehicle> list);
+
+
+    @ApiOperation(value = "createDto", nickname = "createDtoUsingPOST", notes = "", response = VehicleDTO.class, tags={ "vehicle-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = VehicleDTO.class),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/convertToVehicleDto",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<VehicleDTO> createDtoUsingPOST(@ApiParam(value = "vehicle" ,required=true )  @Valid @RequestBody Vehicle vehicle);
+
 
     @ApiOperation(value = "createVehicle", nickname = "createVehicleUsingPOST", notes = "", response = VehicleDTO.class, tags={ "vehicle-resource", })
     @ApiResponses(value = { 

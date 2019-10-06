@@ -17,6 +17,7 @@ import com.illud.freightgw.client.freight.model.RequestStatus;
 import com.illud.freightgw.client.freight.model.FreightDTO;
 import com.illud.freightgw.client.freight.model.Quotation;
 import com.illud.freightgw.client.freight.model.Vehicle;
+import com.illud.freightgw.client.freight.model.VehicleDTO;
 import com.illud.freightgw.client.freight.model.VehicleLookUp;
 
 public interface QueryService {
@@ -35,7 +36,7 @@ public interface QueryService {
 
 	Driver getOneDriver(String driverIdpCode);
 
-	Page<Vehicle> findAllVehiclesByCompanyIdpCode(String companyiDPCode, Pageable page);
+	ResponseEntity<List<VehicleDTO>> findAllVehiclesByCompanyIdpCode(String companyiDPCode, Pageable page);
 
 	ResponseEntity<List<FreightDTO>> findAllFreightsByRequestedStatus(RequestStatus requestedStatus, Pageable pageable);
 	

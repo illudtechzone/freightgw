@@ -18,7 +18,10 @@ import javax.validation.constraints.*;
  * FreightDTO
  */
 @Validated
+
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-09-28T11:33:41.604+05:30[Asia/Calcutta]")
+
+
 
 public class FreightDTO   {
   /**

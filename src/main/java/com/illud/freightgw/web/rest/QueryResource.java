@@ -25,6 +25,7 @@ import com.illud.freightgw.client.freight.model.FreightDTO;
 import com.illud.freightgw.client.freight.model.Quotation;
 import com.illud.freightgw.client.freight.model.RequestStatus;
 import com.illud.freightgw.client.freight.model.Vehicle;
+import com.illud.freightgw.client.freight.model.VehicleDTO;
 import com.illud.freightgw.client.freight.model.VehicleLookUp;
 import com.illud.freightgw.service.QueryService;
 
@@ -91,10 +92,10 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		
 	}
 	@GetMapping("/getAllvehicles/{companyIdpCode}")
-	public ResponseEntity<List<Vehicle>> findAllvehicles(@PathVariable String companyIdpCode,Pageable pageable){
+	public ResponseEntity<List<VehicleDTO>> findAllvehicles(@PathVariable String companyIdpCode,Pageable pageable){
 		log.debug("<<<<<<<< input a idpcode to get all vehicles >>>>>>>>",companyIdpCode,pageable);
-		Page<Vehicle> page = queService.findAllVehiclesByCompanyIdpCode(companyIdpCode, pageable);
-		return ResponseEntity.ok().body(page.getContent());
+		
+		return  queService.findAllVehiclesByCompanyIdpCode(companyIdpCode, pageable);
 		
 	}
 	@GetMapping("/getAllFreight/{requestedStatus}")
@@ -104,7 +105,7 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		
 		
 	}
-	@GetMapping("/freights/{customerId")
+	@GetMapping("/freights/{customerId}")
 	public ResponseEntity<List<FreightDTO>> findAllFreightsByCustomerId(@PathVariable Long customerId,Pageable pageable){
 		log.debug("<<<<<<< findAllFreightDTO >>>>>>",customerId);
 		
@@ -112,7 +113,7 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		
 	}
 	
-	@GetMapping("/getAllQuotations/{freightId")
+	@GetMapping("/getAllQuotations/{freightId}")
 	public ResponseEntity<List<Quotation>> findAllQuotations(@PathVariable Long freightId,Pageable pageable){
 		log.debug("<<<<<<< findAllQuotations >>>>>>",freightId);
 		Page<Quotation> page = queService.findAllQuotationsByfreightId(freightId, pageable);

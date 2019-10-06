@@ -46,7 +46,7 @@ public interface VehicleResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<List<VehicleDTO>> createDtoListUsingPOST(@ApiParam(value = "vehicle" ,required=true )  @Valid @RequestBody PageOfVehicle pageOfVehicle);
+    ResponseEntity<List<VehicleDTO>> createDtoListUsingPOST(@ApiParam(value = "vehicle" ,required=true )  @Valid @RequestBody List<Vehicle> list);
 
 
     @ApiOperation(value = "createDto", nickname = "createDtoUsingPOST", notes = "", response = VehicleDTO.class, tags={ "vehicle-resource", })

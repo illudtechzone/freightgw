@@ -24,6 +24,7 @@ import javax.validation.Valid;
 
 import com.illud.freightgw.client.freight.api.FreightResourceApi;
 import com.illud.freightgw.client.freight.api.QueryResourceApi;
+import com.illud.freightgw.client.freight.api.VehicleResourceApi;
 import com.illud.freightgw.client.freight.model.*;
 import com.illud.freightgw.service.QueryService;
 
@@ -43,6 +44,9 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	
 	@Autowired
 	FreightResourceApi freightResourceApi;
+	
+	@Autowired
+	VehicleResourceApi vehicleResourceApi;
 	
 	public QueryServiceImpl(JestClient jestClient,JestElasticsearchTemplate esTemplate) {
 		this.jestClient=jestClient;
@@ -96,10 +100,10 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	}
 	
 	@Override
-	public Page<Vehicle> findAllVehiclesByCompanyIdpCode(String iDPCode,Pageable page) {
+	public ResponseEntity<List<VehicleDTO>> findAllVehiclesByCompanyIdpCode(String iDPCode,Pageable page) {
 		log.debug("<<<<<< getOne driver>>>>",iDPCode);
 		SearchQuery searchQuery= new NativeSearchQueryBuilder().withQuery(termQuery("company.companyIdpCode.keyword", iDPCode)).build();
-		return esTemplate.queryForPage(searchQuery, Vehicle.class);
+		return vehicleResourceApi.createDtoListUsingPOST(esTemplate.queryForPage(searchQuery, Vehicle.class).getContent());
 	}
 
 

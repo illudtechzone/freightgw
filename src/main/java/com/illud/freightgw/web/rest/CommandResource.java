@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.illud.freightgw.client.freight.api.CompanyResourceApi;
+import com.illud.freightgw.client.freight.api.QuotationResourceApi;
 import com.illud.freightgw.client.freight.model.Company;
 import com.illud.freightgw.client.freight.model.Customer;
 import com.illud.freightgw.client.freight.model.Driver;
@@ -30,6 +31,8 @@ public class CommandResource {
 
 	@Autowired
 	CompanyResourceApi api;
+	@Autowired
+	QuotationResourceApi quotationApi;
 
 	public CommandResource(CommandService commantService) {
 		this.comService = commantService;
@@ -41,6 +44,15 @@ public class CommandResource {
 
 		// return comService.save(company);
 		return api.createCompanyUsingPOST(company);
+
+	}
+	
+	@PostMapping("/create/quotation")
+	public ResponseEntity<QuotationDTO> createQuotation(@RequestBody QuotationDTO quotationDTO) {
+		log.debug("<<<<<<<<<<< create Comapny >>>>>>>>", quotationDTO);
+
+		// return comService.save(company);
+		return quotationApi.createQuotationUsingPOST(quotationDTO);
 
 	}
 

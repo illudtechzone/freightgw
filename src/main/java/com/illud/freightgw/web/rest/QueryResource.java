@@ -130,6 +130,15 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		return ResponseEntity.ok().body(page.getContent());
 		
 	}
+	
+	@GetMapping("/getAllQuotationsbyCompanyId/{companyId}")
+	public ResponseEntity<List<Quotation>> findAllQuotationsByCompanyId(@PathVariable Long companyId,Pageable pageable){
+		log.debug("<<<<<<<< findAllQuotationsByCompanyId>>>>>>>",companyId);
+		Page<Quotation> page = queService.findAllQuotationsByCompanyId(companyId,pageable);
+		return ResponseEntity.ok().body(page.getContent());
+		
+	}
+	
 	//////////////////////////activiti-workflow-apis///////////////////////////////////
 	
 	@GetMapping("/tasks")

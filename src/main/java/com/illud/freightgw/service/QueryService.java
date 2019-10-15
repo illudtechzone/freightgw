@@ -43,6 +43,7 @@ public interface QueryService {
 	Page<Quotation> findAllQuotationsByfreightId(Long freightId, Pageable pageable);
 	
 	Page<Quotation> findAllQuotationsByCompanyIdAndFreightId(Long companyId, Long freightId, Pageable pageable);
+	Page<Quotation> findAllQuotationsByCompanyId(Long companyId, Pageable pageable);
 
 	ResponseEntity<DataResponse> getTasks(String name, String nameLike, String description, String priority,
 			String minimumPriority, String maximumPriority, String assignee, String assigneeLike, String owner,

@@ -8,8 +8,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -18,8 +16,8 @@ import javax.validation.constraints.*;
  * Company
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-05T14:19:02.594+05:30[Asia/Calcutta]")
-@Document(indexName = "company")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-06T16:47:22.170+05:30[Asia/Calcutta]")
+
 public class Company   {
   @JsonProperty("address")
   private String address = null;

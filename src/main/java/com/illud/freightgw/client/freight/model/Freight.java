@@ -10,16 +10,16 @@ import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Date;
-
-import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
-
+/**
+ * Freight
+ */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-05T14:19:02.594+05:30[Asia/Calcutta]")
-@Document(indexName = "freight")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-06T16:47:22.170+05:30[Asia/Calcutta]")
+
 public class Freight   {
   /**
    * Gets or Sets acceptedStatus
@@ -418,7 +418,6 @@ public class Freight   {
    * @return height
   **/
   @ApiModelProperty(value = "")
-
 
 
   public Double getHeight() {

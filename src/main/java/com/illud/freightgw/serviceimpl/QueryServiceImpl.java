@@ -103,7 +103,7 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	public ResponseEntity<List<VehicleDTO>> findAllVehiclesByCompanyIdpCode(String iDPCode,Pageable page) {
 		log.debug("<<<<<< getOne driver>>>>",iDPCode);
 		SearchQuery searchQuery= new NativeSearchQueryBuilder().withQuery(termQuery("company.companyIdpCode.keyword", iDPCode)).build();
-		return vehicleResourceApi.createDtoListUsingPOST(esTemplate.queryForPage(searchQuery, Vehicle.class).getContent());
+		return vehicleResourceApi.createVehicleDtoListUsingPOST(esTemplate.queryForPage(searchQuery, Vehicle.class).getContent());
 	}
 
 
@@ -139,6 +139,14 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 				.must(termQuery("companyId",companyId)).must(termQuery("freightId",freightId))).build();
 		return esTemplate.queryForPage(sq, Quotation.class);
 	}
+
+	@Override
+	public Page<Quotation> findAllQuotationsByCompanyId(Long companyId, Pageable pageable) {
+		log.debug("<<<<< findAllQuotationsByCompanyId>>>>>>",companyId);
+		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(termQuery("companyId",companyId)).build();
+		return esTemplate.queryForPage(sq, Quotation.class);
+	}
+
 	
 	@Override
 	public ResponseEntity<DataResponse> getTasks(String name, String nameLike, String description, String priority,

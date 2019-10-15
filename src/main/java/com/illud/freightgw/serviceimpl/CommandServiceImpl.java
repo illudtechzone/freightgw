@@ -140,7 +140,7 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 
 	@Override
 	public void sendQuatation(String taskId, QuotationDTO response) {
-		commandResourceApi.sendQuatationUsingPOST(taskId, response);
+//		commandResourceApi.sendQuatationUsingPOST(taskId, response);
 		
 	}
 

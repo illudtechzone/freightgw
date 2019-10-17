@@ -181,6 +181,13 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 		return queryResourceApi.getBookingDetailsUsingGET(processInstanceId);
 	}
 
+	@Override
+	public ResponseEntity<FreightDTO> findFreightId(Long id) {
+		log.debug("<<<<<< input a Id to get a freight>>"+id+">>>>");
+		StringQuery sq =new StringQuery(termQuery("id",id).toString());
+		return freightResourceApi.createFreightDTOUsingPOST((esTemplate.queryForObject(sq, Freight.class)));
+	}
+
 	
 
 

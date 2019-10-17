@@ -68,6 +68,9 @@ public interface QueryService {
 
 	ResponseEntity<List<FreightDTO>> findAllFreightsByCustomerId(Long customerId, Pageable pageable);
 
+	 ResponseEntity<FreightDTO> findFreightId(Long id);
+
+
 	
 
 	

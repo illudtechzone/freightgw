@@ -62,6 +62,12 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		
 		return queService.findDriverById(id);
 	}
+	@GetMapping("/findFreightbyId/{id}")
+	public  ResponseEntity<FreightDTO> findFreightId(@PathVariable Long id){
+		log.debug("<<<<<<<<< input a id to get a driver details >>>>>>" , id);
+		
+		return queService.findFreightId(id);
+	}
 	@GetMapping("/findVehiclelookupId/{id}")
 	public VehicleLookUp findVehicleLookUpById(@PathVariable Long id){
 		log.debug(" <<<<<<<<< input a id to get a vehicle look up id details>>>>>> " , id);

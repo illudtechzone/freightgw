@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * VehicleLookUpDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-06T16:47:22.170+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-17T15:29:11.125+05:30[Asia/Calcutta]")
 
 public class VehicleLookUpDTO   {
   @JsonProperty("height")
@@ -36,6 +36,9 @@ public class VehicleLookUpDTO   {
 
   @JsonProperty("name")
   private String name = null;
+
+  @JsonProperty("pricingId")
+  private Long pricingId = null;
 
   @JsonProperty("width")
   private Double width = null;
@@ -180,6 +183,26 @@ public class VehicleLookUpDTO   {
     this.name = name;
   }
 
+  public VehicleLookUpDTO pricingId(Long pricingId) {
+    this.pricingId = pricingId;
+    return this;
+  }
+
+  /**
+   * Get pricingId
+   * @return pricingId
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public Long getPricingId() {
+    return pricingId;
+  }
+
+  public void setPricingId(Long pricingId) {
+    this.pricingId = pricingId;
+  }
+
   public VehicleLookUpDTO width(Double width) {
     this.width = width;
     return this;
@@ -217,12 +240,13 @@ public class VehicleLookUpDTO   {
         Objects.equals(this.length, vehicleLookUpDTO.length) &&
         Objects.equals(this.maxWeight, vehicleLookUpDTO.maxWeight) &&
         Objects.equals(this.name, vehicleLookUpDTO.name) &&
+        Objects.equals(this.pricingId, vehicleLookUpDTO.pricingId) &&
         Objects.equals(this.width, vehicleLookUpDTO.width);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(height, id, image, imageContentType, length, maxWeight, name, width);
+    return Objects.hash(height, id, image, imageContentType, length, maxWeight, name, pricingId, width);
   }
 
   @Override
@@ -237,6 +261,7 @@ public class VehicleLookUpDTO   {
     sb.append("    length: ").append(toIndentedString(length)).append("\n");
     sb.append("    maxWeight: ").append(toIndentedString(maxWeight)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    pricingId: ").append(toIndentedString(pricingId)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("}");
     return sb.toString();

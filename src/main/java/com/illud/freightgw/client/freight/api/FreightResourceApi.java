@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-06T16:47:22.170+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-17T15:29:11.125+05:30[Asia/Calcutta]")
 
 @Api(value = "FreightResource", description = "the FreightResource API")
 public interface FreightResourceApi {
@@ -57,7 +57,7 @@ public interface FreightResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<List<FreightDTO>> createFreightDtoListUsingPOST(@ApiParam(value = "page" ,required=true )  @Valid @RequestBody List<Freight> freight);
+    ResponseEntity<List<FreightDTO>> createFreightDtoListUsingPOST(@ApiParam(value = "list" ,required=true )  @Valid @RequestBody List<Freight> freight);
 
 
     @ApiOperation(value = "createFreight", nickname = "createFreightUsingPOST", notes = "", response = FreightDTO.class, tags={ "freight-resource", })

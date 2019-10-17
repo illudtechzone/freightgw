@@ -16,7 +16,7 @@ import javax.validation.constraints.*;
  * QuotationDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-06T16:47:22.170+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-17T15:29:11.125+05:30[Asia/Calcutta]")
 
 public class QuotationDTO   {
   @JsonProperty("amount")

@@ -113,7 +113,7 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 	@Override
 	public ResponseEntity<CompanyDTO> createcompanyIfnotExist(CompanyDTO companyDTO) {
 		log.debug("<<<<<<<< create company if not exist>>>>>>>>",companyDTO);
-		return comResourceApi.createcompantIfnotExistUsingPOST(companyDTO);
+		return comResourceApi.createCompanyIfNotExistUsingPOST(companyDTO);
 	}
 
 	@Override

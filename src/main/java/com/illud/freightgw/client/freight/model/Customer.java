@@ -17,7 +17,6 @@ import java.util.Objects;
  */
 @Validated
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-05T14:19:02.594+05:30[Asia/Calcutta]")
-
 @Document(indexName = "customer")
 public class Customer implements Serializable {
 

@@ -4,33 +4,21 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.illud.freightgw.client.freight.model.Company;
-import com.illud.freightgw.client.freight.model.DriverDocument;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * Driver
+ * Staff
  */
 @Validated
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-17T15:29:11.125+05:30[Asia/Calcutta]")
-@Document(indexName = "driver")
-public class Driver   {
+
+public class Staff   {
   @JsonProperty("company")
   private Company company = null;
-
-  @JsonProperty("driverDocuments")
-  @Valid
-  private List<DriverDocument> driverDocuments = null;
-
-  @JsonProperty("driverIdpCode")
-  private String driverIdpCode = null;
 
   @JsonProperty("email")
   private String email = null;
@@ -44,7 +32,13 @@ public class Driver   {
   @JsonProperty("phoneNumber")
   private Long phoneNumber = null;
 
-  public Driver company(Company company) {
+  @JsonProperty("staffIdpCode")
+  private String staffIdpCode = null;
+
+  @JsonProperty("type")
+  private String type = null;
+
+  public Staff company(Company company) {
     this.company = company;
     return this;
   }
@@ -65,56 +59,7 @@ public class Driver   {
     this.company = company;
   }
 
-  public Driver driverDocuments(List<DriverDocument> driverDocuments) {
-    this.driverDocuments = driverDocuments;
-    return this;
-  }
-
-  public Driver addDriverDocumentsItem(DriverDocument driverDocumentsItem) {
-    if (this.driverDocuments == null) {
-      this.driverDocuments = new ArrayList<DriverDocument>();
-    }
-    this.driverDocuments.add(driverDocumentsItem);
-    return this;
-  }
-
-  /**
-   * Get driverDocuments
-   * @return driverDocuments
-  **/
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public List<DriverDocument> getDriverDocuments() {
-    return driverDocuments;
-  }
-
-  public void setDriverDocuments(List<DriverDocument> driverDocuments) {
-    this.driverDocuments = driverDocuments;
-  }
-
-  public Driver driverIdpCode(String driverIdpCode) {
-    this.driverIdpCode = driverIdpCode;
-    return this;
-  }
-
-  /**
-   * Get driverIdpCode
-   * @return driverIdpCode
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getDriverIdpCode() {
-    return driverIdpCode;
-  }
-
-  public void setDriverIdpCode(String driverIdpCode) {
-    this.driverIdpCode = driverIdpCode;
-  }
-
-  public Driver email(String email) {
+  public Staff email(String email) {
     this.email = email;
     return this;
   }
@@ -134,7 +79,7 @@ public class Driver   {
     this.email = email;
   }
 
-  public Driver id(Long id) {
+  public Staff id(Long id) {
     this.id = id;
     return this;
   }
@@ -154,7 +99,7 @@ public class Driver   {
     this.id = id;
   }
 
-  public Driver name(String name) {
+  public Staff name(String name) {
     this.name = name;
     return this;
   }
@@ -174,7 +119,7 @@ public class Driver   {
     this.name = name;
   }
 
-  public Driver phoneNumber(Long phoneNumber) {
+  public Staff phoneNumber(Long phoneNumber) {
     this.phoneNumber = phoneNumber;
     return this;
   }
@@ -194,6 +139,46 @@ public class Driver   {
     this.phoneNumber = phoneNumber;
   }
 
+  public Staff staffIdpCode(String staffIdpCode) {
+    this.staffIdpCode = staffIdpCode;
+    return this;
+  }
+
+  /**
+   * Get staffIdpCode
+   * @return staffIdpCode
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getStaffIdpCode() {
+    return staffIdpCode;
+  }
+
+  public void setStaffIdpCode(String staffIdpCode) {
+    this.staffIdpCode = staffIdpCode;
+  }
+
+  public Staff type(String type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Get type
+   * @return type
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -203,33 +188,33 @@ public class Driver   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Driver driver = (Driver) o;
-    return Objects.equals(this.company, driver.company) &&
-        Objects.equals(this.driverDocuments, driver.driverDocuments) &&
-        Objects.equals(this.driverIdpCode, driver.driverIdpCode) &&
-        Objects.equals(this.email, driver.email) &&
-        Objects.equals(this.id, driver.id) &&
-        Objects.equals(this.name, driver.name) &&
-        Objects.equals(this.phoneNumber, driver.phoneNumber);
+    Staff staff = (Staff) o;
+    return Objects.equals(this.company, staff.company) &&
+        Objects.equals(this.email, staff.email) &&
+        Objects.equals(this.id, staff.id) &&
+        Objects.equals(this.name, staff.name) &&
+        Objects.equals(this.phoneNumber, staff.phoneNumber) &&
+        Objects.equals(this.staffIdpCode, staff.staffIdpCode) &&
+        Objects.equals(this.type, staff.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(company, driverDocuments, driverIdpCode, email, id, name, phoneNumber);
+    return Objects.hash(company, email, id, name, phoneNumber, staffIdpCode, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Driver {\n");
+    sb.append("class Staff {\n");
     
     sb.append("    company: ").append(toIndentedString(company)).append("\n");
-    sb.append("    driverDocuments: ").append(toIndentedString(driverDocuments)).append("\n");
-    sb.append("    driverIdpCode: ").append(toIndentedString(driverIdpCode)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
+    sb.append("    staffIdpCode: ").append(toIndentedString(staffIdpCode)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -25,10 +25,24 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-06T16:47:22.170+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-17T15:29:11.125+05:30[Asia/Calcutta]")
 
 @Api(value = "CompanyResource", description = "the CompanyResource API")
 public interface CompanyResourceApi {
+
+    @ApiOperation(value = "createCompanyIfNotExist", nickname = "createCompanyIfNotExistUsingPOST", notes = "", response = CompanyDTO.class, tags={ "company-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = CompanyDTO.class),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/companyIfnotexist",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<CompanyDTO> createCompanyIfNotExistUsingPOST(@ApiParam(value = "companyDTO" ,required=true )  @Valid @RequestBody CompanyDTO companyDTO);
+
 
     @ApiOperation(value = "createCompany", nickname = "createCompanyUsingPOST", notes = "", response = CompanyDTO.class, tags={ "company-resource", })
     @ApiResponses(value = { 
@@ -42,20 +56,6 @@ public interface CompanyResourceApi {
         consumes = "application/json",
         method = RequestMethod.POST)
     ResponseEntity<CompanyDTO> createCompanyUsingPOST(@ApiParam(value = "companyDTO" ,required=true )  @Valid @RequestBody CompanyDTO companyDTO);
-
-
-    @ApiOperation(value = "createcompantIfnotExist", nickname = "createcompantIfnotExistUsingPOST", notes = "", response = CompanyDTO.class, tags={ "company-resource", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = CompanyDTO.class),
-        @ApiResponse(code = 201, message = "Created"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/create/companies",
-        produces = "*/*", 
-        consumes = "application/json",
-        method = RequestMethod.POST)
-    ResponseEntity<CompanyDTO> createcompantIfnotExistUsingPOST(@ApiParam(value = "companyDTO" ,required=true )  @Valid @RequestBody CompanyDTO companyDTO);
 
 
     @ApiOperation(value = "deleteCompany", nickname = "deleteCompanyUsingDELETE", notes = "", tags={ "company-resource", })

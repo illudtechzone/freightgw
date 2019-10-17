@@ -4,9 +4,14 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.illud.freightgw.client.freight.model.Company;
-import com.illud.freightgw.client.freight.model.Driver;
+import com.illud.freightgw.client.freight.model.VehicleDocument;
+import com.illud.freightgw.client.freight.model.VehicleStaff;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -15,17 +20,14 @@ import javax.validation.constraints.*;
  * Vehicle
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-06T16:47:22.170+05:30[Asia/Calcutta]")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-17T15:29:11.125+05:30[Asia/Calcutta]")
+@Document(indexName = "vehicle")
 public class Vehicle   {
   @JsonProperty("company")
   private Company company = null;
 
   @JsonProperty("currentLocationGeopoint")
   private String currentLocationGeopoint = null;
-
-  @JsonProperty("driver")
-  private Driver driver = null;
 
   @JsonProperty("id")
   private Long id = null;
@@ -36,8 +38,16 @@ public class Vehicle   {
   @JsonProperty("registerNo")
   private String registerNo = null;
 
+  @JsonProperty("vehicleDocuments")
+  @Valid
+  private List<VehicleDocument> vehicleDocuments = null;
+
   @JsonProperty("vehicleLookupId")
   private Long vehicleLookupId = null;
+
+  @JsonProperty("vehicleStaffs")
+  @Valid
+  private List<VehicleStaff> vehicleStaffs = null;
 
   public Vehicle company(Company company) {
     this.company = company;
@@ -78,27 +88,6 @@ public class Vehicle   {
 
   public void setCurrentLocationGeopoint(String currentLocationGeopoint) {
     this.currentLocationGeopoint = currentLocationGeopoint;
-  }
-
-  public Vehicle driver(Driver driver) {
-    this.driver = driver;
-    return this;
-  }
-
-  /**
-   * Get driver
-   * @return driver
-  **/
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public Driver getDriver() {
-    return driver;
-  }
-
-  public void setDriver(Driver driver) {
-    this.driver = driver;
   }
 
   public Vehicle id(Long id) {
@@ -161,6 +150,35 @@ public class Vehicle   {
     this.registerNo = registerNo;
   }
 
+  public Vehicle vehicleDocuments(List<VehicleDocument> vehicleDocuments) {
+    this.vehicleDocuments = vehicleDocuments;
+    return this;
+  }
+
+  public Vehicle addVehicleDocumentsItem(VehicleDocument vehicleDocumentsItem) {
+    if (this.vehicleDocuments == null) {
+      this.vehicleDocuments = new ArrayList<VehicleDocument>();
+    }
+    this.vehicleDocuments.add(vehicleDocumentsItem);
+    return this;
+  }
+
+  /**
+   * Get vehicleDocuments
+   * @return vehicleDocuments
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public List<VehicleDocument> getVehicleDocuments() {
+    return vehicleDocuments;
+  }
+
+  public void setVehicleDocuments(List<VehicleDocument> vehicleDocuments) {
+    this.vehicleDocuments = vehicleDocuments;
+  }
+
   public Vehicle vehicleLookupId(Long vehicleLookupId) {
     this.vehicleLookupId = vehicleLookupId;
     return this;
@@ -181,6 +199,35 @@ public class Vehicle   {
     this.vehicleLookupId = vehicleLookupId;
   }
 
+  public Vehicle vehicleStaffs(List<VehicleStaff> vehicleStaffs) {
+    this.vehicleStaffs = vehicleStaffs;
+    return this;
+  }
+
+  public Vehicle addVehicleStaffsItem(VehicleStaff vehicleStaffsItem) {
+    if (this.vehicleStaffs == null) {
+      this.vehicleStaffs = new ArrayList<VehicleStaff>();
+    }
+    this.vehicleStaffs.add(vehicleStaffsItem);
+    return this;
+  }
+
+  /**
+   * Get vehicleStaffs
+   * @return vehicleStaffs
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public List<VehicleStaff> getVehicleStaffs() {
+    return vehicleStaffs;
+  }
+
+  public void setVehicleStaffs(List<VehicleStaff> vehicleStaffs) {
+    this.vehicleStaffs = vehicleStaffs;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -193,16 +240,17 @@ public class Vehicle   {
     Vehicle vehicle = (Vehicle) o;
     return Objects.equals(this.company, vehicle.company) &&
         Objects.equals(this.currentLocationGeopoint, vehicle.currentLocationGeopoint) &&
-        Objects.equals(this.driver, vehicle.driver) &&
         Objects.equals(this.id, vehicle.id) &&
         Objects.equals(this.occupied, vehicle.occupied) &&
         Objects.equals(this.registerNo, vehicle.registerNo) &&
-        Objects.equals(this.vehicleLookupId, vehicle.vehicleLookupId);
+        Objects.equals(this.vehicleDocuments, vehicle.vehicleDocuments) &&
+        Objects.equals(this.vehicleLookupId, vehicle.vehicleLookupId) &&
+        Objects.equals(this.vehicleStaffs, vehicle.vehicleStaffs);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(company, currentLocationGeopoint, driver, id, occupied, registerNo, vehicleLookupId);
+    return Objects.hash(company, currentLocationGeopoint, id, occupied, registerNo, vehicleDocuments, vehicleLookupId, vehicleStaffs);
   }
 
   @Override
@@ -212,11 +260,12 @@ public class Vehicle   {
     
     sb.append("    company: ").append(toIndentedString(company)).append("\n");
     sb.append("    currentLocationGeopoint: ").append(toIndentedString(currentLocationGeopoint)).append("\n");
-    sb.append("    driver: ").append(toIndentedString(driver)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    occupied: ").append(toIndentedString(occupied)).append("\n");
     sb.append("    registerNo: ").append(toIndentedString(registerNo)).append("\n");
+    sb.append("    vehicleDocuments: ").append(toIndentedString(vehicleDocuments)).append("\n");
     sb.append("    vehicleLookupId: ").append(toIndentedString(vehicleLookupId)).append("\n");
+    sb.append("    vehicleStaffs: ").append(toIndentedString(vehicleStaffs)).append("\n");
     sb.append("}");
     return sb.toString();
   }

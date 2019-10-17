@@ -3,11 +3,15 @@ package com.illud.freightgw.client.freight.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.illud.freightgw.client.freight.model.Driver;
+import com.illud.freightgw.client.freight.model.Staff;
 import com.illud.freightgw.client.freight.model.Vehicle;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -16,14 +20,18 @@ import javax.validation.constraints.*;
  * Company
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-06T16:47:22.170+05:30[Asia/Calcutta]")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-17T15:29:11.125+05:30[Asia/Calcutta]")
+@Document(indexName = "company")
 public class Company   {
   @JsonProperty("address")
   private String address = null;
 
   @JsonProperty("companyIdpCode")
   private String companyIdpCode = null;
+
+  @JsonProperty("drivers")
+  @Valid
+  private List<Driver> drivers = null;
 
   @JsonProperty("email")
   private String email = null;
@@ -42,6 +50,10 @@ public class Company   {
 
   @JsonProperty("phoneNumber")
   private Long phoneNumber = null;
+
+  @JsonProperty("staffs")
+  @Valid
+  private List<Staff> staffs = null;
 
   @JsonProperty("vehicles")
   @Valid
@@ -85,6 +97,35 @@ public class Company   {
 
   public void setCompanyIdpCode(String companyIdpCode) {
     this.companyIdpCode = companyIdpCode;
+  }
+
+  public Company drivers(List<Driver> drivers) {
+    this.drivers = drivers;
+    return this;
+  }
+
+  public Company addDriversItem(Driver driversItem) {
+    if (this.drivers == null) {
+      this.drivers = new ArrayList<Driver>();
+    }
+    this.drivers.add(driversItem);
+    return this;
+  }
+
+  /**
+   * Get drivers
+   * @return drivers
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public List<Driver> getDrivers() {
+    return drivers;
+  }
+
+  public void setDrivers(List<Driver> drivers) {
+    this.drivers = drivers;
   }
 
   public Company email(String email) {
@@ -207,6 +248,35 @@ public class Company   {
     this.phoneNumber = phoneNumber;
   }
 
+  public Company staffs(List<Staff> staffs) {
+    this.staffs = staffs;
+    return this;
+  }
+
+  public Company addStaffsItem(Staff staffsItem) {
+    if (this.staffs == null) {
+      this.staffs = new ArrayList<Staff>();
+    }
+    this.staffs.add(staffsItem);
+    return this;
+  }
+
+  /**
+   * Get staffs
+   * @return staffs
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public List<Staff> getStaffs() {
+    return staffs;
+  }
+
+  public void setStaffs(List<Staff> staffs) {
+    this.staffs = staffs;
+  }
+
   public Company vehicles(List<Vehicle> vehicles) {
     this.vehicles = vehicles;
     return this;
@@ -248,18 +318,20 @@ public class Company   {
     Company company = (Company) o;
     return Objects.equals(this.address, company.address) &&
         Objects.equals(this.companyIdpCode, company.companyIdpCode) &&
+        Objects.equals(this.drivers, company.drivers) &&
         Objects.equals(this.email, company.email) &&
         Objects.equals(this.id, company.id) &&
         Objects.equals(this.locationAddress, company.locationAddress) &&
         Objects.equals(this.locationGeopoint, company.locationGeopoint) &&
         Objects.equals(this.name, company.name) &&
         Objects.equals(this.phoneNumber, company.phoneNumber) &&
+        Objects.equals(this.staffs, company.staffs) &&
         Objects.equals(this.vehicles, company.vehicles);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, companyIdpCode, email, id, locationAddress, locationGeopoint, name, phoneNumber, vehicles);
+    return Objects.hash(address, companyIdpCode, drivers, email, id, locationAddress, locationGeopoint, name, phoneNumber, staffs, vehicles);
   }
 
   @Override
@@ -269,12 +341,14 @@ public class Company   {
     
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    companyIdpCode: ").append(toIndentedString(companyIdpCode)).append("\n");
+    sb.append("    drivers: ").append(toIndentedString(drivers)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    locationAddress: ").append(toIndentedString(locationAddress)).append("\n");
     sb.append("    locationGeopoint: ").append(toIndentedString(locationGeopoint)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
+    sb.append("    staffs: ").append(toIndentedString(staffs)).append("\n");
     sb.append("    vehicles: ").append(toIndentedString(vehicles)).append("\n");
     sb.append("}");
     return sb.toString();

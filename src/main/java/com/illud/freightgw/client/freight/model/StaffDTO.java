@@ -10,17 +10,14 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * DriverDTO
+ * StaffDTO
  */
 @Validated
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-17T15:29:11.125+05:30[Asia/Calcutta]")
 
-public class DriverDTO   {
+public class StaffDTO   {
   @JsonProperty("companyId")
   private Long companyId = null;
-
-  @JsonProperty("driverIdpCode")
-  private String driverIdpCode = null;
 
   @JsonProperty("email")
   private String email = null;
@@ -34,7 +31,13 @@ public class DriverDTO   {
   @JsonProperty("phoneNumber")
   private Long phoneNumber = null;
 
-  public DriverDTO companyId(Long companyId) {
+  @JsonProperty("staffIdpCode")
+  private String staffIdpCode = null;
+
+  @JsonProperty("type")
+  private String type = null;
+
+  public StaffDTO companyId(Long companyId) {
     this.companyId = companyId;
     return this;
   }
@@ -54,27 +57,7 @@ public class DriverDTO   {
     this.companyId = companyId;
   }
 
-  public DriverDTO driverIdpCode(String driverIdpCode) {
-    this.driverIdpCode = driverIdpCode;
-    return this;
-  }
-
-  /**
-   * Get driverIdpCode
-   * @return driverIdpCode
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getDriverIdpCode() {
-    return driverIdpCode;
-  }
-
-  public void setDriverIdpCode(String driverIdpCode) {
-    this.driverIdpCode = driverIdpCode;
-  }
-
-  public DriverDTO email(String email) {
+  public StaffDTO email(String email) {
     this.email = email;
     return this;
   }
@@ -94,7 +77,7 @@ public class DriverDTO   {
     this.email = email;
   }
 
-  public DriverDTO id(Long id) {
+  public StaffDTO id(Long id) {
     this.id = id;
     return this;
   }
@@ -114,7 +97,7 @@ public class DriverDTO   {
     this.id = id;
   }
 
-  public DriverDTO name(String name) {
+  public StaffDTO name(String name) {
     this.name = name;
     return this;
   }
@@ -134,7 +117,7 @@ public class DriverDTO   {
     this.name = name;
   }
 
-  public DriverDTO phoneNumber(Long phoneNumber) {
+  public StaffDTO phoneNumber(Long phoneNumber) {
     this.phoneNumber = phoneNumber;
     return this;
   }
@@ -154,6 +137,46 @@ public class DriverDTO   {
     this.phoneNumber = phoneNumber;
   }
 
+  public StaffDTO staffIdpCode(String staffIdpCode) {
+    this.staffIdpCode = staffIdpCode;
+    return this;
+  }
+
+  /**
+   * Get staffIdpCode
+   * @return staffIdpCode
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getStaffIdpCode() {
+    return staffIdpCode;
+  }
+
+  public void setStaffIdpCode(String staffIdpCode) {
+    this.staffIdpCode = staffIdpCode;
+  }
+
+  public StaffDTO type(String type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Get type
+   * @return type
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -163,31 +186,33 @@ public class DriverDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DriverDTO driverDTO = (DriverDTO) o;
-    return Objects.equals(this.companyId, driverDTO.companyId) &&
-        Objects.equals(this.driverIdpCode, driverDTO.driverIdpCode) &&
-        Objects.equals(this.email, driverDTO.email) &&
-        Objects.equals(this.id, driverDTO.id) &&
-        Objects.equals(this.name, driverDTO.name) &&
-        Objects.equals(this.phoneNumber, driverDTO.phoneNumber);
+    StaffDTO staffDTO = (StaffDTO) o;
+    return Objects.equals(this.companyId, staffDTO.companyId) &&
+        Objects.equals(this.email, staffDTO.email) &&
+        Objects.equals(this.id, staffDTO.id) &&
+        Objects.equals(this.name, staffDTO.name) &&
+        Objects.equals(this.phoneNumber, staffDTO.phoneNumber) &&
+        Objects.equals(this.staffIdpCode, staffDTO.staffIdpCode) &&
+        Objects.equals(this.type, staffDTO.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(companyId, driverIdpCode, email, id, name, phoneNumber);
+    return Objects.hash(companyId, email, id, name, phoneNumber, staffIdpCode, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DriverDTO {\n");
+    sb.append("class StaffDTO {\n");
     
     sb.append("    companyId: ").append(toIndentedString(companyId)).append("\n");
-    sb.append("    driverIdpCode: ").append(toIndentedString(driverIdpCode)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
+    sb.append("    staffIdpCode: ").append(toIndentedString(staffIdpCode)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

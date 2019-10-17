@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * VehicleDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-06T16:47:22.170+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-17T15:29:11.125+05:30[Asia/Calcutta]")
 
 public class VehicleDTO   {
   @JsonProperty("companyId")
@@ -21,9 +21,6 @@ public class VehicleDTO   {
 
   @JsonProperty("currentLocationGeopoint")
   private String currentLocationGeopoint = null;
-
-  @JsonProperty("driverId")
-  private Long driverId = null;
 
   @JsonProperty("id")
   private Long id = null;
@@ -75,26 +72,6 @@ public class VehicleDTO   {
 
   public void setCurrentLocationGeopoint(String currentLocationGeopoint) {
     this.currentLocationGeopoint = currentLocationGeopoint;
-  }
-
-  public VehicleDTO driverId(Long driverId) {
-    this.driverId = driverId;
-    return this;
-  }
-
-  /**
-   * Get driverId
-   * @return driverId
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Long getDriverId() {
-    return driverId;
-  }
-
-  public void setDriverId(Long driverId) {
-    this.driverId = driverId;
   }
 
   public VehicleDTO id(Long id) {
@@ -189,7 +166,6 @@ public class VehicleDTO   {
     VehicleDTO vehicleDTO = (VehicleDTO) o;
     return Objects.equals(this.companyId, vehicleDTO.companyId) &&
         Objects.equals(this.currentLocationGeopoint, vehicleDTO.currentLocationGeopoint) &&
-        Objects.equals(this.driverId, vehicleDTO.driverId) &&
         Objects.equals(this.id, vehicleDTO.id) &&
         Objects.equals(this.occupied, vehicleDTO.occupied) &&
         Objects.equals(this.registerNo, vehicleDTO.registerNo) &&
@@ -198,7 +174,7 @@ public class VehicleDTO   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(companyId, currentLocationGeopoint, driverId, id, occupied, registerNo, vehicleLookupId);
+    return Objects.hash(companyId, currentLocationGeopoint, id, occupied, registerNo, vehicleLookupId);
   }
 
   @Override
@@ -208,7 +184,6 @@ public class VehicleDTO   {
     
     sb.append("    companyId: ").append(toIndentedString(companyId)).append("\n");
     sb.append("    currentLocationGeopoint: ").append(toIndentedString(currentLocationGeopoint)).append("\n");
-    sb.append("    driverId: ").append(toIndentedString(driverId)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    occupied: ").append(toIndentedString(occupied)).append("\n");
     sb.append("    registerNo: ").append(toIndentedString(registerNo)).append("\n");

@@ -5,6 +5,8 @@
  */
 package com.illud.freightgw.client.freight.api;
 
+import java.util.List;
+import com.illud.freightgw.client.freight.model.Quotation;
 import com.illud.freightgw.client.freight.model.QuotationDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -25,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-06T16:47:22.170+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-17T15:29:11.125+05:30[Asia/Calcutta]")
 
 @Api(value = "QuotationResource", description = "the QuotationResource API")
 public interface QuotationResourceApi {
@@ -42,6 +44,30 @@ public interface QuotationResourceApi {
         consumes = "application/json",
         method = RequestMethod.POST)
     ResponseEntity<QuotationDTO> createQuotationUsingPOST(@ApiParam(value = "quotationDTO" ,required=true )  @Valid @RequestBody QuotationDTO quotationDTO);
+
+
+    @ApiOperation(value = "createQuotationsDtoList", nickname = "createQuotationsDtoListUsingGET", notes = "", response = QuotationDTO.class, responseContainer = "List", tags={ "quotation-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = QuotationDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/convertdtolist",
+        produces = "*/*", 
+        method = RequestMethod.GET)
+    ResponseEntity<List<QuotationDTO>> createQuotationsDtoListUsingGET(@ApiParam(value = "quotations" ,required=true )  @Valid @RequestBody List<Quotation> quotation);
+
+
+    @ApiOperation(value = "createQuotationsDto", nickname = "createQuotationsDtoUsingGET", notes = "", response = QuotationDTO.class, tags={ "quotation-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = QuotationDTO.class),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/convertdto",
+        produces = "*/*", 
+        method = RequestMethod.GET)
+    ResponseEntity<QuotationDTO> createQuotationsDtoUsingGET(@ApiParam(value = "quotation" ,required=true )  @Valid @RequestBody Quotation quotation);
 
 
     @ApiOperation(value = "deleteQuotation", nickname = "deleteQuotationUsingDELETE", notes = "", tags={ "quotation-resource", })

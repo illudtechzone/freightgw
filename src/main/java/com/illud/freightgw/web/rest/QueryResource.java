@@ -111,6 +111,14 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		
 		
 	}
+	
+	@GetMapping("/getAllFreightByCompanyIdAndStatus/{companyId}/{requestedStatus}")
+	public ResponseEntity<List<FreightDTO>> findAllFreights(@PathVariable Long companyId,@PathVariable RequestStatus requestedStatus,Pageable pageable){
+		log.debug("<<<<<<<<< getall freights input requestedstatus>>>>>>>"+requestedStatus);
+		return queService.findAllFreightByCompanyIdAndRequestStatus(companyId,requestedStatus,pageable);
+		
+		
+	}
 	@GetMapping("/freights/{customerId}")
 	public ResponseEntity<List<FreightDTO>> findAllFreightsByCustomerId(@PathVariable Long customerId,Pageable pageable){
 		log.debug("<<<<<<< findAllFreightDTO >>>>>>",customerId);

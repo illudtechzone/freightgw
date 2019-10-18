@@ -48,4 +48,6 @@ public interface CommandService {
 	
 	void deleteVehicleLookup(Long vehicleLookupId);
 
+	ResponseEntity<FreightDTO> createAssignVehicle(FreightDTO freightDTO, Long vehicleId);
+
 }

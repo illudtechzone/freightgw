@@ -163,6 +163,12 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 		this.vehLookUpResourceApi.deleteVehicleLookUpUsingDELETE(vehicleLookupId);
 		
 	}
+
+	@Override
+	public ResponseEntity<FreightDTO> createAssignVehicle(FreightDTO freightDTO, Long vehicleId) {
+		log.debug("<<<<< createAssignVehicle >>>>>>",freightDTO,vehicleId);
+		return freResourceApi.assumeVehicleUsingPOST(vehicleId, freightDTO);
+	}
 	
 	
 }

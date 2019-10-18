@@ -145,6 +145,13 @@ public class CommandResource {
 		comService.deleteVehicle(vehicleId);
 		comService.deleteVehicleLookup(vehicleLookupId);
 	}
+	@PostMapping("/updateFreight/{freightDto}/{vehicleId}")
+	public ResponseEntity<FreightDTO> assignVehicle(@RequestBody FreightDTO freightDTO,@PathVariable Long vehicleId){
+		log.debug("<<<<<<<<assighUpdateFreight>>>>>",freightDTO,vehicleId);
+		
+		return comService.createAssignVehicle(freightDTO,vehicleId);
+		
+	}
 
 	/////////////////////////// activiti-workflow-apis///////////////////////////////////
 

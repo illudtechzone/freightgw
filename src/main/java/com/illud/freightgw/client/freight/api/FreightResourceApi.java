@@ -27,10 +27,24 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-17T15:29:11.125+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-18T18:17:25.495+05:30[Asia/Calcutta]")
 
 @Api(value = "FreightResource", description = "the FreightResource API")
 public interface FreightResourceApi {
+
+    @ApiOperation(value = "assumeVehicle", nickname = "assumeVehicleUsingPOST", notes = "", response = FreightDTO.class, tags={ "freight-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = FreightDTO.class),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/updatefreightandvehicleforVehicleidorfreight/{freightDto}/{vehicleid}",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<FreightDTO> assumeVehicleUsingPOST(@ApiParam(value = "vehicleId",required=true) @PathVariable("vehicleId") Long vehicleId,@ApiParam(value = "freightDTO" ,required=true )  @Valid @RequestBody FreightDTO freightDTO);
+
 
     @ApiOperation(value = "createFreightDTO", nickname = "createFreightDTOUsingPOST", notes = "", response = FreightDTO.class, tags={ "freight-resource", })
     @ApiResponses(value = { 

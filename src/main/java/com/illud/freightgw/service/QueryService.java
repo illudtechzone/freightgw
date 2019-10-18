@@ -68,6 +68,8 @@ public interface QueryService {
 
 	ResponseEntity<List<FreightDTO>> findAllFreightsByCustomerId(Long customerId, Pageable pageable);
 
+	Page<Driver> findAllDriversByComapanyIdpCode(String companyIdpCode, Pageable pageable);
+
 	
 
 	

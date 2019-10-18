@@ -22,6 +22,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.illud.freightgw.client.freight.api.DriverResourceApi;
 import com.illud.freightgw.client.freight.api.FreightResourceApi;
 import com.illud.freightgw.client.freight.api.QueryResourceApi;
 import com.illud.freightgw.client.freight.api.VehicleResourceApi;
@@ -47,6 +48,9 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	
 	@Autowired
 	VehicleResourceApi vehicleResourceApi;
+	
+	@Autowired
+	DriverResourceApi driverResourceApi;
 	
 	public QueryServiceImpl(JestClient jestClient,JestElasticsearchTemplate esTemplate) {
 		this.jestClient=jestClient;
@@ -179,6 +183,13 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	public ResponseEntity<FreightDTO> getBookingDetails(String processInstanceId) {
 		
 		return queryResourceApi.getBookingDetailsUsingGET(processInstanceId);
+	}
+
+	@Override
+	public Page<Driver> findAllDriversByComapanyIdpCode(String companyIdpCode, Pageable pageable) {
+		log.debug("<<<<<<<findAllDriversByComapanyIdpCode >>>>>>>",companyIdpCode);
+		SearchQuery searchQuery= new NativeSearchQueryBuilder().withQuery(termQuery("company.companyIdpCode.keyword", companyIdpCode)).build();
+		return esTemplate.queryForPage(searchQuery,Driver.class );
 	}
 
 	

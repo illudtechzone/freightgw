@@ -138,6 +138,13 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		return ResponseEntity.ok().body(page.getContent());
 		
 	}
+	@GetMapping("/getAllDriversbyCompanyidpcode/{companyIdpcode}")
+	public ResponseEntity<List<Driver>> findAllDriversByCompanyIdpCode(@PathVariable String companyIdpCode,Pageable pageable){
+		log.debug("<<<<<< findAllDriversByCompanyIdpCode >>>>>>>",companyIdpCode);
+		Page<Driver> page = queService.findAllDriversByComapanyIdpCode(companyIdpCode,pageable);
+		return ResponseEntity.ok().body(page.getContent());
+		
+	}
 	
 	//////////////////////////activiti-workflow-apis///////////////////////////////////
 	

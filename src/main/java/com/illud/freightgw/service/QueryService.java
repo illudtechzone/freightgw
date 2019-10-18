@@ -68,7 +68,15 @@ public interface QueryService {
 
 	ResponseEntity<List<FreightDTO>> findAllFreightsByCustomerId(Long customerId, Pageable pageable);
 
+
 	Page<Driver> findAllDriversByComapanyIdpCode(String companyIdpCode, Pageable pageable);
+
+	 ResponseEntity<FreightDTO> findFreightId(Long id);
+
+	ResponseEntity<List<FreightDTO>> findAllFreightByCompanyIdAndRequestStatus(Long companyId,
+			RequestStatus requestedStatus, Pageable pageable);
+
+
 
 	
 

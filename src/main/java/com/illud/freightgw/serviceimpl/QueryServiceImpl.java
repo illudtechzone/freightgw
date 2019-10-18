@@ -178,6 +178,13 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 		
 		return queryResourceApi.getPendingFreightsUsingGET(assignee, assigneeLike, candidateGroup, candidateGroups, candidateUser, createdAfter, createdBefore, createdOn, name, nameLike, processDefinitionId, processDefinitionKey, processInstanceId);
 	}
+	@Override
+	public ResponseEntity<List<FreightDTO>> findAllFreightByCompanyIdAndRequestStatus(Long companyId, RequestStatus requestedStatus, Pageable pageable) {
+		log.debug("<<<<< findAllFreightByCompanyIdAndRequestStatus>>>>>>",companyId,requestedStatus);
+		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(QueryBuilders.boolQuery()
+				.must(termQuery("companyId",companyId)).must(termQuery("requestedStatus.keyword",requestedStatus))).build();
+		return freightResourceApi.createFreightDtoListUsingPOST(esTemplate.queryForPage(sq, Freight.class).getContent());
+	}
 
 	@Override
 	public ResponseEntity<FreightDTO> getBookingDetails(String processInstanceId) {
@@ -186,10 +193,17 @@ private final Logger log = LoggerFactory.getLogger(QueryServiceImpl.class);
 	}
 
 	@Override
+
 	public Page<Driver> findAllDriversByComapanyIdpCode(String companyIdpCode, Pageable pageable) {
 		log.debug("<<<<<<<findAllDriversByComapanyIdpCode >>>>>>>",companyIdpCode);
 		SearchQuery searchQuery= new NativeSearchQueryBuilder().withQuery(termQuery("company.companyIdpCode.keyword", companyIdpCode)).build();
 		return esTemplate.queryForPage(searchQuery,Driver.class );
+	}
+	public ResponseEntity<FreightDTO> findFreightId(Long id) {
+		log.debug("<<<<<< input a Id to get a freight>>"+id+">>>>");
+		StringQuery sq =new StringQuery(termQuery("id",id).toString());
+		return freightResourceApi.createFreightDTOUsingPOST((esTemplate.queryForObject(sq, Freight.class)));
+
 	}
 
 	

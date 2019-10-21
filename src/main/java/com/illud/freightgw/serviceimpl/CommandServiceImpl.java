@@ -167,7 +167,7 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 	@Override
 	public ResponseEntity<FreightDTO> createAssignVehicle(FreightDTO freightDTO, Long vehicleId) {
 		log.debug("<<<<< createAssignVehicle >>>>>>",freightDTO,vehicleId);
-		return freResourceApi.assumeVehicleUsingPOST(vehicleId, freightDTO);
+		return freResourceApi.assignVehicleUsingPOST(vehicleId, freightDTO);
 	}
 	
 	

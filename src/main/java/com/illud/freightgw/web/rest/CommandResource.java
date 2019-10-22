@@ -147,10 +147,15 @@ public class CommandResource {
 	}
 	@PostMapping("/updateFreight/{vehicleId}")
 	public ResponseEntity<FreightDTO> assignVehicle(@RequestBody FreightDTO freightDTO,@PathVariable Long vehicleId){
-		log.debug("<<<<<<<<assighUpdateFreight>>>>>",freightDTO,vehicleId);
+		log.debug("<<<<<<<<assignUpdateFreight>>>>>",freightDTO,vehicleId);
 		
 		return comService.createAssignVehicle(freightDTO,vehicleId);
 		
+	}
+	@DeleteMapping("/deletedriver/{driverid}")
+	public void deleteDriver(@PathVariable Long driverId) {
+		log.debug("<<<<<<< delete driver >>>>>>>>>",driverId);
+		comService.deleteDriver(driverId);
 	}
 
 	/////////////////////////// activiti-workflow-apis///////////////////////////////////

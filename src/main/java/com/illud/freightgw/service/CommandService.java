@@ -50,4 +50,6 @@ public interface CommandService {
 
 	ResponseEntity<FreightDTO> createAssignVehicle(FreightDTO freightDTO, Long vehicleId);
 
+	void deleteDriver(Long driverId);
+
 }

@@ -169,6 +169,12 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 		log.debug("<<<<< createAssignVehicle >>>>>>",freightDTO,vehicleId);
 		return freResourceApi.assignVehicleUsingPOST(vehicleId, freightDTO);
 	}
+
+	@Override
+	public void deleteDriver(Long driverId) {
+		log.debug("<<< delete driver >>>>",driverId);
+		this.vehResourceApi.deleteVehicleUsingDELETE(driverId);
+	}
 	
 	
 }

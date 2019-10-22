@@ -173,7 +173,7 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 	@Override
 	public void deleteDriver(Long driverId) {
 		log.debug("<<< delete driver >>>>",driverId);
-		this.vehResourceApi.deleteVehicleUsingDELETE(driverId);
+		this.driResourceApi.deleteDriverUsingDELETE(driverId);
 	}
 	
 	

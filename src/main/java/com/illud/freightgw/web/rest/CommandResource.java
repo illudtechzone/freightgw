@@ -152,7 +152,7 @@ public class CommandResource {
 		return comService.createAssignVehicle(freightDTO,vehicleId);
 		
 	}
-	@DeleteMapping("/deletedriver/{driverid}")
+	@DeleteMapping("/deletedriver/{driverId}")
 	public void deleteDriver(@PathVariable Long driverId) {
 		log.debug("<<<<<<< delete driver >>>>>>>>>",driverId);
 		comService.deleteDriver(driverId);

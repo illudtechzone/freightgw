@@ -13,12 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.illud.freightgw.client.freight.api.CompanyResourceApi;
+import com.illud.freightgw.client.freight.api.DriverDocumentResourceApi;
 import com.illud.freightgw.client.freight.api.QuotationResourceApi;
-import com.illud.freightgw.client.freight.model.Company;
-import com.illud.freightgw.client.freight.model.Customer;
-import com.illud.freightgw.client.freight.model.Driver;
-import com.illud.freightgw.client.freight.model.Freight;
-import com.illud.freightgw.client.freight.model.Vehicle;
 import com.illud.freightgw.client.freight.model.*;
 import com.illud.freightgw.service.CommandService;
 
@@ -33,6 +29,8 @@ public class CommandResource {
 	CompanyResourceApi api;
 	@Autowired
 	QuotationResourceApi quotationApi;
+	@Autowired
+	DriverDocumentResourceApi driDocApi;
 
 	public CommandResource(CommandService commantService) {
 		this.comService = commantService;
@@ -156,6 +154,21 @@ public class CommandResource {
 	public void deleteDriver(@PathVariable Long driverId) {
 		log.debug("<<<<<<< delete driver >>>>>>>>>",driverId);
 		comService.deleteDriver(driverId);
+	}
+	@PostMapping("/create")
+	public ResponseEntity<DriverDocumentDTO> createDriverDocumnet(@RequestBody DriverDocumentDTO driDocDTO){
+		log.debug("<<<<<<<  create DriverDocumnet in resource >>>>>>",driDocDTO);
+		return driDocApi.createDriverDocumentUsingPOST(driDocDTO);
+	}
+	@PutMapping("/update")
+	public ResponseEntity<DriverDocumentDTO> updateDriverDocumnet(@RequestBody DriverDocumentDTO driDocDTO){
+		log.debug("<<<<<<<  update DriverDocumnet in resource >>>>>>",driDocDTO);
+		return driDocApi.updateDriverDocumentUsingPUT(driDocDTO);
+	}
+	@DeleteMapping("/update/{driverdocumentId}")
+	public void  deleteDriverDocumnet(@PathVariable Long driverdocumentId){
+		log.debug("<<<<<<<  delete DriverDocumnet in resource >>>>>>",driverdocumentId);
+		this.driDocApi.deleteDriverDocumentUsingDELETE(driverdocumentId);
 	}
 
 	/////////////////////////// activiti-workflow-apis///////////////////////////////////

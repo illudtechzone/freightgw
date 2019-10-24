@@ -124,7 +124,7 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 
 	@Override
 	public ResponseEntity<DriverDTO> createdriverIfnotExist(DriverDTO driverDTO) {
-		log.debug("<<<<<< create driver if ot exist >>>>>>",driverDTO);
+		log.debug("<<<<<< create driver if not ot exist >>>>>>",driverDTO);
 		return driResourceApi.createdriverIfnotExistUsingPOST(driverDTO);
 	}
 	

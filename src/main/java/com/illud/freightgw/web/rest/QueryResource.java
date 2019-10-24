@@ -20,9 +20,11 @@ import com.illud.freightgw.client.freight.model.Company;
 import com.illud.freightgw.client.freight.model.Customer;
 import com.illud.freightgw.client.freight.model.DataResponse;
 import com.illud.freightgw.client.freight.model.Driver;
+import com.illud.freightgw.client.freight.model.DriverDTO;
 import com.illud.freightgw.client.freight.model.Freight;
 import com.illud.freightgw.client.freight.model.FreightDTO;
 import com.illud.freightgw.client.freight.model.Quotation;
+import com.illud.freightgw.client.freight.model.QuotationDTO;
 import com.illud.freightgw.client.freight.model.RequestStatus;
 import com.illud.freightgw.client.freight.model.Vehicle;
 import com.illud.freightgw.client.freight.model.VehicleDTO;
@@ -38,6 +40,8 @@ public class QueryResource {
 private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 	
 	private final QueryService queService;
+	
+
 	
 	public QueryResource(QueryService queService) {
 		this.queService=queService;
@@ -128,35 +132,33 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 	}
 	
 	@GetMapping("/getAllQuotations/{freightId}")
-	public ResponseEntity<List<Quotation>> findAllQuotations(@PathVariable Long freightId,Pageable pageable){
+	public ResponseEntity<List<QuotationDTO>> findAllQuotations(@PathVariable Long freightId,Pageable pageable){
 		log.debug("<<<<<<< findAllQuotations >>>>>>",freightId);
-		Page<Quotation> page = queService.findAllQuotationsByfreightId(freightId, pageable);
-		return ResponseEntity.ok().body(page.getContent());
+		
+		return queService.findAllQuotationsByfreightId(freightId, pageable);
 		
 	}
 	
-	
-	
 	@GetMapping("/getAllQuotationsby/{companyId}/{freightId}")
-	public ResponseEntity<List<Quotation>> findAllQuotationsByCompanyIdAndFreightId(@PathVariable Long companyId,@PathVariable Long freightId,Pageable pageable){
+	public ResponseEntity<List<QuotationDTO>> findAllQuotationsByCompanyIdAndFreightId(@PathVariable Long companyId,@PathVariable Long freightId,Pageable pageable){
 		log.debug("<<<<<<<< findAllQuotationsByCompanyIdandFreightId>>>>>>>",companyId,freightId);
-		Page<Quotation> page = queService.findAllQuotationsByCompanyIdAndFreightId(companyId,freightId,pageable);
-		return ResponseEntity.ok().body(page.getContent());
+		
+		return queService.findAllQuotationsByCompanyIdAndFreightId(companyId, freightId, pageable);
 		
 	}
 	
 	@GetMapping("/getAllQuotationsbyCompanyId/{companyId}")
-	public ResponseEntity<List<Quotation>> findAllQuotationsByCompanyId(@PathVariable Long companyId,Pageable pageable){
+	public ResponseEntity<List<QuotationDTO>> findAllQuotationsByCompanyId(@PathVariable Long companyId,Pageable pageable){
 		log.debug("<<<<<<<< findAllQuotationsByCompanyId>>>>>>>",companyId);
-		Page<Quotation> page = queService.findAllQuotationsByCompanyId(companyId,pageable);
-		return ResponseEntity.ok().body(page.getContent());
+		
+		return queService.findAllQuotationsByCompanyId(companyId, pageable);
 		
 	}
 	@GetMapping("/getAllDriversbyCompanyidpcode/{companyIdpCode}")
-	public ResponseEntity<List<Driver>> findAllDriversByCompanyIdpCode(@PathVariable String companyIdpCode,Pageable pageable){
+	public ResponseEntity<List<DriverDTO>> findAllDriversByCompanyIdpCode(@PathVariable String companyIdpCode,Pageable pageable){
 		log.debug("<<<<<< findAllDriversByCompanyIdpCode >>>>>>>",companyIdpCode);
-		Page<Driver> page = queService.findAllDriversByComapanyIdpCode(companyIdpCode,pageable);
-		return ResponseEntity.ok().body(page.getContent());
+		
+		return queService.findAllDriversByComapanyIdpCode(companyIdpCode, pageable);
 		
 	}
 	/*

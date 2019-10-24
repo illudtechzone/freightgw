@@ -5,7 +5,9 @@
  */
 package com.illud.freightgw.client.freight.api;
 
+import com.illud.freightgw.client.freight.model.DriverDocument;
 import com.illud.freightgw.client.freight.model.DriverDocumentDTO;
+import java.util.List;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,10 +27,34 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-21T11:23:33.684+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-24T10:10:14.681+05:30[Asia/Calcutta]")
 
 @Api(value = "DriverDocumentResource", description = "the DriverDocumentResource API")
 public interface DriverDocumentResourceApi {
+
+    @ApiOperation(value = "convertToDtoList", nickname = "convertToDtoListUsingGET", notes = "", response = DriverDocumentDTO.class, responseContainer = "List", tags={ "driver-document-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = DriverDocumentDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/convertToDtolist",
+        produces = "*/*", 
+        method = RequestMethod.GET)
+    ResponseEntity<List<DriverDocumentDTO>> convertToDtoListUsingGET(@ApiParam(value = "list" ,required=true )  @Valid @RequestBody List<DriverDocument> driverDocument);
+
+
+    @ApiOperation(value = "convertToDto", nickname = "convertToDtoUsingGET", notes = "", response = DriverDocumentDTO.class, tags={ "driver-document-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = DriverDocumentDTO.class),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/convertTodto",
+        produces = "*/*", 
+        method = RequestMethod.GET)
+    ResponseEntity<DriverDocumentDTO> convertToDtoUsingGET(@ApiParam(value = "driverDocument" ,required=true )  @Valid @RequestBody DriverDocument driverDocument);
+
 
     @ApiOperation(value = "createDriverDocument", nickname = "createDriverDocumentUsingPOST", notes = "", response = DriverDocumentDTO.class, tags={ "driver-document-resource", })
     @ApiResponses(value = { 

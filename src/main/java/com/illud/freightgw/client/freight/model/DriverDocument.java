@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.illud.freightgw.client.freight.model.Driver;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Date;
 import org.springframework.validation.annotation.Validated;

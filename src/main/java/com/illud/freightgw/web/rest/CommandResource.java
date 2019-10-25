@@ -48,9 +48,9 @@ public class CommandResource {
 	@PostMapping("/create/quotation")
 	public ResponseEntity<QuotationDTO> createQuotation(@RequestBody QuotationDTO quotationDTO) {
 		log.debug("<<<<<<<<<<< create Comapny >>>>>>>>", quotationDTO);
-
+		
 		// return comService.save(company);
-		return quotationApi.createQuotationUsingPOST(quotationDTO);
+		return comService.save(quotationDTO);
 
 	}
 

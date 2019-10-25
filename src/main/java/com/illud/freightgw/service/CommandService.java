@@ -52,4 +52,6 @@ public interface CommandService {
 
 	void deleteDriver(Long driverId);
 
+	ResponseEntity<QuotationDTO> update(QuotationDTO quotationDTO);
+
 }

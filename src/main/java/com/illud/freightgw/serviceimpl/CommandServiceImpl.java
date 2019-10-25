@@ -12,6 +12,7 @@ import com.illud.freightgw.client.freight.api.CompanyResourceApi;
 import com.illud.freightgw.client.freight.api.CustomerResourceApi;
 import com.illud.freightgw.client.freight.api.DriverResourceApi;
 import com.illud.freightgw.client.freight.api.FreightResourceApi;
+import com.illud.freightgw.client.freight.api.QuotationResourceApi;
 import com.illud.freightgw.client.freight.api.VehicleLookUpResourceApi;
 import com.illud.freightgw.client.freight.api.VehicleResourceApi;
 
@@ -40,6 +41,8 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 	CommandResourceApi commandResourceApi;
 	@Autowired
     private SimpMessagingTemplate messageSender;
+	@Autowired
+	QuotationResourceApi queResourceApi;
 	
 
 	@Override
@@ -174,6 +177,12 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 	public void deleteDriver(Long driverId) {
 		log.debug("<<< delete driver >>>>",driverId);
 		this.driResourceApi.deleteDriverUsingDELETE(driverId);
+	}
+
+	@Override
+	public ResponseEntity<QuotationDTO> update(QuotationDTO quotationDTO) {
+		log.debug("<<<<< update quotation >>>",quotationDTO);
+		return queResourceApi.updateQuotationUsingPUT(quotationDTO);
 	}
 	
 	

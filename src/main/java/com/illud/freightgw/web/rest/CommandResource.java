@@ -53,7 +53,7 @@ public class CommandResource {
 		return quotationApi.createQuotationUsingPOST(quotationDTO);
 
 	}
-	@PostMapping("/update/quotation")
+	@PutMapping("/update/quotation")
 	public ResponseEntity<QuotationDTO> updateQuotation(@RequestBody QuotationDTO quotationDTO){
 		log.debug("<<<<< updateQuotation >>>>>>>",quotationDTO);
 		return comService.update(quotationDTO);

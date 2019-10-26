@@ -9,7 +9,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 
 import com.illud.freightgw.client.freight.model.Company;
+import com.illud.freightgw.client.freight.model.CompanyDTO;
 import com.illud.freightgw.client.freight.model.Customer;
+import com.illud.freightgw.client.freight.model.CustomerDTO;
 import com.illud.freightgw.client.freight.model.DataResponse;
 import com.illud.freightgw.client.freight.model.Driver;
 import com.illud.freightgw.client.freight.model.DriverDTO;
@@ -21,22 +23,23 @@ import com.illud.freightgw.client.freight.model.QuotationDTO;
 import com.illud.freightgw.client.freight.model.Vehicle;
 import com.illud.freightgw.client.freight.model.VehicleDTO;
 import com.illud.freightgw.client.freight.model.VehicleLookUp;
+import com.illud.freightgw.client.freight.model.VehicleLookUpDTO;
 
 public interface QueryService {
 
-	Company findCompanyById(Long id);
+	ResponseEntity<CompanyDTO> findCompanyById(Long id);
 
-	Customer findCustomerById(Long id);
+	ResponseEntity<CustomerDTO> findCustomerById(Long id);
 
-	Driver findDriverById(Long id);
+	ResponseEntity<DriverDTO> findDriverById(Long id);
 	
-	VehicleLookUp findVehicleLookUpById(Long id);
+	ResponseEntity<VehicleLookUpDTO> findVehicleLookUpById(Long id);
 	
-	Company getOneCompany(String companyIdpCode);
+	ResponseEntity<CompanyDTO> getOneCompany(String companyIdpCode);
 
-	Customer getOneCustomer(String customerIdpCode);
+	ResponseEntity<CustomerDTO> getOneCustomer(String customerIdpCode);
 
-	Driver getOneDriver(String driverIdpCode);
+	ResponseEntity<DriverDTO> getOneDriver(String driverIdpCode);
 
 	ResponseEntity<List<VehicleDTO>> findAllVehiclesByCompanyIdpCode(String companyiDPCode, Pageable page);
 

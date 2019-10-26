@@ -5,7 +5,9 @@
  */
 package com.illud.freightgw.client.freight.api;
 
+import com.illud.freightgw.client.freight.model.Company;
 import com.illud.freightgw.client.freight.model.CompanyDTO;
+import java.util.List;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-25T10:41:54.345+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-26T14:04:52.435+05:30[Asia/Calcutta]")
 
 @Api(value = "CompanyResource", description = "the CompanyResource API")
 public interface CompanyResourceApi {
@@ -56,6 +58,34 @@ public interface CompanyResourceApi {
         consumes = "application/json",
         method = RequestMethod.POST)
     ResponseEntity<CompanyDTO> createCompanyUsingPOST(@ApiParam(value = "companyDTO" ,required=true )  @Valid @RequestBody CompanyDTO companyDTO);
+
+
+    @ApiOperation(value = "createDtoList", nickname = "createDtoListUsingPOST", notes = "", response = CompanyDTO.class, responseContainer = "List", tags={ "company-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = CompanyDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/companyDtoList/company",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<List<CompanyDTO>> createDtoListUsingPOST(@ApiParam(value = "companies" ,required=true )  @Valid @RequestBody List<Company> company);
+
+
+    @ApiOperation(value = "createDto", nickname = "createDtoUsingPOST", notes = "", response = CompanyDTO.class, tags={ "company-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = CompanyDTO.class),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/companyDto/company",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<CompanyDTO> createDtoUsingPOST(@ApiParam(value = "company" ,required=true )  @Valid @RequestBody Company company);
 
 
     @ApiOperation(value = "deleteCompany", nickname = "deleteCompanyUsingDELETE", notes = "", tags={ "company-resource", })

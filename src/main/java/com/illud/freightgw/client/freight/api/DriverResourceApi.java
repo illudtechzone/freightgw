@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-25T10:41:54.345+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-26T14:04:52.435+05:30[Asia/Calcutta]")
 
 @Api(value = "DriverResource", description = "the DriverResource API")
 public interface DriverResourceApi {
@@ -46,32 +46,32 @@ public interface DriverResourceApi {
     ResponseEntity<DriverDTO> createDriverUsingPOST(@ApiParam(value = "driverDTO" ,required=true )  @Valid @RequestBody DriverDTO driverDTO);
 
 
-    @ApiOperation(value = "createDtoList", nickname = "createDtoListUsingPOST", notes = "", response = DriverDTO.class, responseContainer = "List", tags={ "driver-resource", })
+    @ApiOperation(value = "createDtoList", nickname = "createDtoListUsingPOST2", notes = "", response = DriverDTO.class, responseContainer = "List", tags={ "driver-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = DriverDTO.class, responseContainer = "List"),
         @ApiResponse(code = 201, message = "Created"),
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
         @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/createDtoList",
+    @RequestMapping(value = "/api/createDtoList/driver",
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<List<DriverDTO>> createDtoListUsingPOST(@ApiParam(value = "driver" ,required=true )  @Valid @RequestBody List<Driver> driver);
+    ResponseEntity<List<DriverDTO>> createDtoListUsingPOST2(@ApiParam(value = "driver" ,required=true )  @Valid @RequestBody List<Driver> driver);
 
 
-    @ApiOperation(value = "createDto", nickname = "createDtoUsingPOST", notes = "", response = DriverDTO.class, tags={ "driver-resource", })
+    @ApiOperation(value = "createDto", nickname = "createDtoUsingPOST2", notes = "", response = DriverDTO.class, tags={ "driver-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = DriverDTO.class),
         @ApiResponse(code = 201, message = "Created"),
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
         @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/createDto",
+    @RequestMapping(value = "/api/createDto/driver",
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<DriverDTO> createDtoUsingPOST(@ApiParam(value = "driver" ,required=true )  @Valid @RequestBody Driver driver);
+    ResponseEntity<DriverDTO> createDtoUsingPOST2(@ApiParam(value = "driver" ,required=true )  @Valid @RequestBody Driver driver);
 
 
     @ApiOperation(value = "createdriverIfnotExist", nickname = "createdriverIfnotExistUsingPOST", notes = "", response = DriverDTO.class, tags={ "driver-resource", })

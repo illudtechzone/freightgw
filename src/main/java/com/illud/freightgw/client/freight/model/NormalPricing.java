@@ -4,6 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.illud.freightgw.client.freight.model.Pricing;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
@@ -11,12 +12,12 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * NormalPricingDTO
+ * NormalPricing
  */
 @Validated
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-26T14:04:52.435+05:30[Asia/Calcutta]")
 
-public class NormalPricingDTO   {
+public class NormalPricing   {
   @JsonProperty("endLimitInKms")
   private Double endLimitInKms = null;
 
@@ -57,8 +58,8 @@ public class NormalPricingDTO   {
   @JsonProperty("limitStatus")
   private LimitStatusEnum limitStatus = null;
 
-  @JsonProperty("pricingId")
-  private Long pricingId = null;
+  @JsonProperty("pricing")
+  private Pricing pricing = null;
 
   @JsonProperty("ratePerKm")
   private Double ratePerKm = null;
@@ -66,7 +67,7 @@ public class NormalPricingDTO   {
   @JsonProperty("startLimitInKms")
   private Double startLimitInKms = null;
 
-  public NormalPricingDTO endLimitInKms(Double endLimitInKms) {
+  public NormalPricing endLimitInKms(Double endLimitInKms) {
     this.endLimitInKms = endLimitInKms;
     return this;
   }
@@ -86,7 +87,7 @@ public class NormalPricingDTO   {
     this.endLimitInKms = endLimitInKms;
   }
 
-  public NormalPricingDTO id(Long id) {
+  public NormalPricing id(Long id) {
     this.id = id;
     return this;
   }
@@ -106,7 +107,7 @@ public class NormalPricingDTO   {
     this.id = id;
   }
 
-  public NormalPricingDTO limitStatus(LimitStatusEnum limitStatus) {
+  public NormalPricing limitStatus(LimitStatusEnum limitStatus) {
     this.limitStatus = limitStatus;
     return this;
   }
@@ -126,27 +127,28 @@ public class NormalPricingDTO   {
     this.limitStatus = limitStatus;
   }
 
-  public NormalPricingDTO pricingId(Long pricingId) {
-    this.pricingId = pricingId;
+  public NormalPricing pricing(Pricing pricing) {
+    this.pricing = pricing;
     return this;
   }
 
   /**
-   * Get pricingId
-   * @return pricingId
+   * Get pricing
+   * @return pricing
   **/
   @ApiModelProperty(value = "")
 
+  @Valid
 
-  public Long getPricingId() {
-    return pricingId;
+  public Pricing getPricing() {
+    return pricing;
   }
 
-  public void setPricingId(Long pricingId) {
-    this.pricingId = pricingId;
+  public void setPricing(Pricing pricing) {
+    this.pricing = pricing;
   }
 
-  public NormalPricingDTO ratePerKm(Double ratePerKm) {
+  public NormalPricing ratePerKm(Double ratePerKm) {
     this.ratePerKm = ratePerKm;
     return this;
   }
@@ -166,7 +168,7 @@ public class NormalPricingDTO   {
     this.ratePerKm = ratePerKm;
   }
 
-  public NormalPricingDTO startLimitInKms(Double startLimitInKms) {
+  public NormalPricing startLimitInKms(Double startLimitInKms) {
     this.startLimitInKms = startLimitInKms;
     return this;
   }
@@ -195,29 +197,29 @@ public class NormalPricingDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    NormalPricingDTO normalPricingDTO = (NormalPricingDTO) o;
-    return Objects.equals(this.endLimitInKms, normalPricingDTO.endLimitInKms) &&
-        Objects.equals(this.id, normalPricingDTO.id) &&
-        Objects.equals(this.limitStatus, normalPricingDTO.limitStatus) &&
-        Objects.equals(this.pricingId, normalPricingDTO.pricingId) &&
-        Objects.equals(this.ratePerKm, normalPricingDTO.ratePerKm) &&
-        Objects.equals(this.startLimitInKms, normalPricingDTO.startLimitInKms);
+    NormalPricing normalPricing = (NormalPricing) o;
+    return Objects.equals(this.endLimitInKms, normalPricing.endLimitInKms) &&
+        Objects.equals(this.id, normalPricing.id) &&
+        Objects.equals(this.limitStatus, normalPricing.limitStatus) &&
+        Objects.equals(this.pricing, normalPricing.pricing) &&
+        Objects.equals(this.ratePerKm, normalPricing.ratePerKm) &&
+        Objects.equals(this.startLimitInKms, normalPricing.startLimitInKms);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(endLimitInKms, id, limitStatus, pricingId, ratePerKm, startLimitInKms);
+    return Objects.hash(endLimitInKms, id, limitStatus, pricing, ratePerKm, startLimitInKms);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class NormalPricingDTO {\n");
+    sb.append("class NormalPricing {\n");
     
     sb.append("    endLimitInKms: ").append(toIndentedString(endLimitInKms)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    limitStatus: ").append(toIndentedString(limitStatus)).append("\n");
-    sb.append("    pricingId: ").append(toIndentedString(pricingId)).append("\n");
+    sb.append("    pricing: ").append(toIndentedString(pricing)).append("\n");
     sb.append("    ratePerKm: ").append(toIndentedString(ratePerKm)).append("\n");
     sb.append("    startLimitInKms: ").append(toIndentedString(startLimitInKms)).append("\n");
     sb.append("}");

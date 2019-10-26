@@ -5,6 +5,8 @@
  */
 package com.illud.freightgw.client.freight.api;
 
+import java.util.List;
+import com.illud.freightgw.client.freight.model.VehicleLookUp;
 import com.illud.freightgw.client.freight.model.VehicleLookUpDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -25,10 +27,38 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-25T10:41:54.345+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-26T14:04:52.435+05:30[Asia/Calcutta]")
 
 @Api(value = "VehicleLookUpResource", description = "the VehicleLookUpResource API")
 public interface VehicleLookUpResourceApi {
+
+    @ApiOperation(value = "createDtoList", nickname = "createDtoListUsingPOST3", notes = "", response = VehicleLookUpDTO.class, responseContainer = "List", tags={ "vehicle-look-up-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = VehicleLookUpDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/createDtoList/vehicle-look-ups",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<List<VehicleLookUpDTO>> createDtoListUsingPOST3(@ApiParam(value = "vehLookUpList" ,required=true )  @Valid @RequestBody List<VehicleLookUp> vehicleLookUp);
+
+
+    @ApiOperation(value = "createDto", nickname = "createDtoUsingPOST3", notes = "", response = VehicleLookUpDTO.class, tags={ "vehicle-look-up-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = VehicleLookUpDTO.class),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/createDto/vehicle-look-ups",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<VehicleLookUpDTO> createDtoUsingPOST3(@ApiParam(value = "vehLookUp" ,required=true )  @Valid @RequestBody VehicleLookUp vehicleLookUp);
+
 
     @ApiOperation(value = "createVehicleLookUp", nickname = "createVehicleLookUpUsingPOST", notes = "", response = VehicleLookUpDTO.class, tags={ "vehicle-look-up-resource", })
     @ApiResponses(value = { 

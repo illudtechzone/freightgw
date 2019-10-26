@@ -5,6 +5,8 @@
  */
 package com.illud.freightgw.client.freight.api;
 
+import java.util.List;
+import com.illud.freightgw.client.freight.model.VehicleDocument;
 import com.illud.freightgw.client.freight.model.VehicleDocumentDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -25,10 +27,38 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-25T10:41:54.345+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-26T14:04:52.435+05:30[Asia/Calcutta]")
 
 @Api(value = "VehicleDocumentResource", description = "the VehicleDocumentResource API")
 public interface VehicleDocumentResourceApi {
+
+    @ApiOperation(value = "createVehicleDocumentDtoList", nickname = "createVehicleDocumentDtoListUsingPOST", notes = "", response = VehicleDocumentDTO.class, responseContainer = "List", tags={ "vehicle-document-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = VehicleDocumentDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/createVehicledocumentDtoList",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<List<VehicleDocumentDTO>> createVehicleDocumentDtoListUsingPOST(@ApiParam(value = "vehDocuments" ,required=true )  @Valid @RequestBody List<VehicleDocument> vehicleDocument);
+
+
+    @ApiOperation(value = "createVehicleDocumentDto", nickname = "createVehicleDocumentDtoUsingPOST", notes = "", response = VehicleDocumentDTO.class, tags={ "vehicle-document-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = VehicleDocumentDTO.class),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/createVehicledocumentDto",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<VehicleDocumentDTO> createVehicleDocumentDtoUsingPOST(@ApiParam(value = "vehDocument" ,required=true )  @Valid @RequestBody VehicleDocument vehicleDocument);
+
 
     @ApiOperation(value = "createVehicleDocument", nickname = "createVehicleDocumentUsingPOST", notes = "", response = VehicleDocumentDTO.class, tags={ "vehicle-document-resource", })
     @ApiResponses(value = { 

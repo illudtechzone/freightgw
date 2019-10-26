@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.illud.freightgw.client.freight.model.Company;
+import com.illud.freightgw.client.freight.model.CompanyDTO;
 import com.illud.freightgw.client.freight.model.Customer;
+import com.illud.freightgw.client.freight.model.CustomerDTO;
 import com.illud.freightgw.client.freight.model.DataResponse;
 import com.illud.freightgw.client.freight.model.Driver;
 import com.illud.freightgw.client.freight.model.DriverDTO;
@@ -29,6 +31,7 @@ import com.illud.freightgw.client.freight.model.RequestStatus;
 import com.illud.freightgw.client.freight.model.Vehicle;
 import com.illud.freightgw.client.freight.model.VehicleDTO;
 import com.illud.freightgw.client.freight.model.VehicleLookUp;
+import com.illud.freightgw.client.freight.model.VehicleLookUpDTO;
 import com.illud.freightgw.service.QueryService;
 
 import io.swagger.annotations.ApiParam;
@@ -48,20 +51,20 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 	}
 	
 	@GetMapping("/findCompanybyId/{id}")
-	public Company findCompanyById(@PathVariable Long id){
+	public ResponseEntity<CompanyDTO> findCompanyById(@PathVariable Long id){
 		log.debug("<<<<<<<<< input a id to get a company details >>>>>>" , id);
 		
 		return queService.findCompanyById(id);
 		
 	}
 	@GetMapping("/findCustomerbyId/{id}")
-	public Customer findCustomerById(@PathVariable Long id){
+	public ResponseEntity<CustomerDTO> findCustomerById(@PathVariable Long id){
 		log.debug(" <<<<<<<<< input a id to get a customer details>>>>>> " , id);
 		
 		return queService.findCustomerById(id);
 	}
 	@GetMapping("/findDriverbyId/{id}")
-	public Driver findDriverById(@PathVariable Long id){
+	public ResponseEntity<DriverDTO> findDriverById(@PathVariable Long id){
 		log.debug("<<<<<<<<< input a id to get a driver details >>>>>>" , id);
 		
 		return queService.findDriverById(id);
@@ -73,21 +76,21 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		return queService.findFreightId(id);
 	}
 	@GetMapping("/findVehiclelookupId/{id}")
-	public VehicleLookUp findVehicleLookUpById(@PathVariable Long id){
+	public ResponseEntity<VehicleLookUpDTO> findVehicleLookUpById(@PathVariable Long id){
 		log.debug(" <<<<<<<<< input a id to get a vehicle look up id details>>>>>> " , id);
 		
 		return queService.findVehicleLookUpById(id);
 	}
 	
 	@GetMapping("/getcompany/{companyIdpCode}")
-	public Company searchCompanyIDPCode(@PathVariable String companyIdpCode){
+	public ResponseEntity<CompanyDTO> searchCompanyIDPCode(@PathVariable String companyIdpCode){
 		log.debug("<<<<<<<<< input a idpcode to get a company details >>>>>>" , companyIdpCode);
 		
 		return queService.getOneCompany(companyIdpCode);
 		
 	}
 	@GetMapping("/getcustomer/{customerIdpCode}")
-	public Customer searchCustomerIDPCode(@PathVariable String customerIdpCode){
+	public ResponseEntity<CustomerDTO> searchCustomerIDPCode(@PathVariable String customerIdpCode){
 		log.debug(" <<<<<<<<< input a idpcode to get a customer details>>>>>> " , customerIdpCode);
 		//Page<Customer> page = queService.getDetailsFromCustomeriDPCode(iDPCode);
 		//return ResponseEntity.ok().body(page.getContent());
@@ -95,7 +98,7 @@ private final Logger log = LoggerFactory.getLogger(QueryResource.class);
 		return queService.getOneCustomer(customerIdpCode);
 	}
 	@GetMapping("/getdriver/{driverIdpCode}")
-	public Driver searchDriverIDPCode(@PathVariable String driverIdpCode){
+	public ResponseEntity<DriverDTO> searchDriverIDPCode(@PathVariable String driverIdpCode){
 		log.debug("<<<<<<<<< input a idpcode to get a driver details >>>>>>" , driverIdpCode);
 		
 		return queService.getOneDriver(driverIdpCode);

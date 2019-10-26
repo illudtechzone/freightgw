@@ -162,7 +162,7 @@ public class QueryServiceImpl implements QueryService {
 		log.debug("<<<<<< findAllQuotations in impl >>>>>>>", freightId);
 		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(termQuery("freightId", freightId)).build();
 		return quotationResourceApi
-				.createQuotationsDtoListUsingGET(esTemplate.queryForPage(sq, Quotation.class).getContent());
+				.createQuotationsDtoListUsingPOST(esTemplate.queryForPage(sq, Quotation.class).getContent());
 	}
 
 	@Override
@@ -172,7 +172,7 @@ public class QueryServiceImpl implements QueryService {
 		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(QueryBuilders.boolQuery()
 				.must(termQuery("companyId", companyId)).must(termQuery("freightId", freightId))).build();
 		return quotationResourceApi
-				.createQuotationsDtoListUsingGET(esTemplate.queryForPage(sq, Quotation.class).getContent());
+				.createQuotationsDtoListUsingPOST(esTemplate.queryForPage(sq, Quotation.class).getContent());
 	}
 
 	@Override
@@ -180,7 +180,7 @@ public class QueryServiceImpl implements QueryService {
 		log.debug("<<<<< findAllQuotationsByCompanyId>>>>>>", companyId);
 		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(termQuery("companyId", companyId)).build();
 		return quotationResourceApi
-				.createQuotationsDtoListUsingGET(esTemplate.queryForPage(sq, Quotation.class).getContent());
+				.createQuotationsDtoListUsingPOST(esTemplate.queryForPage(sq, Quotation.class).getContent());
 	}
 
 	@Override

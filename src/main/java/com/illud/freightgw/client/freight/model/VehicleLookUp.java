@@ -6,8 +6,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.illud.freightgw.client.freight.model.Pricing;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -16,8 +14,8 @@ import javax.validation.constraints.*;
  * VehicleLookUp
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-26T14:04:52.435+05:30[Asia/Calcutta]")
-@Document (indexName="vehiclelookup")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-26T20:11:06.451+05:30[Asia/Calcutta]")
+
 public class VehicleLookUp   {
   @JsonProperty("height")
   private Double height = null;

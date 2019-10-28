@@ -133,7 +133,7 @@ public class QueryServiceImpl implements QueryService {
 	public ResponseEntity<List<VehicleDTO>> findAllVehiclesByCompanyIdpCode(String iDPCode, Pageable page) {
 		log.debug("<<<<<< getOne driver>>>>", iDPCode);
 		SearchQuery searchQuery = new NativeSearchQueryBuilder()
-				.withQuery(termQuery("company.companyIdpCode.keyword", iDPCode)).build();
+				.withQuery(termQuery("company.companyIdpCode.keyword", iDPCode)).withPageable(page).build();
 		return vehicleResourceApi
 				.createVehicleDtoListUsingPOST(esTemplate.queryForPage(searchQuery, Vehicle.class).getContent());
 	}
@@ -144,7 +144,7 @@ public class QueryServiceImpl implements QueryService {
 		log.debug("<<<<<< input a requeststatus to get AllFreights>>" + requestedStatus.toString() + ">>>>"
 				+ requestedStatus, pageable);
 		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(termQuery("requestedStatus.keyword", requestedStatus))
-				.build();
+				.withPageable(pageable).build();
 		return freightResourceApi
 				.createFreightDtoListUsingPOST(esTemplate.queryForPage(sq, Freight.class).getContent());
 	}
@@ -152,7 +152,7 @@ public class QueryServiceImpl implements QueryService {
 	@Override
 	public ResponseEntity<List<FreightDTO>> findAllFreightsByCustomerId(Long customerId, Pageable pageable) {
 		log.debug("<<<<<< input a customerId to get AllFreights>>" + customerId + ">>>>" + customerId, pageable);
-		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(termQuery("customerId", customerId)).build();
+		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(termQuery("customerId", customerId)).withPageable(pageable).build();
 		return freightResourceApi
 				.createFreightDtoListUsingPOST(esTemplate.queryForPage(sq, Freight.class).getContent());
 	}
@@ -160,7 +160,7 @@ public class QueryServiceImpl implements QueryService {
 	@Override
 	public ResponseEntity<List<QuotationDTO>> findAllQuotationsByfreightId(Long freightId, Pageable pageable) {
 		log.debug("<<<<<< findAllQuotations in impl >>>>>>>", freightId);
-		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(termQuery("freightId", freightId)).build();
+		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(termQuery("freightId", freightId)).withPageable(pageable).withPageable(pageable).build();
 		return quotationResourceApi
 				.createQuotationsDtoListUsingPOST(esTemplate.queryForPage(sq, Quotation.class).getContent());
 	}
@@ -170,7 +170,7 @@ public class QueryServiceImpl implements QueryService {
 			Pageable pageable) {
 		log.debug("<<<<< findAllQuotationsByCompanyIdAndFreightId>>>>>>", companyId, freightId);
 		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(QueryBuilders.boolQuery()
-				.must(termQuery("companyId", companyId)).must(termQuery("freightId", freightId))).build();
+				.must(termQuery("companyId", companyId)).must(termQuery("freightId", freightId))).withPageable(pageable).build();
 		return quotationResourceApi
 				.createQuotationsDtoListUsingPOST(esTemplate.queryForPage(sq, Quotation.class).getContent());
 	}
@@ -178,7 +178,7 @@ public class QueryServiceImpl implements QueryService {
 	@Override
 	public ResponseEntity<List<QuotationDTO>> findAllQuotationsByCompanyId(Long companyId, Pageable pageable) {
 		log.debug("<<<<< findAllQuotationsByCompanyId>>>>>>", companyId);
-		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(termQuery("companyId", companyId)).build();
+		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(termQuery("companyId", companyId)).withPageable(pageable).build();
 		return quotationResourceApi
 				.createQuotationsDtoListUsingPOST(esTemplate.queryForPage(sq, Quotation.class).getContent());
 	}
@@ -224,7 +224,7 @@ public class QueryServiceImpl implements QueryService {
 			RequestStatus requestedStatus, Pageable pageable) {
 		log.debug("<<<<< findAllFreightByCompanyIdAndRequestStatus>>>>>>", companyId, requestedStatus);
 		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(QueryBuilders.boolQuery()
-				.must(termQuery("companyId", companyId)).must(termQuery("requestedStatus.keyword", requestedStatus)))
+				.must(termQuery("companyId", companyId)).must(termQuery("requestedStatus.keyword", requestedStatus))).withPageable(pageable)
 				.build();
 		return freightResourceApi
 				.createFreightDtoListUsingPOST(esTemplate.queryForPage(sq, Freight.class).getContent());
@@ -240,8 +240,8 @@ public class QueryServiceImpl implements QueryService {
 	public ResponseEntity<List<DriverDTO>> findAllDriversByComapanyIdpCode(String companyIdpCode, Pageable pageable) {
 		log.debug("<<<<<< findAllDriversByComapanyIdpCode >>>>>>>", companyIdpCode);
 		SearchQuery sq = new NativeSearchQueryBuilder()
-				.withQuery(termQuery("company.companyIdpCode.keyword", companyIdpCode)).build();
-		return driverResourceApi.createDtoListUsingPOST2(esTemplate.queryForPage(sq, Driver.class).getContent());
+				.withQuery(termQuery("company.companyIdpCode.keyword", companyIdpCode)).withPageable(pageable).build();
+		return driverResourceApi.createDtoListUsingPOST2(esTemplate. queryForPage(sq, Driver.class).getContent());
 	}
 
 }

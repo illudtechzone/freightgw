@@ -189,8 +189,8 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 		
 		ResponseEntity<FreightDTO> freightDTO=queryServiceImpl.findFreightId(savedQuotationDTO.getBody().getFreightId());
 		
-		Customer customer = queryServiceImpl.findCustomerById(freightDTO.getBody().getCustomerId());
-		messageSender.convertAndSendToUser(customer.getCustomerIdpCode(), "/topic/quotes",savedQuotationDTO );
+		ResponseEntity<CustomerDTO> customer = queryServiceImpl.findCustomerById(freightDTO.getBody().getCustomerId());
+		messageSender.convertAndSendToUser(customer.getBody().getCustomerIdpCode(), "/topic/quotes",savedQuotationDTO );
 		return savedQuotationDTO;
 	}
 	

@@ -53,6 +53,12 @@ public class CommandResource {
 		return comService.save(quotationDTO);
 
 	}
+	@PostMapping("/update/quotation")
+	public ResponseEntity<QuotationDTO> updateQuotation(@RequestBody QuotationDTO quotationDTO){
+		log.debug("<<<<< updateQuotation >>>>>>>",quotationDTO);
+		return comService.update(quotationDTO);
+		
+	}
 
 	@PutMapping("/update/company")
 	public ResponseEntity<CompanyDTO> updateCompany(@RequestBody CompanyDTO company) {
@@ -155,12 +161,12 @@ public class CommandResource {
 		log.debug("<<<<<<< delete driver >>>>>>>>>",driverId);
 		comService.deleteDriver(driverId);
 	}
-	@PostMapping("/create")
+	@PostMapping("/create/driverdocument")
 	public ResponseEntity<DriverDocumentDTO> createDriverDocumnet(@RequestBody DriverDocumentDTO driDocDTO){
 		log.debug("<<<<<<<  create DriverDocumnet in resource >>>>>>",driDocDTO);
 		return driDocApi.createDriverDocumentUsingPOST(driDocDTO);
 	}
-	@PutMapping("/update")
+	@PutMapping("/update/driverdocument")
 	public ResponseEntity<DriverDocumentDTO> updateDriverDocumnet(@RequestBody DriverDocumentDTO driDocDTO){
 		log.debug("<<<<<<<  update DriverDocumnet in resource >>>>>>",driDocDTO);
 		return driDocApi.updateDriverDocumentUsingPUT(driDocDTO);

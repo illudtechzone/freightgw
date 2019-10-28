@@ -42,9 +42,11 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 	@Autowired
     private SimpMessagingTemplate messageSender;
 	@Autowired
+
 	private QuotationResourceApi quotResApi; 
 	@Autowired
 	QueryServiceImpl queryServiceImpl;
+
 	
 
 	@Override
@@ -189,8 +191,16 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 		
 		Customer customer = queryServiceImpl.findCustomerById(freightDTO.getBody().getCustomerId());
 		messageSender.convertAndSendToUser(customer.getCustomerIdpCode(), "/topic/quotes",savedQuotationDTO );
-		return null;
+		return savedQuotationDTO;
 	}
 	
 	
+	public ResponseEntity<QuotationDTO> update(QuotationDTO quotationDTO) {
+		log.debug("<<<<< update quotation >>>",quotationDTO);
+		return quotResApi.updateQuotationUsingPUT(quotationDTO);
+
+	}
+	
+	
+
 }

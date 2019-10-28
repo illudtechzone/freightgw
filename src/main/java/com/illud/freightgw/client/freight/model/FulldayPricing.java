@@ -4,6 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.illud.freightgw.client.freight.model.Pricing;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
@@ -11,12 +12,12 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * FulldayPricingDTO
+ * FulldayPricing
  */
 @Validated
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-26T20:11:06.451+05:30[Asia/Calcutta]")
 
-public class FulldayPricingDTO   {
+public class FulldayPricing   {
   @JsonProperty("endLimitInHour")
   private Double endLimitInHour = null;
 
@@ -60,8 +61,8 @@ public class FulldayPricingDTO   {
   @JsonProperty("limitStatus")
   private LimitStatusEnum limitStatus = null;
 
-  @JsonProperty("pricingId")
-  private Long pricingId = null;
+  @JsonProperty("pricing")
+  private Pricing pricing = null;
 
   @JsonProperty("ratePerKm")
   private Double ratePerKm = null;
@@ -75,7 +76,7 @@ public class FulldayPricingDTO   {
   @JsonProperty("startLimitInKms")
   private Double startLimitInKms = null;
 
-  public FulldayPricingDTO endLimitInHour(Double endLimitInHour) {
+  public FulldayPricing endLimitInHour(Double endLimitInHour) {
     this.endLimitInHour = endLimitInHour;
     return this;
   }
@@ -95,7 +96,7 @@ public class FulldayPricingDTO   {
     this.endLimitInHour = endLimitInHour;
   }
 
-  public FulldayPricingDTO endLimitInKms(Double endLimitInKms) {
+  public FulldayPricing endLimitInKms(Double endLimitInKms) {
     this.endLimitInKms = endLimitInKms;
     return this;
   }
@@ -115,7 +116,7 @@ public class FulldayPricingDTO   {
     this.endLimitInKms = endLimitInKms;
   }
 
-  public FulldayPricingDTO id(Long id) {
+  public FulldayPricing id(Long id) {
     this.id = id;
     return this;
   }
@@ -135,7 +136,7 @@ public class FulldayPricingDTO   {
     this.id = id;
   }
 
-  public FulldayPricingDTO limitStatus(LimitStatusEnum limitStatus) {
+  public FulldayPricing limitStatus(LimitStatusEnum limitStatus) {
     this.limitStatus = limitStatus;
     return this;
   }
@@ -155,27 +156,28 @@ public class FulldayPricingDTO   {
     this.limitStatus = limitStatus;
   }
 
-  public FulldayPricingDTO pricingId(Long pricingId) {
-    this.pricingId = pricingId;
+  public FulldayPricing pricing(Pricing pricing) {
+    this.pricing = pricing;
     return this;
   }
 
   /**
-   * Get pricingId
-   * @return pricingId
+   * Get pricing
+   * @return pricing
   **/
   @ApiModelProperty(value = "")
 
+  @Valid
 
-  public Long getPricingId() {
-    return pricingId;
+  public Pricing getPricing() {
+    return pricing;
   }
 
-  public void setPricingId(Long pricingId) {
-    this.pricingId = pricingId;
+  public void setPricing(Pricing pricing) {
+    this.pricing = pricing;
   }
 
-  public FulldayPricingDTO ratePerKm(Double ratePerKm) {
+  public FulldayPricing ratePerKm(Double ratePerKm) {
     this.ratePerKm = ratePerKm;
     return this;
   }
@@ -195,7 +197,7 @@ public class FulldayPricingDTO   {
     this.ratePerKm = ratePerKm;
   }
 
-  public FulldayPricingDTO ratePerMinsAboveLimit(Double ratePerMinsAboveLimit) {
+  public FulldayPricing ratePerMinsAboveLimit(Double ratePerMinsAboveLimit) {
     this.ratePerMinsAboveLimit = ratePerMinsAboveLimit;
     return this;
   }
@@ -215,7 +217,7 @@ public class FulldayPricingDTO   {
     this.ratePerMinsAboveLimit = ratePerMinsAboveLimit;
   }
 
-  public FulldayPricingDTO startLimitInHour(Double startLimitInHour) {
+  public FulldayPricing startLimitInHour(Double startLimitInHour) {
     this.startLimitInHour = startLimitInHour;
     return this;
   }
@@ -235,7 +237,7 @@ public class FulldayPricingDTO   {
     this.startLimitInHour = startLimitInHour;
   }
 
-  public FulldayPricingDTO startLimitInKms(Double startLimitInKms) {
+  public FulldayPricing startLimitInKms(Double startLimitInKms) {
     this.startLimitInKms = startLimitInKms;
     return this;
   }
@@ -264,33 +266,33 @@ public class FulldayPricingDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    FulldayPricingDTO fulldayPricingDTO = (FulldayPricingDTO) o;
-    return Objects.equals(this.endLimitInHour, fulldayPricingDTO.endLimitInHour) &&
-        Objects.equals(this.endLimitInKms, fulldayPricingDTO.endLimitInKms) &&
-        Objects.equals(this.id, fulldayPricingDTO.id) &&
-        Objects.equals(this.limitStatus, fulldayPricingDTO.limitStatus) &&
-        Objects.equals(this.pricingId, fulldayPricingDTO.pricingId) &&
-        Objects.equals(this.ratePerKm, fulldayPricingDTO.ratePerKm) &&
-        Objects.equals(this.ratePerMinsAboveLimit, fulldayPricingDTO.ratePerMinsAboveLimit) &&
-        Objects.equals(this.startLimitInHour, fulldayPricingDTO.startLimitInHour) &&
-        Objects.equals(this.startLimitInKms, fulldayPricingDTO.startLimitInKms);
+    FulldayPricing fulldayPricing = (FulldayPricing) o;
+    return Objects.equals(this.endLimitInHour, fulldayPricing.endLimitInHour) &&
+        Objects.equals(this.endLimitInKms, fulldayPricing.endLimitInKms) &&
+        Objects.equals(this.id, fulldayPricing.id) &&
+        Objects.equals(this.limitStatus, fulldayPricing.limitStatus) &&
+        Objects.equals(this.pricing, fulldayPricing.pricing) &&
+        Objects.equals(this.ratePerKm, fulldayPricing.ratePerKm) &&
+        Objects.equals(this.ratePerMinsAboveLimit, fulldayPricing.ratePerMinsAboveLimit) &&
+        Objects.equals(this.startLimitInHour, fulldayPricing.startLimitInHour) &&
+        Objects.equals(this.startLimitInKms, fulldayPricing.startLimitInKms);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(endLimitInHour, endLimitInKms, id, limitStatus, pricingId, ratePerKm, ratePerMinsAboveLimit, startLimitInHour, startLimitInKms);
+    return Objects.hash(endLimitInHour, endLimitInKms, id, limitStatus, pricing, ratePerKm, ratePerMinsAboveLimit, startLimitInHour, startLimitInKms);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class FulldayPricingDTO {\n");
+    sb.append("class FulldayPricing {\n");
     
     sb.append("    endLimitInHour: ").append(toIndentedString(endLimitInHour)).append("\n");
     sb.append("    endLimitInKms: ").append(toIndentedString(endLimitInKms)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    limitStatus: ").append(toIndentedString(limitStatus)).append("\n");
-    sb.append("    pricingId: ").append(toIndentedString(pricingId)).append("\n");
+    sb.append("    pricing: ").append(toIndentedString(pricing)).append("\n");
     sb.append("    ratePerKm: ").append(toIndentedString(ratePerKm)).append("\n");
     sb.append("    ratePerMinsAboveLimit: ").append(toIndentedString(ratePerMinsAboveLimit)).append("\n");
     sb.append("    startLimitInHour: ").append(toIndentedString(startLimitInHour)).append("\n");

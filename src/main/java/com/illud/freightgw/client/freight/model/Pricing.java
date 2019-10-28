@@ -4,19 +4,24 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.illud.freightgw.client.freight.model.FulldayPricing;
+import com.illud.freightgw.client.freight.model.NormalPricing;
+import com.illud.freightgw.client.freight.model.VehicleLookUp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * PricingDTO
+ * Pricing
  */
 @Validated
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-26T20:11:06.451+05:30[Asia/Calcutta]")
 
-public class PricingDTO   {
+public class Pricing   {
   @JsonProperty("additionalDescription")
   private String additionalDescription = null;
 
@@ -26,11 +31,19 @@ public class PricingDTO   {
   @JsonProperty("freeWaitingInMins")
   private Long freeWaitingInMins = null;
 
+  @JsonProperty("fulldayPricings")
+  @Valid
+  private List<FulldayPricing> fulldayPricings = null;
+
   @JsonProperty("id")
   private Long id = null;
 
   @JsonProperty("nightSurchargeInMins")
   private Double nightSurchargeInMins = null;
+
+  @JsonProperty("normalPricings")
+  @Valid
+  private List<NormalPricing> normalPricings = null;
 
   /**
    * Gets or Sets ratePlan
@@ -66,10 +79,14 @@ public class PricingDTO   {
   @JsonProperty("ratePlan")
   private RatePlanEnum ratePlan = null;
 
+  @JsonProperty("vehicles")
+  @Valid
+  private List<VehicleLookUp> vehicles = null;
+
   @JsonProperty("waitingChargeInMins")
   private Double waitingChargeInMins = null;
 
-  public PricingDTO additionalDescription(String additionalDescription) {
+  public Pricing additionalDescription(String additionalDescription) {
     this.additionalDescription = additionalDescription;
     return this;
   }
@@ -89,7 +106,7 @@ public class PricingDTO   {
     this.additionalDescription = additionalDescription;
   }
 
-  public PricingDTO basicRate(Double basicRate) {
+  public Pricing basicRate(Double basicRate) {
     this.basicRate = basicRate;
     return this;
   }
@@ -109,7 +126,7 @@ public class PricingDTO   {
     this.basicRate = basicRate;
   }
 
-  public PricingDTO freeWaitingInMins(Long freeWaitingInMins) {
+  public Pricing freeWaitingInMins(Long freeWaitingInMins) {
     this.freeWaitingInMins = freeWaitingInMins;
     return this;
   }
@@ -129,7 +146,36 @@ public class PricingDTO   {
     this.freeWaitingInMins = freeWaitingInMins;
   }
 
-  public PricingDTO id(Long id) {
+  public Pricing fulldayPricings(List<FulldayPricing> fulldayPricings) {
+    this.fulldayPricings = fulldayPricings;
+    return this;
+  }
+
+  public Pricing addFulldayPricingsItem(FulldayPricing fulldayPricingsItem) {
+    if (this.fulldayPricings == null) {
+      this.fulldayPricings = new ArrayList<FulldayPricing>();
+    }
+    this.fulldayPricings.add(fulldayPricingsItem);
+    return this;
+  }
+
+  /**
+   * Get fulldayPricings
+   * @return fulldayPricings
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public List<FulldayPricing> getFulldayPricings() {
+    return fulldayPricings;
+  }
+
+  public void setFulldayPricings(List<FulldayPricing> fulldayPricings) {
+    this.fulldayPricings = fulldayPricings;
+  }
+
+  public Pricing id(Long id) {
     this.id = id;
     return this;
   }
@@ -149,7 +195,7 @@ public class PricingDTO   {
     this.id = id;
   }
 
-  public PricingDTO nightSurchargeInMins(Double nightSurchargeInMins) {
+  public Pricing nightSurchargeInMins(Double nightSurchargeInMins) {
     this.nightSurchargeInMins = nightSurchargeInMins;
     return this;
   }
@@ -169,7 +215,36 @@ public class PricingDTO   {
     this.nightSurchargeInMins = nightSurchargeInMins;
   }
 
-  public PricingDTO ratePlan(RatePlanEnum ratePlan) {
+  public Pricing normalPricings(List<NormalPricing> normalPricings) {
+    this.normalPricings = normalPricings;
+    return this;
+  }
+
+  public Pricing addNormalPricingsItem(NormalPricing normalPricingsItem) {
+    if (this.normalPricings == null) {
+      this.normalPricings = new ArrayList<NormalPricing>();
+    }
+    this.normalPricings.add(normalPricingsItem);
+    return this;
+  }
+
+  /**
+   * Get normalPricings
+   * @return normalPricings
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public List<NormalPricing> getNormalPricings() {
+    return normalPricings;
+  }
+
+  public void setNormalPricings(List<NormalPricing> normalPricings) {
+    this.normalPricings = normalPricings;
+  }
+
+  public Pricing ratePlan(RatePlanEnum ratePlan) {
     this.ratePlan = ratePlan;
     return this;
   }
@@ -189,7 +264,36 @@ public class PricingDTO   {
     this.ratePlan = ratePlan;
   }
 
-  public PricingDTO waitingChargeInMins(Double waitingChargeInMins) {
+  public Pricing vehicles(List<VehicleLookUp> vehicles) {
+    this.vehicles = vehicles;
+    return this;
+  }
+
+  public Pricing addVehiclesItem(VehicleLookUp vehiclesItem) {
+    if (this.vehicles == null) {
+      this.vehicles = new ArrayList<VehicleLookUp>();
+    }
+    this.vehicles.add(vehiclesItem);
+    return this;
+  }
+
+  /**
+   * Get vehicles
+   * @return vehicles
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public List<VehicleLookUp> getVehicles() {
+    return vehicles;
+  }
+
+  public void setVehicles(List<VehicleLookUp> vehicles) {
+    this.vehicles = vehicles;
+  }
+
+  public Pricing waitingChargeInMins(Double waitingChargeInMins) {
     this.waitingChargeInMins = waitingChargeInMins;
     return this;
   }
@@ -218,32 +322,38 @@ public class PricingDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PricingDTO pricingDTO = (PricingDTO) o;
-    return Objects.equals(this.additionalDescription, pricingDTO.additionalDescription) &&
-        Objects.equals(this.basicRate, pricingDTO.basicRate) &&
-        Objects.equals(this.freeWaitingInMins, pricingDTO.freeWaitingInMins) &&
-        Objects.equals(this.id, pricingDTO.id) &&
-        Objects.equals(this.nightSurchargeInMins, pricingDTO.nightSurchargeInMins) &&
-        Objects.equals(this.ratePlan, pricingDTO.ratePlan) &&
-        Objects.equals(this.waitingChargeInMins, pricingDTO.waitingChargeInMins);
+    Pricing pricing = (Pricing) o;
+    return Objects.equals(this.additionalDescription, pricing.additionalDescription) &&
+        Objects.equals(this.basicRate, pricing.basicRate) &&
+        Objects.equals(this.freeWaitingInMins, pricing.freeWaitingInMins) &&
+        Objects.equals(this.fulldayPricings, pricing.fulldayPricings) &&
+        Objects.equals(this.id, pricing.id) &&
+        Objects.equals(this.nightSurchargeInMins, pricing.nightSurchargeInMins) &&
+        Objects.equals(this.normalPricings, pricing.normalPricings) &&
+        Objects.equals(this.ratePlan, pricing.ratePlan) &&
+        Objects.equals(this.vehicles, pricing.vehicles) &&
+        Objects.equals(this.waitingChargeInMins, pricing.waitingChargeInMins);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(additionalDescription, basicRate, freeWaitingInMins, id, nightSurchargeInMins, ratePlan, waitingChargeInMins);
+    return Objects.hash(additionalDescription, basicRate, freeWaitingInMins, fulldayPricings, id, nightSurchargeInMins, normalPricings, ratePlan, vehicles, waitingChargeInMins);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PricingDTO {\n");
+    sb.append("class Pricing {\n");
     
     sb.append("    additionalDescription: ").append(toIndentedString(additionalDescription)).append("\n");
     sb.append("    basicRate: ").append(toIndentedString(basicRate)).append("\n");
     sb.append("    freeWaitingInMins: ").append(toIndentedString(freeWaitingInMins)).append("\n");
+    sb.append("    fulldayPricings: ").append(toIndentedString(fulldayPricings)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    nightSurchargeInMins: ").append(toIndentedString(nightSurchargeInMins)).append("\n");
+    sb.append("    normalPricings: ").append(toIndentedString(normalPricings)).append("\n");
     sb.append("    ratePlan: ").append(toIndentedString(ratePlan)).append("\n");
+    sb.append("    vehicles: ").append(toIndentedString(vehicles)).append("\n");
     sb.append("    waitingChargeInMins: ").append(toIndentedString(waitingChargeInMins)).append("\n");
     sb.append("}");
     return sb.toString();

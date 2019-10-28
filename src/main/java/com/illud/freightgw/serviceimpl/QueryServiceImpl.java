@@ -21,10 +21,13 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.illud.freightgw.client.freight.api.CompanyResourceApi;
+import com.illud.freightgw.client.freight.api.CustomerResourceApi;
 import com.illud.freightgw.client.freight.api.DriverResourceApi;
 import com.illud.freightgw.client.freight.api.FreightResourceApi;
 import com.illud.freightgw.client.freight.api.QueryResourceApi;
 import com.illud.freightgw.client.freight.api.QuotationResourceApi;
+import com.illud.freightgw.client.freight.api.VehicleLookUpResourceApi;
 import com.illud.freightgw.client.freight.api.VehicleResourceApi;
 import com.illud.freightgw.client.freight.model.*;
 import com.illud.freightgw.service.QueryService;
@@ -55,58 +58,75 @@ public class QueryServiceImpl implements QueryService {
 	@Autowired
 	DriverResourceApi driverResourceApi;
 
+	@Autowired
+	CompanyResourceApi comResourceApi;
+
+	@Autowired
+	CustomerResourceApi cusResourceApi;
+
+	@Autowired
+	VehicleLookUpResourceApi vehLookupReourceApi;
+
 	public QueryServiceImpl(JestClient jestClient, JestElasticsearchTemplate esTemplate) {
 		this.jestClient = jestClient;
 		this.esTemplate = esTemplate;
 	}
 
 	@Override
-	public Company findCompanyById(Long id) {
+	public ResponseEntity<FreightDTO> findFreightId(Long id) {
+		log.debug("<<<<<< input a Id to get a freight>>" + id + ">>>>");
+		StringQuery sq = new StringQuery(termQuery("id", id).toString());
+		return freightResourceApi.createFreightDTOUsingPOST((esTemplate.queryForObject(sq, Freight.class)));
+
+	}
+
+	@Override
+	public ResponseEntity<CompanyDTO> findCompanyById(Long id) {
 		log.debug("<<<<<< getOne Company by id>>>>", id);
 		StringQuery sq = new StringQuery(termQuery("id", id).toString());
-		return esTemplate.queryForObject(sq, Company.class);
+		return comResourceApi.createDtoUsingPOST(esTemplate.queryForObject(sq, Company.class));
 	}
 
 	@Override
-	public Customer findCustomerById(Long id) {
+	public ResponseEntity<CustomerDTO> findCustomerById(Long id) {
 		log.debug("<<<<<< getOne customer by id >>>>", id);
 		StringQuery sq = new StringQuery(termQuery("id", id).toString());
-		return esTemplate.queryForObject(sq, Customer.class);
+		return cusResourceApi.createDtoUsingPOST1(esTemplate.queryForObject(sq, Customer.class));
 	}
 
 	@Override
-	public Driver findDriverById(Long id) {
+	public ResponseEntity<DriverDTO> findDriverById(Long id) {
 		log.debug("<<<<<< getOne driver by id>>>>", id);
 		StringQuery sq = new StringQuery(termQuery("id", id).toString());
-		return esTemplate.queryForObject(sq, Driver.class);
+		return driverResourceApi.createDtoUsingPOST2(esTemplate.queryForObject(sq, Driver.class));
 	}
 
 	@Override
-	public VehicleLookUp findVehicleLookUpById(Long id) {
+	public ResponseEntity<VehicleLookUpDTO> findVehicleLookUpById(Long id) {
 		log.debug("<<<<< get vehiclelook up id in impl>>>>>>", id);
 		StringQuery sq = new StringQuery(termQuery("id", id).toString());
-		return esTemplate.queryForObject(sq, VehicleLookUp.class);
+		return vehLookupReourceApi.createDtoUsingPOST3(esTemplate.queryForObject(sq, VehicleLookUp.class));
 	}
 
 	@Override
-	public Company getOneCompany(String iDPCode) {
+	public ResponseEntity<CompanyDTO> getOneCompany(String iDPCode) {
 		log.debug("<<<<<< getOne>>>>", iDPCode);
 		StringQuery sq = new StringQuery(termQuery("companyIdpCode.keyword", iDPCode).toString());
-		return esTemplate.queryForObject(sq, Company.class);
+		return comResourceApi.createDtoUsingPOST(esTemplate.queryForObject(sq, Company.class));
 	}
 
 	@Override
-	public Customer getOneCustomer(String iDPCode) {
+	public ResponseEntity<CustomerDTO> getOneCustomer(String iDPCode) {
 		log.debug("<<<<<< getOne customer >>>>", iDPCode);
 		StringQuery sq = new StringQuery(termQuery("customerIdpCode.keyword", iDPCode).toString());
-		return esTemplate.queryForObject(sq, Customer.class);
+		return cusResourceApi.createDtoUsingPOST1(esTemplate.queryForObject(sq, Customer.class));
 	}
 
 	@Override
-	public Driver getOneDriver(String iDPCode) {
+	public ResponseEntity<DriverDTO> getOneDriver(String iDPCode) {
 		log.debug("<<<<<< getOne driver>>>>", iDPCode);
 		StringQuery sq = new StringQuery(termQuery("driverIdpCode.keyword", iDPCode).toString());
-		return esTemplate.queryForObject(sq, Driver.class);
+		return driverResourceApi.createDtoUsingPOST2(esTemplate.queryForObject(sq, Driver.class));
 	}
 
 	@Override
@@ -142,7 +162,7 @@ public class QueryServiceImpl implements QueryService {
 		log.debug("<<<<<< findAllQuotations in impl >>>>>>>", freightId);
 		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(termQuery("freightId", freightId)).build();
 		return quotationResourceApi
-				.createQuotationsDtoListUsingGET(esTemplate.queryForPage(sq, Quotation.class).getContent());
+				.createQuotationsDtoListUsingPOST(esTemplate.queryForPage(sq, Quotation.class).getContent());
 	}
 
 	@Override
@@ -152,7 +172,7 @@ public class QueryServiceImpl implements QueryService {
 		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(QueryBuilders.boolQuery()
 				.must(termQuery("companyId", companyId)).must(termQuery("freightId", freightId))).build();
 		return quotationResourceApi
-				.createQuotationsDtoListUsingGET(esTemplate.queryForPage(sq, Quotation.class).getContent());
+				.createQuotationsDtoListUsingPOST(esTemplate.queryForPage(sq, Quotation.class).getContent());
 	}
 
 	@Override
@@ -160,7 +180,7 @@ public class QueryServiceImpl implements QueryService {
 		log.debug("<<<<< findAllQuotationsByCompanyId>>>>>>", companyId);
 		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(termQuery("companyId", companyId)).build();
 		return quotationResourceApi
-				.createQuotationsDtoListUsingGET(esTemplate.queryForPage(sq, Quotation.class).getContent());
+				.createQuotationsDtoListUsingPOST(esTemplate.queryForPage(sq, Quotation.class).getContent());
 	}
 
 	@Override
@@ -216,19 +236,12 @@ public class QueryServiceImpl implements QueryService {
 		return queryResourceApi.getBookingDetailsUsingGET(processInstanceId);
 	}
 
-	
-	public ResponseEntity<FreightDTO> findFreightId(Long id) {
-		log.debug("<<<<<< input a Id to get a freight>>" + id + ">>>>");
-		StringQuery sq = new StringQuery(termQuery("id", id).toString());
-		return freightResourceApi.createFreightDTOUsingPOST((esTemplate.queryForObject(sq, Freight.class)));
-
-	}
-
 	@Override
 	public ResponseEntity<List<DriverDTO>> findAllDriversByComapanyIdpCode(String companyIdpCode, Pageable pageable) {
-		log.debug("<<<<<< findAllDriversByComapanyIdpCode >>>>>>>",companyIdpCode);
-		SearchQuery sq = new NativeSearchQueryBuilder().withQuery(termQuery("company.companyIdpCode.keyword",companyIdpCode)).build();
-		return driverResourceApi.createDtoListUsingPOST(esTemplate.queryForPage(sq,Driver.class ).getContent());
+		log.debug("<<<<<< findAllDriversByComapanyIdpCode >>>>>>>", companyIdpCode);
+		SearchQuery sq = new NativeSearchQueryBuilder()
+				.withQuery(termQuery("company.companyIdpCode.keyword", companyIdpCode)).build();
+		return driverResourceApi.createDtoListUsingPOST2(esTemplate.queryForPage(sq, Driver.class).getContent());
 	}
 
 }

@@ -5,7 +5,9 @@
  */
 package com.illud.freightgw.client.freight.api;
 
+import com.illud.freightgw.client.freight.model.Customer;
 import com.illud.freightgw.client.freight.model.CustomerDTO;
+import java.util.List;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,7 +27,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-25T10:41:54.345+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-26T20:11:06.451+05:30[Asia/Calcutta]")
 
 @Api(value = "CustomerResource", description = "the CustomerResource API")
 public interface CustomerResourceApi {
@@ -42,6 +44,34 @@ public interface CustomerResourceApi {
         consumes = "application/json",
         method = RequestMethod.POST)
     ResponseEntity<CustomerDTO> createCustomerUsingPOST(@ApiParam(value = "customerDTO" ,required=true )  @Valid @RequestBody CustomerDTO customerDTO);
+
+
+    @ApiOperation(value = "createDtoList", nickname = "createDtoListUsingPOST1", notes = "", response = CustomerDTO.class, responseContainer = "List", tags={ "customer-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = CustomerDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/creteDtoList/customer",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<List<CustomerDTO>> createDtoListUsingPOST1(@ApiParam(value = "customers" ,required=true )  @Valid @RequestBody List<Customer> customer);
+
+
+    @ApiOperation(value = "createDto", nickname = "createDtoUsingPOST1", notes = "", response = CustomerDTO.class, tags={ "customer-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = CustomerDTO.class),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/createDto/customer",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<CustomerDTO> createDtoUsingPOST1(@ApiParam(value = "customer" ,required=true )  @Valid @RequestBody Customer customer);
 
 
     @ApiOperation(value = "createcustomerIfnotExist", nickname = "createcustomerIfnotExistUsingPOST", notes = "", response = CustomerDTO.class, tags={ "customer-resource", })

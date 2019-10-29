@@ -42,7 +42,11 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 	@Autowired
     private SimpMessagingTemplate messageSender;
 	@Autowired
-	QuotationResourceApi queResourceApi;
+
+	private QuotationResourceApi quotResApi; 
+	@Autowired
+	QueryServiceImpl queryServiceImpl;
+
 	
 
 	@Override
@@ -180,10 +184,23 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 	}
 
 	@Override
-	public ResponseEntity<QuotationDTO> update(QuotationDTO quotationDTO) {
-		log.debug("<<<<< update quotation >>>",quotationDTO);
-		return queResourceApi.updateQuotationUsingPUT(quotationDTO);
+	public ResponseEntity<QuotationDTO> save(QuotationDTO quotationDTO) {
+		ResponseEntity<QuotationDTO> savedQuotationDTO=quotResApi.createQuotationUsingPOST(quotationDTO);
+		
+		ResponseEntity<FreightDTO> freightDTO=queryServiceImpl.findFreightId(savedQuotationDTO.getBody().getFreightId());
+		
+		ResponseEntity<CustomerDTO> customer = queryServiceImpl.findCustomerById(freightDTO.getBody().getCustomerId());
+		messageSender.convertAndSendToUser(customer.getBody().getCustomerIdpCode(), "/topic/quotes",savedQuotationDTO );
+		return savedQuotationDTO;
 	}
 	
 	
+	public ResponseEntity<QuotationDTO> update(QuotationDTO quotationDTO) {
+		log.debug("<<<<< update quotation >>>",quotationDTO);
+		return quotResApi.updateQuotationUsingPUT(quotationDTO);
+
+	}
+	
+	
+
 }

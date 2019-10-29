@@ -52,6 +52,10 @@ public interface CommandService {
 
 	void deleteDriver(Long driverId);
 
+
+	ResponseEntity<QuotationDTO> save(QuotationDTO quotationDTO);
+
 	ResponseEntity<QuotationDTO> update(QuotationDTO quotationDTO);
+
 
 }

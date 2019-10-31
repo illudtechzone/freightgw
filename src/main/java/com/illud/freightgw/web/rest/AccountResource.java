@@ -1,6 +1,7 @@
 package com.illud.freightgw.web.rest;
 
 import com.illud.freightgw.service.UserService;
+
 import com.illud.freightgw.service.dto.UserDTO;
 import com.illud.freightgw.web.rest.errors.InternalServerErrorException;
 

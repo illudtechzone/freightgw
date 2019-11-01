@@ -7,6 +7,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.illud.freightgw.client.freight.model.Vehicle;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -15,8 +17,8 @@ import javax.validation.constraints.*;
  * VehicleStaff
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-29T13:04:19.756+05:30[Asia/Calcutta]")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-11-01T16:09:11.113+05:30[Asia/Calcutta]")
+@Document (indexName="vehiclestaff")
 public class VehicleStaff   {
   @JsonProperty("id")
   private Long id = null;

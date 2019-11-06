@@ -210,7 +210,7 @@ public class CommandResource {
 		return comService.createVehicleStaff(vehStaffDTO);
 		
 	}
-	@PostMapping("/update/vehicleStaff")
+	@PutMapping("/update/vehicleStaff")
 	public ResponseEntity<VehicleStaffDTO> updateVehicleStaff(@RequestBody VehicleStaffDTO vehStaffDTO){
 		log.debug("<<<<<< updateVehicleStaff >>>>>>",vehStaffDTO);
 		return comService.updateVehicleStaff(vehStaffDTO);

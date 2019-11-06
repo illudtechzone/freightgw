@@ -25,10 +25,23 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-11-01T16:09:11.113+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-11-06T12:13:58.879+05:30[Asia/Calcutta]")
 
 @Api(value = "VehicleStaffResource", description = "the VehicleStaffResource API")
 public interface VehicleStaffResourceApi {
+
+    @ApiOperation(value = "assignVehicleStaffForDriver", nickname = "assignVehicleStaffForDriverUsingPOST", notes = "", response = VehicleStaffDTO.class, tags={ "vehicle-staff-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = VehicleStaffDTO.class),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/assignvehiclestaff/{vehicleId}/{driverId}",
+        produces = "*/*", 
+        method = RequestMethod.POST)
+    ResponseEntity<VehicleStaffDTO> assignVehicleStaffForDriverUsingPOST(@ApiParam(value = "staffId",required=true) @PathVariable("staffId") Long staffId,@ApiParam(value = "vehicleId",required=true) @PathVariable("vehicleId") Long vehicleId);
+
 
     @ApiOperation(value = "createVehicleStaff", nickname = "createVehicleStaffUsingPOST", notes = "", response = VehicleStaffDTO.class, tags={ "vehicle-staff-resource", })
     @ApiResponses(value = { 

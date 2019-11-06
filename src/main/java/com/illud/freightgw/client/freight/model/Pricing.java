@@ -19,7 +19,7 @@ import javax.validation.constraints.*;
  * Pricing
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-11-01T16:09:11.113+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-11-06T12:13:58.879+05:30[Asia/Calcutta]")
 
 public class Pricing   {
   @JsonProperty("additionalDescription")

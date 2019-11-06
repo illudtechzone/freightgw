@@ -176,6 +176,7 @@ public class CommandResource {
 		log.debug("<<<<<<<  delete DriverDocumnet in resource >>>>>>",driverdocumentId);
 		this.driDocApi.deleteDriverDocumentUsingDELETE(driverdocumentId);
 	}
+	
 
 	/////////////////////////// activiti-workflow-apis///////////////////////////////////
 

@@ -7,6 +7,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.illud.freightgw.client.freight.model.Pricing;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -15,8 +17,8 @@ import javax.validation.constraints.*;
  * FulldayPricing
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-11-01T16:09:11.113+05:30[Asia/Calcutta]")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-11-06T12:13:58.879+05:30[Asia/Calcutta]")
+@Document (indexName="fulldaypricing")
 public class FulldayPricing   {
   @JsonProperty("endLimitInHour")
   private Double endLimitInHour = null;

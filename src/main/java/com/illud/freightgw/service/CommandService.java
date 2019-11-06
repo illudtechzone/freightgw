@@ -59,5 +59,9 @@ public interface CommandService {
 
 	ResponseEntity<VehicleStaffDTO> assignStaffForDriver(Long staffId, Long vehicleId);
 
+	ResponseEntity<VehicleStaffDTO> createVehicleStaff(VehicleStaffDTO vehStaffDTO);
+
+	ResponseEntity<VehicleStaffDTO> updateVehicleStaff(VehicleStaffDTO vehStaffDTO);
+
 
 }

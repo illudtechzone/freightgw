@@ -35,6 +35,8 @@ public class CommandResource {
 	public CommandResource(CommandService commantService) {
 		this.comService = commantService;
 	}
+	
+	// <<<<<<<<<<<<<<                         company                      >>>>>>>>>>>>>
 
 	@PostMapping("/create/company")
 	public ResponseEntity<CompanyDTO> createCompany(@RequestBody CompanyDTO company) {
@@ -44,6 +46,19 @@ public class CommandResource {
 		return api.createCompanyUsingPOST(company);
 
 	}
+	@PutMapping("/update/company")
+	public ResponseEntity<CompanyDTO> updateCompany(@RequestBody CompanyDTO company) {
+		log.debug("<<<<<<<< update company >>>>>>>>>", company);
+		return comService.update(company);
+	}
+	@PostMapping("/create/company/ifnotexist")
+	public ResponseEntity<CompanyDTO> createcompanyIfnotExist(@RequestBody CompanyDTO companyDTO) {
+		log.debug("<<<<<<< create companyIfnotExist>>>>>>>", companyDTO);
+		return comService.createcompanyIfnotExist(companyDTO);
+
+	}
+	
+	//   <<<<<<<<<<<<<<<<<<<<                Quotation                 >>>>>>>>>>>>>>>>>>>>
 	
 	@PostMapping("/create/quotation")
 	public ResponseEntity<QuotationDTO> createQuotation(@RequestBody QuotationDTO quotationDTO) {
@@ -60,30 +75,49 @@ public class CommandResource {
 		
 	}
 
-	@PutMapping("/update/company")
-	public ResponseEntity<CompanyDTO> updateCompany(@RequestBody CompanyDTO company) {
-		log.debug("<<<<<<<< update company >>>>>>>>>", company);
-		return comService.update(company);
-	}
+	
+	
+	//   <<<<<<<<<<<<<<<<<<             customer                >>>>>>>>>>>>>>>>>>
 
 	@PostMapping("/create/customer")
 	public ResponseEntity<CustomerDTO> createCustomer(@RequestBody CustomerDTO customer) {
 		log.debug("<<<<<<<< update customer >>>>>>>>>", customer);
 		return comService.save(customer);
-
 	}
-
 	@PutMapping("/update/customer")
 	public ResponseEntity<CustomerDTO> updateCustomer(@RequestBody CustomerDTO customer) {
 		log.debug("<<<<<<<< update company >>>>>>>>>", customer);
 		return comService.update(customer);
 	}
+	@PostMapping("/create/customer/ifnotexist")
+	public ResponseEntity<CustomerDTO> createcustomerIfnotExist(@RequestBody CustomerDTO customerDTO) {
+		log.debug("<<<<<<< customer customer if not exist >>>>>>>", customerDTO);
+		return comService.createcustomerIfnotExist(customerDTO);
+	}
+
+	//   <<<<<<<<<<<<<<<<<<<<<       freight         >>>>>>>>>>>>>>>>>>>>>
+	
 	@PutMapping("/update/freight")
 	public ResponseEntity<FreightDTO> updateFreight(@RequestBody FreightDTO freight) {
 		log.debug("<<<<<<<< update freight >>>>>>>>>", freight);
 		return comService.update(freight);
 	}
+	@PostMapping("/updateFreight/{vehicleId}")
+	public ResponseEntity<FreightDTO> assignVehicle(@RequestBody FreightDTO freightDTO,@PathVariable Long vehicleId){
+		log.debug("<<<<<<<<assignUpdateFreight>>>>>",freightDTO,vehicleId);
+		
+		return comService.createAssignVehicle(freightDTO,vehicleId);
+		
+	}
+	@PostMapping("/create/freight")
+	public ResponseEntity<FreightDTO> createFreight(@RequestBody FreightDTO freight) {
+		log.debug("<<<<<<<< create freight >>>>>>>>>", freight);
+		return comService.save(freight);	
+	}
 
+	
+	//   <<<<<<<<<<<<<<<<<<               driver             >>>>>>>>>>>>>>
+	
 	@PostMapping("/create/driver")
 	public ResponseEntity<DriverDTO> createDriver(@RequestBody DriverDTO driver) {
 		log.debug("<<<<<<<< update customer >>>>>>>>>", driver);
@@ -96,7 +130,22 @@ public class CommandResource {
 		log.debug("<<<<<<<< update freight >>>>>>>>>", driver);
 		return comService.update(driver);
 	}
+	@PostMapping("/create/driver/ifnotexist")
+	public ResponseEntity<DriverDTO> createdriverIfnotExist(@RequestBody DriverDTO driverDTO) {
+		log.debug("<<<<< create driver if not exist >>>>>", driverDTO);
+		return comService.createdriverIfnotExist(driverDTO);
 
+	}
+
+	@DeleteMapping("/deletedriver/{driverId}")
+	public void deleteDriver(@PathVariable Long driverId) {
+		log.debug("<<<<<<< delete driver >>>>>>>>>",driverId);
+		comService.deleteDriver(driverId);
+	}
+	
+	
+	//   <<<<<<<<<<<<<<<                    vehicle              >>>>>>>>>>>>>>>
+	
 	@PostMapping("/create/vehicle")
 	public ResponseEntity<VehicleDTO> createVehicle(@RequestBody VehicleDTO vehicle) {
 		log.debug("<<<<<<<< update customer >>>>>>>>>", vehicle);
@@ -109,7 +158,15 @@ public class CommandResource {
 		log.debug("<<<<<<<< update freight >>>>>>>>>", vehicle);
 		return comService.update(vehicle);
 	}
+	@DeleteMapping("/delete/vehicle/{vehicleId}/{vehicleLookupId}")
+	public void deleteVehicle(@PathVariable Long vehicleId,@PathVariable Long vehicleLookupId) {
+		log.debug("<<<<< delete vehicle >>>>>"+vehicleId+vehicleLookupId);
+		comService.deleteVehicle(vehicleId);
+		comService.deleteVehicleLookup(vehicleLookupId);
+	}
 
+	//   <<<<<<<<<<<<<<<<<<                 vehicle look up          >>>>>>>>>>>
+	
 	@PostMapping("/create/vehiclelookup")
 	public ResponseEntity<VehicleLookUpDTO> createVehicleLookUp(@RequestBody VehicleLookUpDTO vehicleLookUp) {
 		log.debug("<<<<<<<< update customer >>>>>>>>>", vehicleLookUp);
@@ -123,44 +180,12 @@ public class CommandResource {
 		return comService.update(vehicleLookUp);
 	}
 
-	@PostMapping("/create/company/ifnotexist")
-	public ResponseEntity<CompanyDTO> createcompanyIfnotExist(@RequestBody CompanyDTO companyDTO) {
-		log.debug("<<<<<<< create companyIfnotExist>>>>>>>", companyDTO);
-		return comService.createcompanyIfnotExist(companyDTO);
 
-	}
 
-	@PostMapping("/create/customer/ifnotexist")
-	public ResponseEntity<CustomerDTO> createcustomerIfnotExist(@RequestBody CustomerDTO customerDTO) {
-		log.debug("<<<<<<< customer customer if not exist >>>>>>>", customerDTO);
-		return comService.createcustomerIfnotExist(customerDTO);
-	}
 
-	@PostMapping("/create/driver/ifnotexist")
-	public ResponseEntity<DriverDTO> createdriverIfnotExist(@RequestBody DriverDTO driverDTO) {
-		log.debug("<<<<< create driver if not exist >>>>>", driverDTO);
-		return comService.createdriverIfnotExist(driverDTO);
 
-	}
-	
-	@DeleteMapping("/delete/vehicle/{vehicleId}/{vehicleLookupId}")
-	public void deleteVehicle(@PathVariable Long vehicleId,@PathVariable Long vehicleLookupId) {
-		log.debug("<<<<< delete vehicle >>>>>"+vehicleId+vehicleLookupId);
-		comService.deleteVehicle(vehicleId);
-		comService.deleteVehicleLookup(vehicleLookupId);
-	}
-	@PostMapping("/updateFreight/{vehicleId}")
-	public ResponseEntity<FreightDTO> assignVehicle(@RequestBody FreightDTO freightDTO,@PathVariable Long vehicleId){
-		log.debug("<<<<<<<<assignUpdateFreight>>>>>",freightDTO,vehicleId);
-		
-		return comService.createAssignVehicle(freightDTO,vehicleId);
-		
-	}
-	@DeleteMapping("/deletedriver/{driverId}")
-	public void deleteDriver(@PathVariable Long driverId) {
-		log.debug("<<<<<<< delete driver >>>>>>>>>",driverId);
-		comService.deleteDriver(driverId);
-	}
+	//   <<<<<<<<<<<            driver document             >>>>>>>>>>>>
+
 	@PostMapping("/create/driverdocument")
 	public ResponseEntity<DriverDocumentDTO> createDriverDocumnet(@RequestBody DriverDocumentDTO driDocDTO){
 		log.debug("<<<<<<<  create DriverDocumnet in resource >>>>>>",driDocDTO);
@@ -176,6 +201,20 @@ public class CommandResource {
 		log.debug("<<<<<<<  delete DriverDocumnet in resource >>>>>>",driverdocumentId);
 		this.driDocApi.deleteDriverDocumentUsingDELETE(driverdocumentId);
 	}
+	
+	//    <<<<<<<<<<<<             vehicle staff            >>>>>>>>>>>
+	
+	@PostMapping("/create/vehicleStaff")
+	public ResponseEntity<VehicleStaffDTO> createVehicleStaff(@RequestBody VehicleStaffDTO vehStaffDTO){
+		log.debug("<<<<<<<< createVehicleStaff >>>>>>>",vehStaffDTO);
+		return comService.createVehicleStaff(vehStaffDTO);
+		
+	}
+	@PostMapping("/update/vehicleStaff")
+	public ResponseEntity<VehicleStaffDTO> updateVehicleStaff(@RequestBody VehicleStaffDTO vehStaffDTO){
+		log.debug("<<<<<< updateVehicleStaff >>>>>>",vehStaffDTO);
+		return comService.updateVehicleStaff(vehStaffDTO);
+	}
 	@PostMapping("/assignvehiclestaff/{vehicleId}/{driverId}")
 	public ResponseEntity<VehicleStaffDTO> assignVehicleStaffForDriver(@PathVariable Long staffId,@PathVariable Long vehicleId){
 		log.debug("<<<<<<<<< assignVehicleStaffForDriver >>>>>>>",vehicleId,staffId);
@@ -185,11 +224,6 @@ public class CommandResource {
 
 	/////////////////////////// activiti-workflow-apis///////////////////////////////////
 
-	@PostMapping("/create/freight")
-	public ResponseEntity<FreightDTO> createFreight(@RequestBody FreightDTO freight) {
-		log.debug("<<<<<<<< create freight >>>>>>>>>", freight);
-		return comService.save(freight);	
-	}
 
 	@PostMapping("/sendQuatation/{taskId}")
 	public void sendQuatation(@PathVariable String taskId, @RequestBody QuotationDTO response) {

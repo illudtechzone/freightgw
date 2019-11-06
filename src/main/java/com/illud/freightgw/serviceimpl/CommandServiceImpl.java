@@ -135,6 +135,17 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 		log.debug("<<<<<< create driver if not ot exist >>>>>>",driverDTO);
 		return driResourceApi.createdriverIfnotExistUsingPOST(driverDTO);
 	}
+
+	@Override
+	public ResponseEntity<VehicleStaffDTO> createVehicleStaff(VehicleStaffDTO vehStaffDTO) {
+		log.debug("<<<<<< createVehicleStaff >>>>>>>",vehStaffDTO);
+		return vehStaffResourceApi.createVehicleStaffUsingPOST(vehStaffDTO);
+	}
+	@Override
+	public ResponseEntity<VehicleStaffDTO> updateVehicleStaff(VehicleStaffDTO vehStaffDTO) {
+		log.debug("<<<<<< updateVehicleStaff >>>>>>>",vehStaffDTO);
+		return vehStaffResourceApi.updateVehicleStaffUsingPUT(vehStaffDTO);
+	}
 	@Override
 	public ResponseEntity<VehicleStaffDTO> assignStaffForDriver(Long staffId, Long vehicleId) {
 		log.debug("<<<<<<<< assignStaffForDriver >>>>>>",vehicleId,staffId);
@@ -207,6 +218,9 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 		return quotResApi.updateQuotationUsingPUT(quotationDTO);
 
 	}
+
+
+
 
 
 	

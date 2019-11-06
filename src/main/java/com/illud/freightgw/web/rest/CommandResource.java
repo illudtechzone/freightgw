@@ -215,7 +215,7 @@ public class CommandResource {
 		log.debug("<<<<<< updateVehicleStaff >>>>>>",vehStaffDTO);
 		return comService.updateVehicleStaff(vehStaffDTO);
 	}
-	@PostMapping("/assignvehiclestaff/{vehicleId}/{driverId}")
+	@PostMapping("/assignvehiclestaff/{staffId}/{vehicleId}")
 	public ResponseEntity<VehicleStaffDTO> assignVehicleStaffForDriver(@PathVariable Long staffId,@PathVariable Long vehicleId){
 		log.debug("<<<<<<<<< assignVehicleStaffForDriver >>>>>>>",vehicleId,staffId);
 		return comService.assignStaffForDriver(vehicleId,staffId);

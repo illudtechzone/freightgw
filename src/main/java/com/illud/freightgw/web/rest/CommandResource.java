@@ -176,7 +176,12 @@ public class CommandResource {
 		log.debug("<<<<<<<  delete DriverDocumnet in resource >>>>>>",driverdocumentId);
 		this.driDocApi.deleteDriverDocumentUsingDELETE(driverdocumentId);
 	}
-	
+	@PostMapping("/assignvehiclestaff/{vehicleId}/{driverId}")
+	public ResponseEntity<VehicleStaffDTO> assignVehicleStaffForDriver(@PathVariable Long staffId,@PathVariable Long vehicleId){
+		log.debug("<<<<<<<<< assignVehicleStaffForDriver >>>>>>>",vehicleId,staffId);
+		return comService.assignStaffForDriver(vehicleId,staffId);
+		
+	}
 
 	/////////////////////////// activiti-workflow-apis///////////////////////////////////
 

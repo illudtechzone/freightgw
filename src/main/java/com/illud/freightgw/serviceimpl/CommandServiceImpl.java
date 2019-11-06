@@ -15,7 +15,7 @@ import com.illud.freightgw.client.freight.api.FreightResourceApi;
 import com.illud.freightgw.client.freight.api.QuotationResourceApi;
 import com.illud.freightgw.client.freight.api.VehicleLookUpResourceApi;
 import com.illud.freightgw.client.freight.api.VehicleResourceApi;
-
+import com.illud.freightgw.client.freight.api.VehicleStaffResourceApi;
 import com.illud.freightgw.client.freight.model.*;
 
 import com.illud.freightgw.service.CommandService;
@@ -42,11 +42,12 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 	@Autowired
     private SimpMessagingTemplate messageSender;
 	@Autowired
-
 	private QuotationResourceApi quotResApi; 
 	@Autowired
 	QueryServiceImpl queryServiceImpl;
-
+	@Autowired
+	VehicleStaffResourceApi vehStaffResourceApi;
+	
 	
 
 	@Override
@@ -134,6 +135,12 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 		log.debug("<<<<<< create driver if not ot exist >>>>>>",driverDTO);
 		return driResourceApi.createdriverIfnotExistUsingPOST(driverDTO);
 	}
+	@Override
+	public ResponseEntity<VehicleStaffDTO> assignStaffForDriver(Long staffId, Long vehicleId) {
+		log.debug("<<<<<<<< assignStaffForDriver >>>>>>",vehicleId,staffId);
+		
+		return vehStaffResourceApi.assignVehicleStaffForDriverUsingPOST(staffId, vehicleId);
+	}
 	
 ///////////////////////////activiti-workflow///////////////////////////////////
 
@@ -200,6 +207,8 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 		return quotResApi.updateQuotationUsingPUT(quotationDTO);
 
 	}
+
+
 	
 	
 

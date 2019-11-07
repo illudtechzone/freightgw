@@ -118,6 +118,7 @@ public class CommandResource {
 	
 	//   <<<<<<<<<<<<<<<<<<               driver             >>>>>>>>>>>>>>
 	
+	
 	@PostMapping("/create/driver")
 	public ResponseEntity<DriverDTO> createDriver(@RequestBody DriverDTO driver) {
 		log.debug("<<<<<<<< update customer >>>>>>>>>", driver);
@@ -145,6 +146,7 @@ public class CommandResource {
 	
 	
 	//   <<<<<<<<<<<<<<<                    vehicle              >>>>>>>>>>>>>>>
+	
 	
 	@PostMapping("/create/vehicle")
 	public ResponseEntity<VehicleDTO> createVehicle(@RequestBody VehicleDTO vehicle) {
@@ -181,10 +183,10 @@ public class CommandResource {
 	}
 
 
+	//  <<<<<<<<<<<            driver document             >>>>>>>>>>>>
 
 
-
-	//   <<<<<<<<<<<            driver document             >>>>>>>>>>>>
+	
 
 	@PostMapping("/create/driverdocument")
 	public ResponseEntity<DriverDocumentDTO> createDriverDocumnet(@RequestBody DriverDocumentDTO driDocDTO){
@@ -205,22 +207,22 @@ public class CommandResource {
 	//    <<<<<<<<<<<<             vehicle staff            >>>>>>>>>>>
 	
 	@PostMapping("/create/vehicleStaff")
-	public ResponseEntity<VehicleStaffDTO> createVehicleStaff(@RequestBody VehicleStaffDTO vehStaffDTO){
+	public ResponseEntity<VehicleStaffDTO> assignNewVehicleStaff(@RequestBody VehicleStaffDTO vehStaffDTO){
 		log.debug("<<<<<<<< createVehicleStaff >>>>>>>",vehStaffDTO);
 		return comService.createVehicleStaff(vehStaffDTO);
 		
 	}
 	@PutMapping("/update/vehicleStaff")
-	public ResponseEntity<VehicleStaffDTO> updateVehicleStaff(@RequestBody VehicleStaffDTO vehStaffDTO){
+	public ResponseEntity<VehicleStaffDTO> reAssignVehicleStaff(@RequestBody VehicleStaffDTO vehStaffDTO){
 		log.debug("<<<<<< updateVehicleStaff >>>>>>",vehStaffDTO);
 		return comService.updateVehicleStaff(vehStaffDTO);
 	}
-	@PostMapping("/assignvehiclestaff/{staffId}/{vehicleId}")
-	public ResponseEntity<VehicleStaffDTO> assignVehicleStaffForDriver(@PathVariable Long staffId,@PathVariable Long vehicleId){
-		log.debug("<<<<<<<<< assignVehicleStaffForDriver >>>>>>>",vehicleId,staffId);
-		return comService.assignStaffForDriver(vehicleId,staffId);
-		
-	}
+//	@PostMapping("/assignvehiclestaff/{staffId}/{vehicleId}")
+//	public ResponseEntity<VehicleStaffDTO> assignNewVehicleStaffForDriver(@PathVariable Long staffId,@PathVariable Long vehicleId){
+//		log.debug("<<<<<<<<< assignVehicleStaffForDriver >>>>>>>",vehicleId,staffId);
+//		return comService.assignStaffForDriver(vehicleId,staffId);
+//		
+//	}
 
 	/////////////////////////// activiti-workflow-apis///////////////////////////////////
 

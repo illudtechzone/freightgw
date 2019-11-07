@@ -146,13 +146,15 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 		log.debug("<<<<<< updateVehicleStaff >>>>>>>",vehStaffDTO);
 		return vehStaffResourceApi.updateVehicleStaffUsingPUT(vehStaffDTO);
 	}
-	@Override
-	public ResponseEntity<VehicleStaffDTO> assignStaffForDriver(Long staffId, Long vehicleId) {
-		log.debug("<<<<<<<< assignStaffForDriver >>>>>>"+"vehicleID"+vehicleId+"staffid"+staffId);
-		
-		return vehStaffResourceApi.assignVehicleStaffForDriverUsingPOST(staffId, vehicleId);
-	}
 	
+	/*
+	 * @Override public ResponseEntity<VehicleStaffDTO> assignStaffForDriver(Long
+	 * staffId, Long vehicleId) { log.debug("<<<<<<<< assignStaffForDriver >>>>>>" +
+	 * "vehicleID" + vehicleId + "staffid" + staffId); // // return
+	 * vehStaffResourceApi.assignVehicleStaffForDriverUsingPOST(staffId, vehicleId);
+	 * }
+	 */
+	 	
 ///////////////////////////activiti-workflow///////////////////////////////////
 
 	@Override

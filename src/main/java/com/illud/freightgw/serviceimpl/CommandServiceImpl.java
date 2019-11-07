@@ -148,7 +148,7 @@ private final Logger log =LoggerFactory.getLogger(CommandServiceImpl.class);
 	}
 	@Override
 	public ResponseEntity<VehicleStaffDTO> assignStaffForDriver(Long staffId, Long vehicleId) {
-		log.debug("<<<<<<<< assignStaffForDriver >>>>>>",vehicleId,staffId);
+		log.debug("<<<<<<<< assignStaffForDriver >>>>>>"+"vehicleID"+vehicleId+"staffid"+staffId);
 		
 		return vehStaffResourceApi.assignVehicleStaffForDriverUsingPOST(staffId, vehicleId);
 	}

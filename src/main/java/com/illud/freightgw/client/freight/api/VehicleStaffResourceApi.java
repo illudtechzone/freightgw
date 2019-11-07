@@ -25,7 +25,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-11-06T12:13:58.879+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-11-07T10:22:09.159+05:30[Asia/Calcutta]")
 
 @Api(value = "VehicleStaffResource", description = "the VehicleStaffResource API")
 public interface VehicleStaffResourceApi {
@@ -37,7 +37,7 @@ public interface VehicleStaffResourceApi {
         @ApiResponse(code = 401, message = "Unauthorized"),
         @ApiResponse(code = 403, message = "Forbidden"),
         @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/assignvehiclestaff/{vehicleId}/{driverId}",
+    @RequestMapping(value = "/api/assignvehiclestaff/{staffId}/{vehicleId}",
         produces = "*/*", 
         method = RequestMethod.POST)
     ResponseEntity<VehicleStaffDTO> assignVehicleStaffForDriverUsingPOST(@ApiParam(value = "staffId",required=true) @PathVariable("staffId") Long staffId,@ApiParam(value = "vehicleId",required=true) @PathVariable("vehicleId") Long vehicleId);

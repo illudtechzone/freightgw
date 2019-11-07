@@ -17,7 +17,7 @@ import javax.validation.constraints.*;
  * DriverDocumentDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-11-06T12:13:58.879+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-11-07T10:22:09.159+05:30[Asia/Calcutta]")
 
 public class DriverDocumentDTO   {
   @JsonProperty("document")
